@@ -5,9 +5,12 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-apk:
-    name: Build Android APK with GGUF
+    name: Build Standalone Android APK
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -52,15 +55,49 @@ jobs:
           npm install
           npm install llama.rn@0.6.0
 
-      - name: Build Android Debug APK
+      - name: Pre-bundle Standalone Offline JavaScript (No Metro Needed)
+        working-directory: BrightPathApp
+        run: |
+          mkdir -p android/app/src/main/assets
+          mkdir -p android/app/src/main/res
+          npx react-native bundle \
+            --platform android \
+            --dev false \
+            --entry-file index.js \
+            --bundle-output android/app/src/main/assets/index.android.bundle \
+            --assets-dest android/app/src/main/res
+          ls -lh android/app/src/main/assets/index.android.bundle
+
+      - name: Build Android Standalone APK
         working-directory: BrightPathApp/android
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
 
-      - name: Upload Downloadable APK
+      - name: Prepare APK File
+        run: |
+          cp BrightPathApp/android/app/build/outputs/apk/debug/app-debug.apk ./BrightPath-Qwen-Offline.apk
+          ls -lh ./BrightPath-Qwen-Offline.apk
+
+      - name: Upload Downloadable Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BrightPath-Qwen-Tutor-v1.0.apk
-          path: BrightPathApp/android/app/build/outputs/apk/debug/app-debug.apk
+          name: BrightPath-Qwen-Offline-App
+          path: ./BrightPath-Qwen-Offline.apk
           if-no-files-found: error
+
+      - name: Publish to GitHub Releases (Direct Mobile Download)
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
+        with:
+          tag_name: v1.0
+          name: BrightPath Mobile Offline v1.0
+          body: |
+            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM)
+
+            - **100% Standalone**: JavaScript bundle and Qwen GGUF model pre-packaged inside.
+            - **No computer / Metro required**.
+            - **Directly tap and install on your Android phone!**
+          files: ./BrightPath-Qwen-Offline.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
