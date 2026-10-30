@@ -34,7 +34,7 @@ jobs:
 
       - name: Scaffold React Native Project
         run: |
-          npx -y @react-native-community/cli init BrightPathApp --version 0.75.4 --skip-install --non-interactive
+          npx -y @react-native-community/cli init BrightPathApp --skip-install --skip-git-init --pm npm
           cp -r mobile_app/src BrightPathApp/src
           cp -r mobile_app/assets BrightPathApp/assets
           cp mobile_app/App.js BrightPathApp/App.js
