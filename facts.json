@@ -1,0 +1,7 @@
+[
+  {"id": "maths9",  "text": "Class 9 Maths: fee Rs 5200, 16 weeks, Mon Wed Fri 6:30 PM, teacher Mr. Sameer Khan."},
+  {"id": "sci9",    "text": "Class 9 Science: fee Rs 5000, 16 weeks, Tue Thu Sat 6:30 PM, teacher Dr. Meera Iyer."},
+  {"id": "eng7",    "text": "Class 7 English: fee Rs 3200, 10 weeks, Sat Sun 10:00 AM, teacher Ms. Priya Menon."},
+  {"id": "refund",  "text": "Refund: full refund within 7 days of the start date if fewer than 3 classes were attended."},
+  {"id": "demo",    "text": "Free demo: every course has a free demo class on Saturday at 11 AM."}
+]

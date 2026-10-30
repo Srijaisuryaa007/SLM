@@ -1,0 +1,9 @@
+node_modules/
+__pycache__/
+*.pyc
+*.gguf
+outputs/
+.gradle/
+build/
+BrightPathApp/
+

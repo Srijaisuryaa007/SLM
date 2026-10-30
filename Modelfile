@@ -1,0 +1,19 @@
+# 1. Put the .gguf file downloaded from Colab next to this file and rename it to brightpath-mini.gguf
+# 2. Run:   ollama create brightpath-mini -f Modelfile
+# 3. Run:   python ask.py
+#
+# No SYSTEM line here on purpose: ask.py sends the rules (from prompt.py) with every question.
+FROM ./brightpath-mini.gguf
+
+TEMPLATE """<|im_start|>system
+{{ if .System }}{{ .System }}{{ end }}<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+{{ .Response }}<|im_end|>
+"""
+
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|endoftext|>"
+PARAMETER temperature 0.3
