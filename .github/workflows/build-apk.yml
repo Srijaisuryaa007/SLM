@@ -26,16 +26,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Setup Android SDK & NDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android NDK & CMake
+      - name: Set up Android NDK & Environment
         run: |
-          sdkmanager --install "ndk;26.1.10909125" "cmake;3.22.1"
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          # Ensure NDK and CMake are installed
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "ndk;26.1.10909125" "cmake;3.22.1" || true
 
       - name: Scaffold React Native Project
         run: |
-          npx @react-native-community/cli init BrightPathApp --version 0.75.4 --skip-install
+          npx -y @react-native-community/cli init BrightPathApp --version 0.75.4 --skip-install --non-interactive
           cp -r mobile_app/src BrightPathApp/src
           cp -r mobile_app/assets BrightPathApp/assets
           cp mobile_app/App.js BrightPathApp/App.js
@@ -65,4 +64,3 @@ jobs:
           name: BrightPath-Qwen-Tutor-v1.0.apk
           path: BrightPathApp/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-
