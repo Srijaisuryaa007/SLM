@@ -34,7 +34,7 @@ export default function ChatScreen() {
   useEffect(() => {
     let isMounted = true;
 
-    // Delay model initialization slightly so the React Native UI renders completely first
+    // Delay model initialization so UI renders completely first
     const timer = setTimeout(async () => {
       try {
         if (!isMounted) return;
@@ -45,7 +45,8 @@ export default function ChatScreen() {
           is_model_asset: true,
           n_ctx: 512,
           n_threads: 2,
-          use_mlock: false, // Must be false on Android to prevent OS aborts
+          n_gpu_layers: 0, // Safe CPU execution (prevents GPU shader aborts)
+          use_mlock: false, // Prevents Android OS memory lock crash
         });
 
         if (isMounted) {
@@ -54,13 +55,13 @@ export default function ChatScreen() {
           setStatusText('Offline Ready (Qwen 0.5B)');
         }
       } catch (err) {
-        console.warn('Llama init warning:', err);
+        console.warn('Llama init notice:', err);
         if (isMounted) {
           setStatusText('Offline Tutor Ready');
           setIsModelReady(true);
         }
       }
-    }, 600);
+    }, 700);
 
     return () => {
       isMounted = false;

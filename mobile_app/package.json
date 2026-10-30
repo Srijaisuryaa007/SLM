@@ -8,14 +8,14 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "llama.rn": "^0.6.0",
     "react": "18.3.1",
-    "react-native": "0.76.1"
+    "react-native": "0.76.1",
+    "llama.rn": "^0.12.9"
   },
   "devDependencies": {
     "@babel/core": "^7.25.0",
     "@babel/runtime": "^7.25.0",
-    "@react-native-community/cli": "^20.2.0",
+    "@react-native-community/cli": "latest",
     "@react-native-community/cli-platform-android": "latest",
     "@react-native-community/cli-platform-ios": "latest",
     "metro-react-native-babel-preset": "^0.77.0"

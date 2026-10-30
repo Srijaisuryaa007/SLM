@@ -77,7 +77,7 @@ jobs:
         working-directory: BrightPathApp
         run: |
           npm install
-          npm install llama.rn@0.6.0
+          npm install llama.rn@0.12.9
 
       - name: Pre-bundle Standalone Offline JavaScript (No Metro Needed)
         working-directory: BrightPathApp
@@ -114,11 +114,13 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.1
-          name: BrightPath Mobile Offline v1.1
+          tag_name: v1.2
+          name: BrightPath Mobile Offline v1.2
           body: |
-            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM) - v1.1
+            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM) - v1.2
 
+            - **Upgraded llama.rn**: Upgraded to v0.12.9 with modern Qwen 2.5 architecture support and ARM64 instruction fixes.
+            - **Fixed native SIGSEGV crash**: Prevents illegal dotprod instruction on OnePlus / Snapdragon chipsets.
             - **100% Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model.
             - **Memory Optimized**: Enabled `largeHeap="true"` (up to 1GB RAM) and uncompressed GGUF loading.
             - **Tap below to download directly to your phone!**
