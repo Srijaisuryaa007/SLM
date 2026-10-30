@@ -42,23 +42,28 @@ jobs:
           cp -r mobile_app/assets BrightPathApp/assets
           cp mobile_app/App.js BrightPathApp/App.js
 
-      - name: Configure Android for High-Memory SLM & Stability
+      - name: Configure Android for High-Memory SLM
         run: |
-          # 1. Disable React Native New Architecture (ensures stable JNI bridge for llama.rn)
-          sed -i 's/newArchEnabled=true/newArchEnabled=false/g' BrightPathApp/android/gradle.properties || true
-          echo "newArchEnabled=false" >> BrightPathApp/android/gradle.properties
-
-          # 2. Enable largeHeap (prevents Android OOM when loading 390MB model)
-          sed -i 's/<application/<application android:largeHeap="true"/g' BrightPathApp/android/app/src/main/AndroidManifest.xml
-
-          # 3. Do not compress GGUF (required for mmap to work without SIGBUS crashes)
           python3 -c "
-          p = 'BrightPathApp/android/app/build.gradle'
-          with open(p, 'r') as f:
-              content = f.read()
-          content = content.replace('android {', 'android {\n    aaptOptions { noCompress \"gguf\" }')
-          with open(p, 'w') as f:
-              f.write(content)
+          # 1. Enable largeHeap in AndroidManifest.xml
+          manifest_path = 'BrightPathApp/android/app/src/main/AndroidManifest.xml'
+          with open(manifest_path, 'r', encoding='utf-8') as f:
+              manifest = f.read()
+          if 'android:largeHeap' not in manifest:
+              manifest = manifest.replace('<application', '<application android:largeHeap=\"true\"')
+              with open(manifest_path, 'w', encoding='utf-8') as f:
+                  f.write(manifest)
+          print('largeHeap enabled in manifest.')
+
+          # 2. Add noCompress 'gguf' to android/app/build.gradle
+          gradle_path = 'BrightPathApp/android/app/build.gradle'
+          with open(gradle_path, 'r', encoding='utf-8') as f:
+              gradle = f.read()
+          if 'noCompress' not in gradle:
+              gradle = gradle.replace('android {', 'android {\n    aaptOptions { noCompress \"gguf\" }')
+              with open(gradle_path, 'w', encoding='utf-8') as f:
+                  f.write(gradle)
+          print('noCompress gguf added to build.gradle.')
           "
 
       - name: Download Qwen 2.5 0.5B GGUF Model (~390 MB) into App Assets
@@ -114,12 +119,9 @@ jobs:
           body: |
             ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM) - v1.1
 
-            - **Fixed immediate crash**:
-              - Enabled `android:largeHeap="true"` to prevent Android Out-Of-Memory.
-              - Set `aaptOptions { noCompress "gguf" }` to prevent SIGBUS crashes during model mmap.
-              - Disabled New Architecture (`newArchEnabled=false`) for stable native C++ JNI bridge.
-              - Added Error Boundary and delayed model loading.
-            - **100% Offline & Standalone**: Model and JS bundle packaged inside.
+            - **100% Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model.
+            - **Memory Optimized**: Enabled `largeHeap="true"` (up to 1GB RAM) and uncompressed GGUF loading.
+            - **Tap below to download directly to your phone!**
           files: ./BrightPath-Qwen-Offline.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
