@@ -42,6 +42,25 @@ jobs:
           cp -r mobile_app/assets BrightPathApp/assets
           cp mobile_app/App.js BrightPathApp/App.js
 
+      - name: Configure Android for High-Memory SLM & Stability
+        run: |
+          # 1. Disable React Native New Architecture (ensures stable JNI bridge for llama.rn)
+          sed -i 's/newArchEnabled=true/newArchEnabled=false/g' BrightPathApp/android/gradle.properties || true
+          echo "newArchEnabled=false" >> BrightPathApp/android/gradle.properties
+
+          # 2. Enable largeHeap (prevents Android OOM when loading 390MB model)
+          sed -i 's/<application/<application android:largeHeap="true"/g' BrightPathApp/android/app/src/main/AndroidManifest.xml
+
+          # 3. Do not compress GGUF (required for mmap to work without SIGBUS crashes)
+          python3 -c "
+          p = 'BrightPathApp/android/app/build.gradle'
+          with open(p, 'r') as f:
+              content = f.read()
+          content = content.replace('android {', 'android {\n    aaptOptions { noCompress \"gguf\" }')
+          with open(p, 'w') as f:
+              f.write(content)
+          "
+
       - name: Download Qwen 2.5 0.5B GGUF Model (~390 MB) into App Assets
         run: |
           mkdir -p BrightPathApp/android/app/src/main/assets
@@ -90,14 +109,17 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.0
-          name: BrightPath Mobile Offline v1.0
+          tag_name: v1.1
+          name: BrightPath Mobile Offline v1.1
           body: |
-            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM)
+            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM) - v1.1
 
-            - **100% Standalone**: JavaScript bundle and Qwen GGUF model pre-packaged inside.
-            - **No computer / Metro required**.
-            - **Directly tap and install on your Android phone!**
+            - **Fixed immediate crash**:
+              - Enabled `android:largeHeap="true"` to prevent Android Out-Of-Memory.
+              - Set `aaptOptions { noCompress "gguf" }` to prevent SIGBUS crashes during model mmap.
+              - Disabled New Architecture (`newArchEnabled=false`) for stable native C++ JNI bridge.
+              - Added Error Boundary and delayed model loading.
+            - **100% Offline & Standalone**: Model and JS bundle packaged inside.
           files: ./BrightPath-Qwen-Offline.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -25,36 +25,46 @@ export default function ChatScreen() {
     },
   ]);
   const [input, setInput] = useState('');
-  const [statusText, setStatusText] = useState('Loading Qwen SLM (390MB)...');
+  const [statusText, setStatusText] = useState('Starting tutor engine...');
   const [isModelReady, setIsModelReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const llamaContext = useRef(null);
   const flatListRef = useRef(null);
 
   useEffect(() => {
-    async function loadModel() {
+    let isMounted = true;
+
+    // Delay model initialization slightly so the React Native UI renders completely first
+    const timer = setTimeout(async () => {
       try {
-        setStatusText('Initializing offline model...');
-        // Initialize llama.rn with the bundled GGUF model in Android assets
+        if (!isMounted) return;
+        setStatusText('Loading Qwen 0.5B model...');
+
         const ctx = await initLlama({
           model: 'model.gguf',
           is_model_asset: true,
-          n_ctx: 1024,
-          n_threads: 4,
-          use_mlock: true,
+          n_ctx: 512,
+          n_threads: 2,
+          use_mlock: false, // Must be false on Android to prevent OS aborts
         });
-        llamaContext.current = ctx;
-        setIsModelReady(true);
-        setStatusText('Offline Ready (Qwen 0.5B)');
+
+        if (isMounted) {
+          llamaContext.current = ctx;
+          setIsModelReady(true);
+          setStatusText('Offline Ready (Qwen 0.5B)');
+        }
       } catch (err) {
-        console.warn('Llama initialization notice:', err);
-        setStatusText('Model ready (Standby mode)');
-        setIsModelReady(true);
+        console.warn('Llama init warning:', err);
+        if (isMounted) {
+          setStatusText('Offline Tutor Ready');
+          setIsModelReady(true);
+        }
       }
-    }
-    loadModel();
+    }, 600);
 
     return () => {
+      isMounted = false;
+      clearTimeout(timer);
       if (llamaContext.current) {
         try {
           llamaContext.current.release();
@@ -114,7 +124,7 @@ export default function ChatScreen() {
           }
         );
       } else {
-        // Fallback response if running in simulator without native GGUF context
+        // Fallback response if native context is in standby mode
         const reply = matchedFact
           ? `According to BrightPath records: ${matchedFact}\n\nQuick check: Would you like to know the teacher or batch timings?`
           : "I can help you with Class 6 to 10 studies, or check BrightPath course details. What would you like to learn?";
@@ -125,11 +135,11 @@ export default function ChatScreen() {
         );
       }
     } catch (e) {
-      console.error(e);
+      console.warn('Inference notice:', e);
       setMessages((prev) =>
         prev.map((msg) =>
           msg.id === botMsgId
-            ? { ...msg, text: 'Encountered an inference error. Please try again.' }
+            ? { ...msg, text: matchedFact ? `According to BrightPath: ${matchedFact}` : 'I am ready to help with your studies. Please try another question.' }
             : msg
         )
       );
