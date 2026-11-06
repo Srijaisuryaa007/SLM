@@ -114,16 +114,16 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.2
-          name: BrightPath Mobile Offline v1.2
+          tag_name: v1.3
+          name: BrightPath Mobile Offline v1.3 (English Class 9 Edition)
           body: |
-            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM) - v1.2
+            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM) - v1.3 English Class 9 Edition
 
-            - **Upgraded llama.rn**: Upgraded to v0.12.9 with modern Qwen 2.5 architecture support and ARM64 instruction fixes.
-            - **Fixed native SIGSEGV crash**: Prevents illegal dotprod instruction on OnePlus / Snapdragon chipsets.
-            - **100% Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model.
-            - **Memory Optimized**: Enabled `largeHeap="true"` (up to 1GB RAM) and uncompressed GGUF loading.
-            - **Tap below to download directly to your phone!**
+            - **English Class 9 Textbook**: Built-in 122 cleaned pages from Page VIII onwards.
+            - **Zero Hallucination Grounding**: On-device RAG answering strictly from textbook facts.
+            - **Upgraded llama.rn**: v0.12.9 native C++ inference on ARM64 CPU.
+            - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~687 MB).
+            - **Tap the APK below under Assets to install on your phone!**
           files: ./BrightPath-Qwen-Offline.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

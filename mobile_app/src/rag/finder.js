@@ -1,8 +1,8 @@
-// Pure JavaScript RAG search matching ask.py
-import facts from '../../assets/facts.json';
+// On-device RAG search matching ask.py
+import bookPages from '../../assets/facts.json';
 
 const STOP = new Set(
-  "a an the is are was of for to in on at and or do does i my me you your what whats how can when who which there it be with about tell please much many have has will if any get this that fee"
+  "a an the is are was were of for to in on at and or do does did i my me you your what whats how can could when who whom which where there it be been with about tell please much many have has had will would if any get this that these those from by"
     .split(" ")
 );
 
@@ -12,33 +12,34 @@ function getWords(text) {
 }
 
 /**
- * Searches the local facts.json on-device and returns the best matching fact text, or null.
+ * Searches the local English Class 9 textbook on-device and returns the best matching excerpt, or null.
  */
 export function findFact(question) {
   const qWords = getWords(question);
-  const numbers = qWords.filter((w) => /^\d+$/.test(w));
+  if (qWords.length === 0) return null;
 
-  let bestFact = null;
+  let bestChunk = null;
   let bestScore = 0;
 
-  for (const fact of facts) {
-    const fWords = new Set(getWords(fact.text));
+  for (const page of bookPages) {
+    if (!page.text) continue;
+    // Split into sentences
+    const sentences = page.text.split(/(?<=[.!?])\s+/);
+    for (let i = 0; i < sentences.length; i++) {
+      const chunk = sentences.slice(i, i + 4).join(" ");
+      const cWords = new Set(getWords(chunk));
 
-    // If question specifies a number (like "Class 9"), the fact must have that number
-    const hasAllNumbers = numbers.every((n) => fWords.has(n));
-    if (!hasAllNumbers) continue;
+      let score = 0;
+      for (const w of qWords) {
+        if (cWords.has(w)) score++;
+      }
 
-    let score = 0;
-    for (const w of qWords) {
-      if (fWords.has(w)) score++;
-    }
-
-    if (score > bestScore) {
-      bestScore = score;
-      bestFact = fact;
+      if (score > bestScore) {
+        bestScore = score;
+        bestChunk = chunk;
+      }
     }
   }
 
-  return bestFact ? bestFact.text : null;
+  return bestChunk;
 }
-
