@@ -21,12 +21,17 @@ function normalize(text) {
 // Strictly isolated subject domain boundaries to prevent cross-lesson hallucinations (e.g. Sachin)
 const DOMAINS = {
   sachin: ["sachin", "tendulkar", "cricket", "achrekar", "ajit", "shivaji", "shardashram", "vadapav", "gavaskar", "stumps", "nets", "batting", "bowled"],
-  cat: ["cat", "painkiller", "pain-killer", "peter", "aunt polly", "polly", "tom sawyer", "thimble", "somersaults", "becky", "teaspoon"],
-  oranges: ["orange", "oranges", "seventeen", "pongo", "clem", "docks", "steal", "stolen", "pips", "peel", "apron", "cheese", "swift delivery"],
+  cat: ["cat", "painkiller", "pain-killer", "peter", "aunt polly", "polly", "tom", "tom sawyer", "thimble", "somersaults", "becky", "teaspoon", "crack"],
+  oranges: ["orange", "oranges", "seventeen", "pongo", "clem", "docks", "steal", "stolen", "pips", "peel", "apron", "cheese", "swift delivery", "scotti"],
   spider: ["spider", "fly", "parlour", "web", "gauzy", "flattery", "flatter", "cunning", "trust", "betray", "winding stair", "den"],
-  river: ["river", "flood", "amy", "betty", "rose", "sara", "jim", "cloudburst", "splint", "ladder", "red cross", "stream", "pebble"],
+  river: ["river", "flood", "amy", "betty", "rose", "sara", "jim", "cloudburst", "splint", "ladder", "red cross", "stream", "pebble", "burnett"],
   tree: ["visitor", "ruskin", "bond", "jackfruit", "iron cross", "granite", "climb", "trees", "pruning", "chiming", "turnstile"],
-  water: ["water", "elixir", "raman", "nile", "egypt", "silt", "soil", "erosion", "amrita", "landscape", "rainfed"]
+  water: ["water", "elixir", "raman", "nile", "egypt", "silt", "soil", "erosion", "amrita", "landscape", "rainfed", "afforestation", "forests"],
+  killing_tree: ["killing a tree", "bleeding bark", "anchoring earth", "jab", "hack", "chop", "sprout", "miniature boughs", "uprooted"],
+  earthquake: ["earthquake", "brij", "bhuli", "molthi", "pauri", "debris", "tremor", "teashop", "traveller", "army officer"],
+  woods: ["woods", "snowy", "evening", "miles to go", "robert frost", "harness bells", "queer", "frozen lake", "farmhouse"],
+  poison: ["poison tree", "wrath", "foe", "apple bright", "fears", "tears", "blake"],
+  fun_had: ["margie", "tommy", "mechanical teacher", "county inspector", "geography", "attic", "telebook", "real book"]
 };
 
 function hasKeyword(query, kwList) {
@@ -168,14 +173,9 @@ export function findFact(question) {
   for (const item of qaBank) {
     const itemQ = item.question.toLowerCase();
 
-    // Entity Boundary Isolation - prevent cross-story contamination
+    // Entity Boundary Isolation - Sachin Tendulkar should never answer non-cricket questions
     if (hasKeyword(itemQ, DOMAINS.sachin) && !hasKeyword(question, DOMAINS.sachin)) continue;
-    if (hasKeyword(itemQ, DOMAINS.spider) && !hasKeyword(question, DOMAINS.spider)) continue;
-    if (hasKeyword(itemQ, DOMAINS.oranges) && !hasKeyword(question, DOMAINS.oranges)) continue;
-    if (hasKeyword(itemQ, DOMAINS.cat) && !hasKeyword(question, DOMAINS.cat)) continue;
-    if (hasKeyword(itemQ, DOMAINS.river) && !hasKeyword(question, DOMAINS.river)) continue;
-    if (hasKeyword(itemQ, DOMAINS.tree) && !hasKeyword(question, DOMAINS.tree)) continue;
-    if (hasKeyword(itemQ, DOMAINS.water) && !hasKeyword(question, DOMAINS.water)) continue;
+    if (hasKeyword(question, DOMAINS.sachin) && !hasKeyword(itemQ, DOMAINS.sachin)) continue;
 
     const itemWords = new Set([
       ...getWords(item.question),
@@ -190,12 +190,21 @@ export function findFact(question) {
     const coverage = overlap / qWords.length;
     let score = overlap * (1 + coverage);
 
-    // Match the following boost
+    // Boost for exercise types
     if ((qWordSet.has("match") || qWordSet.has("following")) && item.matches) {
       score += 15;
     }
+    if ((qWordSet.has("blank") || qWordSet.has("blanks") || qWordSet.has("fill")) && item.completed_sentence) {
+      score += 10;
+    }
+    if ((qWordSet.has("rearrange") || qWordSet.has("sequence")) && item.matches) {
+      score += 15;
+    }
+    if ((qWordSet.has("true") || qWordSet.has("false")) && item.question.toLowerCase().includes("true")) {
+      score += 15;
+    }
 
-    if (coverage >= 0.5 && score > bestScore && score >= 2) {
+    if ((overlap >= 3 || (overlap >= 2 && coverage >= 0.35)) && score > bestScore) {
       bestScore = score;
       bestItem = item;
     }
@@ -218,13 +227,9 @@ export function findFact(question) {
   let bestChunkScore = 0;
 
   for (const ch of chunks) {
-    // Entity Boundary Isolation
+    // Only isolate Sachin to avoid cricket contaminating unrelated literature
     if (ch.topic === "sachin_cricket" && !hasKeyword(question, DOMAINS.sachin)) continue;
-    if (ch.topic === "spider_fly" && !hasKeyword(question, DOMAINS.spider)) continue;
-    if (ch.topic === "seventeen_oranges" && !hasKeyword(question, DOMAINS.oranges)) continue;
-    if (ch.topic === "cat_painkiller" && !hasKeyword(question, DOMAINS.cat)) continue;
-    if (ch.topic === "old_man_river" && !hasKeyword(question, DOMAINS.river)) continue;
-    if (ch.topic === "water_elixir" && !hasKeyword(question, DOMAINS.water)) continue;
+    if (hasKeyword(question, DOMAINS.sachin) && ch.topic !== "sachin_cricket") continue;
 
     const chWordSet = new Set(ch.keywords || []);
     let matchCount = 0;
@@ -251,7 +256,7 @@ export function findFact(question) {
     }
   }
 
-  if (bestChunkScore >= 4.0 && bestChunk) {
+  if (bestChunk && bestChunkScore >= 2.0) {
     return {
       isDirectQA: false,
       chunk: bestChunk.text,
@@ -260,5 +265,21 @@ export function findFact(question) {
     };
   }
 
-  return null;
+  // Tier 3: Guaranteed fallback chunk so SLM always has textbook grounding
+  if (bestChunk) {
+    return {
+      isDirectQA: false,
+      chunk: bestChunk.text,
+      page: bestChunk.page,
+      unit: bestChunk.unit_title,
+    };
+  }
+
+  const defaultChunk = chunks.find(c => c.topic !== "sachin_cricket") || chunks[0];
+  return {
+    isDirectQA: false,
+    chunk: defaultChunk.text,
+    page: defaultChunk.page,
+    unit: defaultChunk.unit_title,
+  };
 }

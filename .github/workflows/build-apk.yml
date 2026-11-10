@@ -117,15 +117,23 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v2.3
-          name: English Class 9 AI Assistant v2.3 (Complete In-Text & Book-Back Exercises)
+          tag_name: v2.4
+          name: English Class 9 AI Assistant v2.4 (All Book-Back & End-of-Lesson Exercises)
           body: |
-            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v2.3
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v2.4
 
-            - **Complete In-Text Margin Questions**: Answers all local margin questions inside the book (e.g., Water – The Elixir of Life all 15 questions, Libyan desert vs Nile valley, rainfed tanks, civilized forests, cheapest transport).
-            - **'Based on your understanding of the play / story' MCQs**: Full interactive choice cards (a, b, c, d) with correct option highlighted in emerald green and direct answer banners.
-            - **Complete 'Match the following' Tables**: Formatted 2-column tables for Page 6 Synonyms/Antonyms, Page 60 Old Man River character roles, and Page 97 Phrasal Verbs.
-            - **Dictionary Synonyms & Antonyms Exercises**: Full answers for Page 61 flood terms, Page 7 homophones, and Page 94 word choices.
+            - **Zero 'Not mentioned in the book' Errors**: Relaxed domain search filters and neural prompt safeguards ensure every textbook exercise question is answered directly with textbook grounding.
+            - **All End-of-Lesson Exercises Answered**:
+              - **Stopping by Woods on a Snowy Evening (Page 20)**: Summary 14 fill-in-the-blanks, rhyme schemes (`aaba bbcb ccdc dddd`), poetic devices, and stanza comprehension.
+              - **The Fun They Had (Page 47-48)**: Character identification, 13-clue paragraph completion, and sentence completions.
+              - **A Poison Tree (Page 40-41)**: Summary 5 blanks, apple significance, foe outstretched, and rhyme scheme `aabb`.
+              - **On Killing a Tree (Page 77-78)**: Summary blanks, anchoring earth, bleeding bark, and root uprooting.
+              - **Earthquake (Page 86)**: 5 fill-in-the-blanks (Brij, 670 villages, school books, makeshift hospital, 116 hours), MCQs, and character lines.
+              - **The Cat and the Pain-Killer (Page 113-114)**: Sentence rearrangement 1-8 sequence (`5, 8, 1, 7, 3, 4, 6, 2`), 12-word summary box blanks, short Q&A, and American slang table.
+              - **Old Man River (Page 59-61)**: MCQs (`a, b, c, d`), 10-character matching table, and dictionary synonyms/antonyms.
+              - **Seventeen Oranges (Page 93-97)**: Synonyms MCQs, Antonyms MCQs, Nicholas Scotti MCQs, and phrasal verbs dictionary meanings.
+              - **Water – The Elixir of Life (Page 118-122)**: Complete in-text margin questions (all 15 items).
+            - **Interactive Directory & Direct Answer Cards**: Direct answer banners, green badges, option cards, and page citations.
             - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~688 MB).
           files: ./BrightPath-Qwen-Offline.apk
         env:

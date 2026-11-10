@@ -2892,6 +2892,628 @@ qa_list = [
         "completed_sentence": "Seventeen Oranges MCQs: **[1-c, 2-d, 3-a, 4-b, 5-c]**.",
         "explanation": "Complete solutions to Section A: Choose the correct answers from Seventeen Oranges (Page 93).",
         "evidence": "Book Page 93 Exercise A: From your reading of the text, choose the correct answers from the options given below."
+    },
+    {
+        "page": 20,
+        "question": "Complete the summary of the poem by filling in the blanks: Stopping by Woods on a Snowy Evening",
+        "aliases": [
+            "complete the summary of the poem by filling in the blanks",
+            "stopping by woods summary",
+            "after a long travel the poet entered",
+            "summary of stopping by woods on a snowy evening",
+            "after a long travel the poet entered a"
+        ],
+        "direct_answer": "1. wood | 2. belonged | 3. village | 4. see | 5. snow | 6. queer | 7. stopped without a farmhouse near | 8. frozen lake | 9. the darkest evening of the year | 10. mistake | 11. harness bells | 12. lovely, dark and deep | 13. promises to keep | 14. sleep / stay",
+        "completed_sentence": "After a long travel the poet entered a **[wood]**. He wondered to whom the wood **[belonged]**! He realized that the owner lived in a **[village]**. He thought the owner would not be able to **[see]** him stopping to watch **[snow]** fill the woods. The horse felt it very **[queer]** to stop as he had never **[stopped without a farmhouse near]**. He was standing between the woods and **[frozen lake]**. The time was **[the darkest evening of the year]**. The horse indicated a **[mistake]** by shaking its **[harness bells]**. The woods are lovely, **[dark]** and **[deep]**. He realized he had worldly **[promises to keep]** which would not allow him to **[sleep]** for a long time.",
+        "explanation": "Official complete textbook summary fill-in-the-blanks exercise from Unit 1: Stopping by Woods on a Snowy Evening (Page 20).",
+        "evidence": "Book Page 20 Exercise C: Complete the summary of the poem by filling in the blanks."
+    },
+    {
+        "page": 20,
+        "question": "Why the poet has used the same line twice? And miles to go before I sleep",
+        "aliases": [
+            "why the poet has used the same line twice",
+            "miles to go before i sleep repeated twice",
+            "why is and miles to go before i sleep repeated"
+        ],
+        "direct_answer": "To emphasize the profound importance of fulfilling worldly duties and obligations before taking final rest (death).",
+        "completed_sentence": "The poet repeats the line twice to **[strongly emphasize his heavy worldly duties and responsibilities before he can rest]**.",
+        "explanation": "The repetition of 'And miles to go before I sleep' symbolizes both the literal journey remaining and the symbolic journey of life and responsibilities before death.",
+        "evidence": "Book Page 20 Exercise 5.a: 'Why the poet has used the same line twice?'"
+    },
+    {
+        "page": 20,
+        "question": "Explain: miles to go before I sleep",
+        "aliases": [
+            "explain miles to go before i sleep",
+            "meaning of miles to go before i sleep"
+        ],
+        "direct_answer": "It means the speaker has many promises, duties, and responsibilities to fulfill in life before he can rest or die.",
+        "completed_sentence": "Miles to go before I sleep signifies **[the numerous commitments and responsibilities that must be fulfilled before eternal rest]**.",
+        "explanation": "'Miles to go' represents life's unfinished journey and commitments, while 'sleep' represents rest or death.",
+        "evidence": "Book Page 20 Exercise 5.b: 'Explain: miles to go before I sleep'"
+    },
+    {
+        "page": 20,
+        "question": "Identify the rhyme scheme used in each stanza: Stopping by Woods on a Snowy Evening",
+        "aliases": [
+            "identify the rhyme scheme used in each stanza",
+            "rhyme scheme stopping by woods",
+            "stopping by woods rhyme scheme stanza 1 2 3 4"
+        ],
+        "direct_answer": "Stanza 1: aaba | Stanza 2: bbcb | Stanza 3: ccdc | Stanza 4: dddd",
+        "matches": [
+            [
+                "Stanza 1",
+                "aaba (know, though, here, snow)"
+            ],
+            [
+                "Stanza 2",
+                "bbcb (queer, near, lake, year)"
+            ],
+            [
+                "Stanza 3",
+                "ccdc (shake, mistake, sweep, flake)"
+            ],
+            [
+                "Stanza 4",
+                "dddd (deep, keep, sleep, sleep)"
+            ]
+        ],
+        "completed_sentence": "Rhyme Scheme: **[Stanza 1: aaba, Stanza 2: bbcb, Stanza 3: ccdc, Stanza 4: dddd]**.",
+        "explanation": "Robert Frost employs interlocking chain rhyme (Rubaiyat stanza form), where the unrhymed third line sets the rhyme for the next stanza, concluding in dddd.",
+        "evidence": "Book Page 20 Exercise E: Identify the rhyme scheme used in each stanza."
+    },
+    {
+        "page": 20,
+        "question": "What are the sounds heard by the poet? Stopping by Woods",
+        "aliases": [
+            "what are the sounds heard by the poet",
+            "sounds heard in stopping by woods"
+        ],
+        "direct_answer": "The gentle shake of the horse's harness bells and the soft sweep of easy wind and downy snow flake.",
+        "completed_sentence": "The sounds heard by the poet are **[the jingling of the harness bells and the gentle sweep of the easy wind and downy snow flake]**.",
+        "explanation": "In stanza 3, Frost notes the quiet wilderness sounds: 'He gives his harness bells a shake... The only other sound's the sweep of easy wind and downy flake.'",
+        "evidence": "Book Page 20 Exercise D.3: 'What are the sounds heard by the poet?'"
+    },
+    {
+        "page": 20,
+        "question": "What information does the poet highlight about the season and the time of the day in the poem? Stopping by Woods",
+        "aliases": [
+            "what information does the poet highlight about the season and the time of the day in the poem",
+            "season and time of day stopping by woods"
+        ],
+        "direct_answer": "The season is winter (snow and frozen lake), and the time of day is the darkest evening of the year (winter solstice).",
+        "completed_sentence": "The poet highlights that it is **[winter season (snow falling, frozen lake)]** during **[the darkest evening of the year]**.",
+        "explanation": "Lines 'To watch his woods fill up with snow' and 'The darkest evening of the year' define the winter solstice setting.",
+        "evidence": "Book Page 20 Exercise D.1: Season and time of day in Stopping by Woods."
+    },
+    {
+        "page": 40,
+        "question": "Complete the summary by filling in the given spaces with suitable words: A Poison Tree",
+        "aliases": [
+            "complete the summary by filling in the given spaces with suitable words",
+            "a poison tree summary",
+            "once the poet was angry with his friend he expressed his",
+            "summary of a poison tree"
+        ],
+        "direct_answer": "(i) wrath | (ii) suppressed / concealed | (iii) sunned / deceived | (iv) tempted / enticed | (v) dead / outstretched",
+        "completed_sentence": "Once the poet was angry with his friend. He expressed his (i) **[wrath]** and it ended. They became friendly but when he grew angry with his foe, he (ii) **[suppressed / concealed]** it and allowed his anger to grow. Day and night he watered it with his tears. He (iii) **[sunned / deceived]** his foe with false smiles and cunning tricks. The tree yielded a bright apple which (iv) **[tempted]** his foe to eat it stealthily. The next morning the poet was happy to see his foe lying (v) **[dead / outstretched]** under the tree.",
+        "explanation": "Official complete textbook summary fill-in-the-blanks exercise from Unit 2: A Poison Tree (Page 40).",
+        "evidence": "Book Page 40 Exercise B: Complete the summary by filling in the given spaces with suitable words."
+    },
+    {
+        "page": 40,
+        "question": "What does 'apple' signify in A Poison Tree?",
+        "aliases": [
+            "what does apple signify",
+            "what does apple signify in a poison tree",
+            "till it bore an apple bright what does apple signify"
+        ],
+        "direct_answer": "The apple signifies the tempting, visible, and fatal fruit of harboured anger, hatred, and deceit.",
+        "completed_sentence": "The apple signifies **[the tempting and fatal outward result of suppressed wrath and malice]**.",
+        "explanation": "Blake uses the bright apple as an allegory for hatred nurtured in secret until it bears deadly consequences.",
+        "evidence": "Book Page 40 Exercise A.4.b: 'What does ‘apple’ signify?'"
+    },
+    {
+        "page": 40,
+        "question": "Why was the 'foe' found lying outstretched beneath the tree? A Poison Tree",
+        "aliases": [
+            "why was the foe found lying outstretched beneath the tree",
+            "foe outstretched beneath the tree"
+        ],
+        "direct_answer": "The foe had secretly entered the garden at night, eaten the poisonous fruit of wrath, and died.",
+        "completed_sentence": "The foe was lying outstretched because **[he had stolen into the garden at night, eaten the poison apple, and died]**.",
+        "explanation": "In stanza 4, the foe saw the shining apple and stole into the garden when night veiled the pole, eating the fatal fruit.",
+        "evidence": "Book Page 40 Exercise A.3.c: 'Why was the ‘foe’ found lying outstretched beneath the tree?'"
+    },
+    {
+        "page": 40,
+        "question": "What does 'it' refer to in 'And I watered it in fears'? A Poison Tree",
+        "aliases": [
+            "what does it refer to in and i watered it in fears",
+            "and i watered it in fears what does it refer to"
+        ],
+        "direct_answer": "It refers to the poet's suppressed anger / wrath towards his foe.",
+        "completed_sentence": "'It' refers to **[the poet's unexpressed anger and malice towards his enemy]**.",
+        "explanation": "The poet personifies his suppressed wrath as a plant that he waters with fears and tears.",
+        "evidence": "Book Page 40 Exercise A.2.a: 'What does ‘it’ refer to?'"
+    },
+    {
+        "page": 41,
+        "question": "What is the rhyme scheme of the stanza in A Poison Tree?",
+        "aliases": [
+            "what is the rhyme scheme of the stanza a poison tree",
+            "rhyme scheme a poison tree"
+        ],
+        "direct_answer": "aabb (e.g. friend/end, foe/grow; fears/tears, smiles/wiles)",
+        "completed_sentence": "The rhyme scheme is **[aabb]** throughout each four-line stanza.",
+        "explanation": "William Blake constructs the poem using rhyming couplets: friend (a), end (a), foe (b), grow (b).",
+        "evidence": "Book Page 41 Exercise E.1.ii: 'What is the rhyme scheme of the stanza?'"
+    },
+    {
+        "page": 41,
+        "question": "Identify the figure of speech in the title of the poem: A Poison Tree",
+        "aliases": [
+            "identify the figure of speech in the title of the poem a poison tree",
+            "figure of speech title a poison tree"
+        ],
+        "direct_answer": "Metaphor (wrath and hatred are implicitly compared to a growing poisonous tree).",
+        "completed_sentence": "The figure of speech is a **[Metaphor]**, comparing harboured anger to a deadly tree.",
+        "explanation": "The title uses an extended metaphor where silent anger grows, blossoms, and produces fatal fruit.",
+        "evidence": "Book Page 41 Exercise E.1.iii: 'Identify the figure of speech in the title of the poem.'"
+    },
+    {
+        "page": 47,
+        "question": "Identify the character or speaker: She was given test after test in geography.",
+        "aliases": [
+            "she was given test after test in geography",
+            "identify character she was given test after test in geography"
+        ],
+        "direct_answer": "Margie",
+        "completed_sentence": "Character / Speaker: **[Margie]**.",
+        "explanation": "Margie was given continuous geography tests by her mechanical teacher, which had been geared too fast for her age.",
+        "evidence": "Book Page 47 Exercise A.1: 'She was given test after test in geography.'"
+    },
+    {
+        "page": 47,
+        "question": "Identify the character or speaker: He was a round little man with a red face and a whole box of tools with dials and wires.",
+        "aliases": [
+            "he was a round little man with a red face",
+            "round little man with a red face and a whole box of tools"
+        ],
+        "direct_answer": "The County Inspector",
+        "completed_sentence": "Character / Speaker: **[The County Inspector]**.",
+        "explanation": "The County Inspector was called by Margie's mother to inspect and fix Margie's malfunctioning mechanical teacher.",
+        "evidence": "Book Page 47 Exercise A.2: 'He was a round little man with a red face and a whole box of tools with dials and wires.'"
+    },
+    {
+        "page": 47,
+        "question": "Identify the character or speaker: She had been hoping they would take the teacher away altogether.",
+        "aliases": [
+            "she had been hoping they would take the teacher away altogether",
+            "hoping they would take the teacher away"
+        ],
+        "direct_answer": "Margie",
+        "completed_sentence": "Character / Speaker: **[Margie]**.",
+        "explanation": "Margie hoped the Inspector would take the mechanical teacher away, just as Tommy's teacher was once taken away for a month.",
+        "evidence": "Book Page 47 Exercise A.3: 'She had been hoping they would take the teacher away altogether.'"
+    },
+    {
+        "page": 47,
+        "question": "Identify the character or speaker: They learned the same things, so they could help one another with the home work and talk about it.",
+        "aliases": [
+            "they learned the same things so they could help one another",
+            "help one another with the homework the fun they had"
+        ],
+        "direct_answer": "Margie",
+        "completed_sentence": "Character / Speaker: **[Margie]**.",
+        "explanation": "Margie reflected wistfully on how centuries ago, school children learned together and helped each other.",
+        "evidence": "Book Page 47 Exercise A.4: 'They learned the same things, so they could help one another with the home work and talk about it.'"
+    },
+    {
+        "page": 47,
+        "question": "Identify the character or speaker: They had a special building and all the kids went there.",
+        "aliases": [
+            "they had a special building and all the kids went there",
+            "special building and all the kids went there"
+        ],
+        "direct_answer": "Tommy",
+        "completed_sentence": "Character / Speaker: **[Tommy]**.",
+        "explanation": "Tommy explained to Margie that old schools were separate buildings where children gathered, rather than bedrooms at home.",
+        "evidence": "Book Page 47 Exercise A.5: 'They had a special building and all the kids went there.'"
+    },
+    {
+        "page": 47,
+        "question": "Fill in the blanks with the clues given below to complete the paragraph: The Fun They Had",
+        "aliases": [
+            "fill in the blanks with the clues given below to complete the paragraph the fun they had",
+            "tommy and margie found something about the old schools",
+            "paragraph clues the fun they had"
+        ],
+        "direct_answer": "(i) schools | (ii) real book | (iii) attic | (iv) yellow and crinkly | (v) words | (vi) millions of books | (vii) geography | (viii) test papers | (ix) house | (x) school time | (xi) person | (xii) same thing | (xiii) learning and spending",
+        "completed_sentence": "Tommy and Margie found something about the (i) **[schools]** of the past. Tommy found a (ii) **[real book]** in the (iii) **[attic]**. The pages were (iv) **[yellow and crinkly]**. The (v) **[words]** stood still unlike screens holding (vi) **[millions of books]**. Margie struggled with tests in (vii) **[geography]** on punch code (viii) **[test papers]**. Her school was in her (ix) **[house]** at fixed (x) **[school time]**. Tommy explained old teachers were a (xi) **[person]**, teaching the (xii) **[same thing]** where kids enjoyed (xiii) **[learning and spending]** time together.",
+        "explanation": "Official paragraph completion exercise from Unit 2: The Fun They Had (Page 47).",
+        "evidence": "Book Page 47 Exercise B: Fill in the blanks with the clues given below to complete the paragraph."
+    },
+    {
+        "page": 48,
+        "question": "The old book was found by ___________________________________",
+        "aliases": [
+            "the old book was found by",
+            "who found the old book the fun they had"
+        ],
+        "direct_answer": "Tommy in the attic of his house.",
+        "completed_sentence": "The old book was found by **[Tommy in the attic of his house]**.",
+        "explanation": "On 17 May 2157, Margie wrote in her diary that Tommy found a real printed book in his attic.",
+        "evidence": "Book Page 48 Exercise C.1: 'The old book was found by ___________________________'"
+    },
+    {
+        "page": 48,
+        "question": "Margie was surprised to see the book because __________________",
+        "aliases": [
+            "margie was surprised to see the book because",
+            "why was margie surprised to see the book"
+        ],
+        "direct_answer": "the words stood still on yellow, crinkly pages instead of moving on a television screen.",
+        "completed_sentence": "Margie was surprised to see the book because **[the words stood completely still on paper instead of moving on a screen]**.",
+        "explanation": "Margie had only experienced telebooks where words scrolled on screen, so static text on paper was strange to her.",
+        "evidence": "Book Page 48 Exercise C.2: 'Margie was surprised to see the book because __________________'"
+    },
+    {
+        "page": 48,
+        "question": "The mechanical teacher had been giving her ____________________",
+        "aliases": [
+            "the mechanical teacher had been giving her",
+            "mechanical teacher had been giving margie"
+        ],
+        "direct_answer": "test after test in geography.",
+        "completed_sentence": "The mechanical teacher had been giving her **[test after test in geography]**.",
+        "explanation": "Margie had been doing worse and worse because the geography sector had been geared too quickly.",
+        "evidence": "Book Page 48 Exercise C.3: 'The mechanical teacher had been giving her ____________________'"
+    },
+    {
+        "page": 48,
+        "question": "Margie’s schoolroom was right next to ________________________",
+        "aliases": [
+            "margies schoolroom was right next to",
+            "where was margies schoolroom"
+        ],
+        "direct_answer": "her bedroom.",
+        "completed_sentence": "Margie's schoolroom was right next to **[her bedroom]**.",
+        "explanation": "Margie attended individual home schooling where her mechanical teacher waited in the room next to her bedroom.",
+        "evidence": "Book Page 48 Exercise C.5: 'Margie’s schoolroom was right next to ________________________'"
+    },
+    {
+        "page": 77,
+        "question": "Based on the understanding of the poem, write down the summary of the poem by filling in the blanks: On Killing a Tree",
+        "aliases": [
+            "summary of on killing a tree",
+            "write down the summary of the poem by filling in the blanks on killing a tree",
+            "the poet explains the process of killing a tree",
+            "complete the summary on killing a tree"
+        ],
+        "direct_answer": "1. killing a tree | 2. kill it | 3. a knife (a simple jab of the knife) | 4. sunlight, air and water | 5. bleeding bark | 6. green twigs | 7. miniature boughs | 8. kill it | 9. sun and air (scorching and choking)",
+        "completed_sentence": "The poet explains the process of **[killing a tree]**. A lot of work has to be done to **[kill it]** completely. It cannot be accomplished by merely cutting it with **[a knife]**. The tree has grown strong with **[sunlight, air and water]**. Even the **[bleeding bark]** gives rise to **[green twigs]**. The **[miniature boughs]** sprout new leaves. To **[kill it]** completely, one should pull out its roots from the soil and expose them to **[sun and air]**.",
+        "explanation": "Official complete textbook summary fill-in-the-blanks exercise from Unit 3: On Killing a Tree (Page 77).",
+        "evidence": "Book Page 77 Exercise C: Based on the understanding of the poem, write down the summary of the poem by filling in the blanks."
+    },
+    {
+        "page": 77,
+        "question": "Why should the root be pulled out? On Killing a Tree",
+        "aliases": [
+            "why should the root be pulled out",
+            "why root must be pulled out on killing a tree"
+        ],
+        "direct_answer": "To completely kill the tree, because the root is its hidden strength and source of life that allows it to regenerate if left in the ground.",
+        "completed_sentence": "The root must be pulled out **[to completely destroy the tree's hidden strength and prevent it from sprouting again]**.",
+        "explanation": "The root is the sensitive, white, and wet anchor deep in the earth; only complete uprooting terminates its life.",
+        "evidence": "Book Page 77 Exercise 5.i: 'Why should the root be pulled out?'"
+    },
+    {
+        "page": 77,
+        "question": "What does ‘anchoring earth’ mean? On Killing a Tree",
+        "aliases": [
+            "what does anchoring earth mean",
+            "anchoring earth meaning on killing a tree"
+        ],
+        "direct_answer": "It means the soil holds the roots firmly and securely, providing support and nourishment like an anchor holds a ship.",
+        "completed_sentence": "Anchoring earth means **[the soil that securely holds the roots of the tree, providing life and stability]**.",
+        "explanation": "Metaphor comparing the earth gripping the roots to a ship's anchor holding fast to the seabed.",
+        "evidence": "Book Page 77 Exercise 5.ii: 'What does ‘anchoring earth’ mean?'"
+    },
+    {
+        "page": 77,
+        "question": "What does the poet mean by ‘bleeding bark’? On Killing a Tree",
+        "aliases": [
+            "what does the poet mean by bleeding bark",
+            "bleeding bark meaning on killing a tree"
+        ],
+        "direct_answer": "The sap oozing out of the cut trunk when hacked, compared to blood flowing from a human wound.",
+        "completed_sentence": "Bleeding bark refers to **[the sap flowing out from the wounded trunk when hacked with a knife]**.",
+        "explanation": "Gieve Patel uses personification and vivid metaphor to convey the tree's suffering.",
+        "evidence": "Book Page 77 Exercise D.4: 'What does the poet mean by ‘bleeding bark’?'"
+    },
+    {
+        "page": 86,
+        "question": "Fill in the blanks with words from the text: Earthquake",
+        "aliases": [
+            "fill in the blanks with words from the text earthquake",
+            "earthquake fill in the blanks",
+            "the name of the narrator is brij",
+            "page 86 fill in the blanks"
+        ],
+        "direct_answer": "1. Brij | 2. six hundred and seventy (670) | 3. school books | 4. makeshift hospital | 5. a hundred and sixteen (116)",
+        "matches": [
+            [
+                "1. The name of the narrator is",
+                "Brij"
+            ],
+            [
+                "2. There were ... villages in the valley",
+                "six hundred and seventy (670)"
+            ],
+            [
+                "3. Brij went to Pauri to buy his",
+                "school books"
+            ],
+            [
+                "4. The soldiers had set up a",
+                "makeshift hospital"
+            ],
+            [
+                "5. Bhuli had been buried under the debris for",
+                "a hundred and sixteen (116) hours"
+            ]
+        ],
+        "completed_sentence": "Earthquake Blanks: **[1. Brij, 2. six hundred and seventy (670), 3. school books, 4. makeshift hospital, 5. a hundred and sixteen (116) hours]**.",
+        "explanation": "Official fill in the blanks exercise from Unit 3 Supplementary: Earthquake (Page 86).",
+        "evidence": "Book Page 86 Exercise A: Fill in the blanks with words from the text."
+    },
+    {
+        "page": 86,
+        "question": "The name of the narrator is",
+        "aliases": [
+            "the name of the narrator is",
+            "name of narrator earthquake"
+        ],
+        "direct_answer": "Brij",
+        "completed_sentence": "The name of the narrator is **[Brij]**.",
+        "explanation": "Brij runs a teashop in Garhwal and narrates his survival during the devastating earthquake.",
+        "evidence": "Book Page 86 Exercise A.1: 'The name of the narrator is Brij.'"
+    },
+    {
+        "page": 86,
+        "question": "There were ____________ villages in the valley. Earthquake",
+        "aliases": [
+            "there were villages in the valley",
+            "how many villages in the valley earthquake"
+        ],
+        "direct_answer": "six hundred and seventy (670)",
+        "completed_sentence": "There were **[six hundred and seventy (670)]** villages in the valley.",
+        "explanation": "The valley had 670 villages, of which 602 were completely destroyed by the tremors.",
+        "evidence": "Book Page 86 Exercise A.2: 'There were six hundred and seventy villages in the valley.'"
+    },
+    {
+        "page": 86,
+        "question": "Brij went to Pauri to buy his",
+        "aliases": [
+            "brij went to pauri to buy his",
+            "why did brij go to pauri"
+        ],
+        "direct_answer": "school books",
+        "completed_sentence": "Brij went to Pauri to buy his **[school books]**.",
+        "explanation": "Brij was away in Pauri purchasing books when the earthquake struck Molthi, which saved his life.",
+        "evidence": "Book Page 86 Exercise A.3: 'Brij went to Pauri to buy his school books.'"
+    },
+    {
+        "page": 86,
+        "question": "The soldiers had set up a",
+        "aliases": [
+            "the soldiers had set up a",
+            "soldiers set up earthquake"
+        ],
+        "direct_answer": "makeshift hospital",
+        "completed_sentence": "The soldiers had set up a **[makeshift hospital]** in a tent.",
+        "explanation": "Army rescue teams treated injured victims in a makeshift hospital camp.",
+        "evidence": "Book Page 86 Exercise A.4: 'The soldiers had set up a makeshift hospital.'"
+    },
+    {
+        "page": 86,
+        "question": "Bhuli had been buried under the debris for ____________ hours",
+        "aliases": [
+            "bhuli had been buried under the debris for hours",
+            "how many hours bhuli buried"
+        ],
+        "direct_answer": "a hundred and sixteen (116) hours",
+        "completed_sentence": "Bhuli had been buried under the debris for **[a hundred and sixteen (116)]** hours.",
+        "explanation": "Miraculously, baby Bhuli survived over four days (116 hours) trapped beneath a caved-in door.",
+        "evidence": "Book Page 86 Exercise A.5: 'Bhuli had been buried under the debris for a hundred and sixteen hours.'"
+    },
+    {
+        "page": 113,
+        "question": "Based on your reading, rearrange the following sentences in the correct sequence: The Cat and the Pain-Killer",
+        "aliases": [
+            "rearrange the following sentences in the correct sequence the cat and the pain killer",
+            "rearrange sentences the cat and the pain killer",
+            "correct sequence tom sawyer cat painkiller",
+            "order the sentences page 113"
+        ],
+        "direct_answer": "Correct Sequence: 5, 8, 1, 7, 3, 4, 6, 2",
+        "matches": [
+            [
+                "1st (5)",
+                "Tom was dull and depressed."
+            ],
+            [
+                "2nd (8)",
+                "So, Aunt Polly tried different types of remedies on him."
+            ],
+            [
+                "3rd (1)",
+                "Since all her methods failed, finally she gave him a pain-killer."
+            ],
+            [
+                "4th (7)",
+                "But, Tom gave that pain-killer to the cat Peter."
+            ],
+            [
+                "5th (3)",
+                "The pain-killer triggered adverse reactions on Peter."
+            ],
+            [
+                "6th (4)",
+                "It jumped out of the open window."
+            ],
+            [
+                "7th (6)",
+                "This incident upset Aunt Polly and she questioned him."
+            ],
+            [
+                "8th (2)",
+                "He told his aunt that Peter had no aunt, so he gave him the medicine."
+            ]
+        ],
+        "completed_sentence": "Ordered Sequence: **[5 ➔ 8 ➔ 1 ➔ 7 ➔ 3 ➔ 4 ➔ 6 ➔ 2]**.",
+        "explanation": "Official chronological ordering exercise from Unit 4 Supplementary: The Cat and the Pain-Killer (Page 113).",
+        "evidence": "Book Page 113 Exercise C: Based on your reading, rearrange the following sentences in the correct sequence."
+    },
+    {
+        "page": 113,
+        "question": "Complete the summary of the extract using the appropriate words from the box below: The Cat and the Pain-Killer",
+        "aliases": [
+            "complete the summary of the extract using the appropriate words from the box below",
+            "the cat and the pain killer summary",
+            "tom sawyer felt dejected as becky thatcher had stopped coming to school",
+            "fill in the blanks cat and the pain killer page 113 114"
+        ],
+        "direct_answer": "1. dejected | 2. school | 3. health | 4. remedies | 5. pretended | 6. crack | 7. Peter | 8. pain-killer | 9. summersets | 10. teaspoon | 11. cruelty | 12. stopped",
+        "completed_sentence": "Tom Sawyer felt **[dejected]** as Becky Thatcher had stopped coming to **[school]**. Aunt Polly was concerned about his **[health]** condition. So, she tried various **[remedies]** on him. Tom **[pretended]** to like the pain-killer and mended the **[crack]** on the floor with it. One day, Tom gave the pain-killer to Aunt's cat, **[Peter]**. The **[pain-killer]** had an adverse effect on the cat. Aunt Polly saw the cat throw **[summersets]** and sail through the window. She found the **[teaspoon]** and realized what was **[cruelty]** to the cat was the same to the boy and **[stopped]** giving medicines to him.",
+        "explanation": "Official complete textbook summary fill-in-the-blanks exercise from Unit 4: The Cat and the Pain-Killer (Pages 113-114).",
+        "evidence": "Book Page 113-114 Exercise F: Complete the summary of the extract using the appropriate words from the box below."
+    },
+    {
+        "page": 113,
+        "question": "Why did Tom lose the charm of his life? The Cat and the Pain-Killer",
+        "aliases": [
+            "why did tom lose the charm of his life",
+            "tom lost the charm of his life because"
+        ],
+        "direct_answer": "Because his friend Becky Thatcher had fallen ill and stopped coming to school.",
+        "completed_sentence": "Tom lost the charm of his life because **[Becky Thatcher stopped coming to school]**.",
+        "explanation": "Her absence caused Tom to feel depressed, abandon play, and mope around the house.",
+        "evidence": "Book Page 113 Exercise D.1: 'Why did Tom lose the charm of his life?'"
+    },
+    {
+        "page": 113,
+        "question": "Why did Aunt Polly try different remedies on Tom?",
+        "aliases": [
+            "why did aunt polly try different remedies on tom",
+            "why aunt polly gave remedies to tom"
+        ],
+        "direct_answer": "Because Tom was moping, sad, and silent, and Aunt Polly was an incurable experimenter in quack health remedies.",
+        "completed_sentence": "Aunt Polly tried remedies because **[she was determined to cure Tom's moping and infatuation with health treatises]**.",
+        "explanation": "She subjected him to cold-water baths, hot baths, blister plasters, and bitter concoctions to revive his spirits.",
+        "evidence": "Book Page 113 Exercise D.2: 'Why did Aunt Polly try different remedies on Tom?'"
+    },
+    {
+        "page": 113,
+        "question": "How did the medicine diminish? The Cat and the Pain-Killer",
+        "aliases": [
+            "how did the medicine diminish",
+            "how medicine diminished tom sawyer"
+        ],
+        "direct_answer": "Tom secretly poured teaspoonfuls of the pain-killer into a crack in the sitting-room floor.",
+        "completed_sentence": "The medicine diminished because **[Tom poured it into a crack in the sitting-room floor every day]**.",
+        "explanation": "Tom pretended to love the pain-killer so his aunt would leave the bottle with him, but he fed the floor crack instead.",
+        "evidence": "Book Page 113 Exercise D.3: 'How did the medicine diminish?'"
+    },
+    {
+        "page": 113,
+        "question": "Did Tom compel Peter to have the pain-killer?",
+        "aliases": [
+            "did tom compel peter to have the pain killer",
+            "did tom force the cat to have painkiller"
+        ],
+        "direct_answer": "No, Peter begged for it with eager purrs and rubbed against Tom's legs, though Tom willingly poured it into his mouth.",
+        "completed_sentence": "No, Tom did not compel Peter; **[Peter begged for it by nudging the spoon and purring]**.",
+        "explanation": "Tom warned the cat that it was fiery stuff, but Peter persisted in wanting a taste.",
+        "evidence": "Book Page 113 Exercise D.4: 'Did Tom compel Peter to have the pain-killer?'"
+    },
+    {
+        "page": 113,
+        "question": "How did Aunt Polly discover the reason for Peter’s absurd behaviour?",
+        "aliases": [
+            "how did aunt polly discover the reason for peters absurd behaviour",
+            "how aunt polly found out about peter"
+        ],
+        "direct_answer": "She spotted the teaspoon handle sticking out from beneath the bed valance and questioned Tom.",
+        "completed_sentence": "Aunt Polly discovered the reason when **[she bent down and saw the teaspoon handle under the bed valance]**.",
+        "explanation": "Picking up the spoon and smelling it, she realized Tom had fed the pain-killer to Peter.",
+        "evidence": "Book Page 113 Exercise D.6: 'How did Aunt Polly discover the reason for Peter’s absurd behaviour?'"
+    },
+    {
+        "page": 113,
+        "question": "What was the reason given by Tom for giving the pain-killer to the cat?",
+        "aliases": [
+            "what was the reason given by tom for giving the pain killer to the cat",
+            "toms reason for giving pain killer to cat"
+        ],
+        "direct_answer": "Tom said he did it out of pity because Peter had no aunt to roast his bowels out with remedies.",
+        "completed_sentence": "Tom explained that **[he felt sorry for Peter because Peter had no aunt to roast his bowels out and treat him without thinking]**.",
+        "explanation": "Tom used the witty retort to make Aunt Polly realize how cruel her remedies were.",
+        "evidence": "Book Page 113 Exercise D.7: 'What was the reason given by Tom for giving the pain-killer to the cat?'"
+    },
+    {
+        "page": 113,
+        "question": "Why did Aunt Polly’s eyes water? The Cat and the Pain-Killer",
+        "aliases": [
+            "why did aunt pollys eyes water",
+            "why aunt pollys eyes watered"
+        ],
+        "direct_answer": "She felt remorse, sympathy, and sudden realization that forcing bitter medicines on Tom was just as cruel as doing it to the cat.",
+        "completed_sentence": "Aunt Polly's eyes watered because **[she felt remorse and sympathy upon realizing how cruel her dosing had been to Tom]**.",
+        "explanation": "She placed her hand on Tom's head and told him she meant it for his good, and stopped giving him medicine.",
+        "evidence": "Book Page 113 Exercise D.8: 'Why did Aunt Polly’s eyes water?'"
+    },
+    {
+        "page": 114,
+        "question": "Convert the American slang usage in The Cat and the Pain-Killer to standard English",
+        "aliases": [
+            "american slang usage of english complete the tabular column with standard english",
+            "american slang the cat and the pain killer",
+            "american slang standard english page 114"
+        ],
+        "direct_answer": "1. Finally hit ‘pon ➔ Finally hit upon / thought of | 2. There ain’t anything mean about me ➔ There isn’t anything mean about me | 3. ‘Deed I don’t know ➔ Indeed I don’t know | 4. Yes’m. That is, I believe they do ➔ Yes, ma'am. That is, I believe they do | 5. ‘She’d a roasted bowel out of me.’ ➔ She would have roasted the bowels out of me | 6. ‘Oh, go ‘long with you, Tom.’ ➔ Oh, go along with you, Tom",
+        "matches": [
+            [
+                "1. Finally hit ‘pon",
+                "Finally hit upon / thought of"
+            ],
+            [
+                "2. There ain’t anything mean about me",
+                "There isn’t anything mean about me"
+            ],
+            [
+                "3. ‘Deed I don’t know",
+                "Indeed I don’t know"
+            ],
+            [
+                "4. Yes’m. That is, I believe they do",
+                "Yes, ma'am. That is, I believe they do"
+            ],
+            [
+                "5. ‘She’d a roasted bowel out of me.’",
+                "She would have roasted the bowels out of me"
+            ],
+            [
+                "6. ‘Oh, go ‘long with you, Tom.’",
+                "Oh, go along with you, Tom"
+            ]
+        ],
+        "completed_sentence": "American Slang to Standard English: **[Finally hit 'pon ➔ hit upon, ain't ➔ isn't, 'Deed ➔ Indeed, Yes'm ➔ Yes ma'am, She'd a ➔ She would have, go 'long ➔ go along]**.",
+        "explanation": "Official American slang conversion table from Unit 4: The Cat and the Pain-Killer (Page 114).",
+        "evidence": "Book Page 114 Exercise G: In the story we find a lot of American slang usage of English. Complete the tabular column with standard English."
     }
 ]
 

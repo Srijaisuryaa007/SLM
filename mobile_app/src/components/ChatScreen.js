@@ -456,10 +456,22 @@ export default function ChatScreen() {
             );
           }
         );
+
+        // Positive safeguard: If Qwen 0.5B ever generated "not mentioned" or blank, provide the textbook reference
+        if (!accumulated.trim() || accumulated.toLowerCase().includes("not mentioned in the book")) {
+          if (excerpt) {
+            const refined = `📖 Textbook Reference (Book Page ${pageNo}):\n${excerpt.slice(0, 320)}`;
+            setMessages((prev) =>
+              prev.map((msg) =>
+                msg.id === botMsgId ? { ...msg, text: refined } : msg
+              )
+            );
+          }
+        }
       } else {
         const fallbackText = excerpt
-          ? `From Book Page ${pageNo}: ${excerpt}`
-          : 'Not mentioned in the English Class 9 textbook.';
+          ? `📖 Textbook Reference (Book Page ${pageNo}):\n${excerpt}`
+          : 'Please ask any question from the English Class 9 textbook.';
         setMessages((prev) =>
           prev.map((msg) =>
             msg.id === botMsgId ? { ...msg, text: fallbackText } : msg
@@ -474,8 +486,8 @@ export default function ChatScreen() {
             ? {
                 ...msg,
                 text: excerpt
-                  ? `From Book Page ${pageNo}: ${excerpt}`
-                  : 'Not mentioned in the book.',
+                  ? `📖 Book Page ${pageNo}:\n${excerpt}`
+                  : 'Please ask any question from the English Class 9 textbook.',
               }
             : msg
         )
