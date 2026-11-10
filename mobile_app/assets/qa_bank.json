@@ -13,7 +13,7 @@
     ],
     "direct_answer": "Ramakant Achrekar Sir",
     "completed_sentence": "Sachin's cricket coach was **[Ramakant Achrekar Sir]** at Shivaji Park, Mumbai.",
-    "explanation": "Ramakant Achrekar was a dedicated coach who ran cricket summer camps at Shivaji Park and trained young Sachin.",
+    "explanation": "According to the textbook, Ramakant Achrekar was a dedicated cricket coach who ran summer camps at Shivaji Park and trained young Sachin.",
     "evidence": "My induction into the Mumbai cricket circuit could have ended in failure – but for Ajit’s insistence... Achrekar Sir was running summer camps at Shivaji Park."
   },
   {
@@ -29,7 +29,7 @@
     ],
     "direct_answer": "Ajit Tendulkar (Sachin's brother)",
     "completed_sentence": "Sachin was taken to Achrekar Sir's cricket camp by his elder brother **[Ajit Tendulkar]**.",
-    "explanation": "Ajit spotted Sachin's natural batting talent and convinced Achrekar Sir to give him a trial.",
+    "explanation": "According to the textbook, Ajit noticed Sachin's natural batting talent and convinced Achrekar Sir to give him a trial.",
     "evidence": "My brother Ajit was the one who spotted my potential and took me to Achrekar Sir's summer camp."
   },
   {
@@ -44,7 +44,7 @@
     ],
     "direct_answer": "Sunil Gavaskar and Viv Richards",
     "completed_sentence": "Sachin's favourite international cricketers were **[Sunil Gavaskar and Sir Viv Richards]**.",
-    "explanation": "Sachin admired Gavaskar's technique and Richards' aggressive stroke-play.",
+    "explanation": "According to the book, Sachin idolized Sunil Gavaskar's immaculate technique and Viv Richards' aggressive style.",
     "evidence": "I had always wanted to bat like Sunil Gavaskar and Viv Richards, who were my heroes."
   },
   {
@@ -58,7 +58,7 @@
     ],
     "direct_answer": "Shardashram gave immense importance to cricket, and Achrekar Sir was the cricket coach there.",
     "completed_sentence": "Sachin changed his school to Shardashram Vidyamandir because **[Achrekar Sir was the cricket coach there and the school gave great importance to cricket]**.",
-    "explanation": "His previous school (New English School, Bandra) lacked cricket facilities, so Achrekar Sir advised him to switch to Shardashram.",
+    "explanation": "His previous school (New English School, Bandra) lacked cricket coaching, so Achrekar Sir advised him to switch to Shardashram to focus on cricket.",
     "evidence": "Achrekar Sir was the cricket coach at Shardashram Vidyamandir and the school gave a lot of importance to cricket."
   },
   {
@@ -72,7 +72,7 @@
     ],
     "direct_answer": "He ate a vadapav bought with money given by Achrekar Sir.",
     "completed_sentence": "During the thirty-minute break, Achrekar Sir would give Sachin money to buy a **[vadapav]**.",
-    "explanation": "After continuous batting sessions, Sir gave him a coin for a quick snack before resuming practice.",
+    "explanation": "According to the textbook, between morning and afternoon practice sessions, Achrekar Sir gave Sachin money for a quick snack.",
     "evidence": "In between, Sir would give me some money to go and have a vadapav (a popular Mumbai snack)."
   },
   {
@@ -87,7 +87,7 @@
     ],
     "direct_answer": "A one-rupee coin",
     "completed_sentence": "In the last 15 minutes of practice, Achrekar Sir would place a **[one-rupee coin]** on top of the stumps.",
-    "explanation": "If Sachin survived without getting out, he got to keep the coin; if a bowler dismissed him, the bowler took it. Sachin won 13 such coins.",
+    "explanation": "According to the book, every bowler in the camp bowled at Sachin; if he survived without getting out, he won the coin. Sachin earned 13 such coins.",
     "evidence": "For the last fifteen minutes, Sir would place a one-rupee coin on top of the stumps. If I managed not to get out, the coin was mine."
   },
   {
@@ -100,7 +100,7 @@
     ],
     "direct_answer": "One of the greatest Indian cricketers and the first sportsperson to receive the Bharat Ratna.",
     "completed_sentence": "Sachin Tendulkar is **[a legendary Indian cricketer who scored 100 international centuries and received the Bharat Ratna]**.",
-    "explanation": "Born on 24 April 1973, Sachin is widely regarded as the 'God of Cricket'.",
+    "explanation": "Born on 24 April 1973 in Mumbai, he represented India for 24 years, scoring over 34,000 international runs.",
     "evidence": "Sachin Ramesh Tendulkar is an Indian former international cricketer widely regarded as one of the greatest batsmen in the history of cricket."
   },
   {
@@ -113,9 +113,9 @@
       "how was achrekar a sincere coach",
       "character sketch of achrekar"
     ],
-    "direct_answer": "Achrekar was a sincere and disciplined mentor who molded Sachin into a champion.",
-    "completed_sentence": "Achrekar proved his sincerity by **[conducting rigorous training from morning to evening, emphasizing discipline, and guiding Sachin with tough love]**.",
-    "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Rigorous Training: Sir coached Sachin from 7:30 AM to 7:00 PM every day at Shivaji Park.\n2. Tough Love & Discipline: When Sachin bunked nets to watch a school match, Sir slapped him and reminded him that people should watch him play, not the other way around.\n3. Innovative Motivation: Placing a one-rupee coin on stumps pushed Sachin to maintain concentration under extreme exhaustion.",
+    "direct_answer": "Achrekar Sir was a sincere, devoted mentor who instilled discipline, endurance, and dedication in Sachin.",
+    "completed_sentence": "Achrekar proved his sincerity by **[conducting rigorous training from 7:30 AM to 7:00 PM, correcting Sachin's mistakes with strict discipline, and constantly pushing him to excel]**.",
+    "explanation": "According to the textbook:\n\n1. Rigorous Training: Sir spent entire days coaching at Shivaji Park from dawn to dusk.\n2. Strict Discipline & Tough Love: When Sachin skipped practice to watch an inter-school match, Sir reprimanded him, saying: 'Don't play for others to watch; make others watch you play.'\n3. Innovative Incentives: Placing the one-rupee coin on the stumps trained Sachin to bat through extreme fatigue.",
     "evidence": "Sir was a strict disciplinarian and did everything he could for me. I owe myself to him."
   },
   {
@@ -182,6 +182,32 @@
     "evidence": "Page 6 Exercise B: Match the words in column A with their antonym in column B."
   },
   {
+    "page": 20,
+    "question": "Who was Shiro in The Envious Neighbour?",
+    "aliases": [
+      "who was shiro",
+      "shiro dog",
+      "dog in the envious neighbour"
+    ],
+    "direct_answer": "Shiro was the faithful pet dog of the kind old couple.",
+    "completed_sentence": "Shiro was **[the faithful pet dog of the kind old couple]** who led them to a buried treasure of gold and silver.",
+    "explanation": "According to the story, the kind couple treated Shiro like their own child and shared their food with him.",
+    "evidence": "The old couple had a pet dog called Shiro, whom they loved as if he were their own baby."
+  },
+  {
+    "page": 21,
+    "question": "What did the envious neighbour do to the dog?",
+    "aliases": [
+      "what did the envious neighbour do to the dog",
+      "why did neighbour kill shiro",
+      "envious neighbour killed dog"
+    ],
+    "direct_answer": "The greedy neighbour killed the dog in a fit of rage after finding only garbage.",
+    "completed_sentence": "The envious neighbour **[borrowed Shiro to find gold, but when digging revealed only foul rubbish, he beat the poor dog to death]**.",
+    "explanation": "According to the text, the wicked old man became furious when Shiro failed to find treasure for him.",
+    "evidence": "Finding only foul dirt and rubbish, the wicked old man became furious and killed the dog on the spot."
+  },
+  {
     "page": 28,
     "question": "Who was the visitor?",
     "aliases": [
@@ -193,7 +219,7 @@
     ],
     "direct_answer": "A middle-aged man revisiting his childhood house in Dehradun.",
     "completed_sentence": "The visitor was **[a middle-aged man who returned to revisit the old house where he lived with his grandfather twenty-five years ago]**.",
-    "explanation": "In Ruskin Bond's story, the visitor returns not to purchase the property, but to seek the nostalgia and spirit of his youth.",
+    "explanation": "According to Ruskin Bond's story, the visitor returns not to purchase the property, but to seek the nostalgia and spirit of his youth.",
     "evidence": "He stood on the grass verge by the side of the road and looked over the garden wall at the old house. It had not changed much."
   },
   {
@@ -235,7 +261,7 @@
     ],
     "direct_answer": "An Iron Cross (a military medal)",
     "completed_sentence": "The visitor hid an **[Iron Cross]** (a German military medal given to his grandfather during the First World War) in a hollow in the jackfruit tree.",
-    "explanation": "He kept his childhood treasures there and forgot to take the Iron Cross when moving away.",
+    "explanation": "According to the story, he kept his boyhood treasures in the tree hollow and forgot to take the Iron Cross when moving away.",
     "evidence": "‘I left it in the jackfruit tree.’ ‘What was it?’ ‘An Iron Cross. It was given to my grandfather by a British king.’"
   },
   {
@@ -249,7 +275,7 @@
     ],
     "direct_answer": "To look for his lost youth and cherish childhood memories.",
     "completed_sentence": "The visitor came back to the house because he **[wanted to look for his lost youth and relive his childhood memories]**.",
-    "explanation": "He was not looking to buy the house; he simply longed to reconnect with the carefree spirit of his youth.",
+    "explanation": "According to the textbook, he was not looking to buy the house; he simply longed to reconnect with the carefree spirit of his youth.",
     "evidence": "‘I didn't come for the Iron Cross,’ he said. ‘I came for my youth.’"
   },
   {
@@ -574,9 +600,9 @@
       "describe the spider in the spider and the fly",
       "character traits of spider"
     ],
-    "direct_answer": "Character Sketch: Cunning, Flattering, and Predatory Deceiver",
+    "direct_answer": "A cunning, flattering predator who lures the innocent fly into his web through deceit and vanity.",
     "completed_sentence": "The spider is **[a cunning, manipulative predator who uses deceit and excessive flattery to trap his prey]**.",
-    "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Deceitful & Sly: He pretends to offer hospitality, inviting the fly to his 'prettiest little parlour' and offering soft resting beds.\n2. Master of Flattery: When practical bribes fail, he attacks the fly's vanity, praising her 'gauzy wings', 'brilliant eyes', and 'robes of pearl and silver'.\n3. Patient & Ruthless: He knows flattery never fails. The moment the fly returns, he pounces, drags her into his dismal den, and devours her.\n4. Symbolic Representation: Represents sweet-tongued predators in society who exploit human vanity.",
+    "explanation": "According to the poem 'The Spider and the Fly' by Mary Botham Howitt:\n\n1. Deceitful & Sly: He pretends to offer hospitality, inviting the fly to his 'prettiest little parlour' and offering soft resting beds.\n2. Master of Flattery: When practical bribes fail, he attacks the fly's vanity, praising her 'gauzy wings', 'brilliant eyes', and 'robes of pearl and silver'.\n3. Patient & Ruthless: He knows flattery never fails. The moment the fly returns, he pounces, drags her into his dismal den, and devours her.\n4. Moral Warning: Represents sweet-tongued predators in society who exploit human vanity.",
     "evidence": "Book Page 102-105: 'Sweet creature!' said the Spider, 'you’re witty and you’re wise, How handsome are your gauzy wings, how brilliant are your eyes!'"
   },
   {
@@ -588,9 +614,9 @@
       "describe the fly",
       "traits of the fly"
     ],
-    "direct_answer": "Character Sketch: Initially Cautious but Ultimately Vain and Gullible",
+    "direct_answer": "Initially cautious and sensible, but ultimately blinded by vanity and false flattery.",
     "completed_sentence": "The fly is **[initially cautious and sensible, but ultimately blinded by vanity and false flattery]**.",
-    "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Sensible Caution: She initially rejects all invitations, knowing that whoever enters the spider's parlour never comes down again.\n2. Fatal Flaw (Vanity): She cannot resist compliments about her diamond eyes and beautiful crest.\n3. Gullibility: Trusting sweet words instead of past wisdom leads to her tragic downfall.",
+    "explanation": "According to the poem:\n\n1. Sensible Caution: She initially rejects all invitations, knowing that whoever enters the spider's parlour never comes down again.\n2. Fatal Flaw (Vanity): She cannot resist compliments about her diamond eyes and beautiful crest.\n3. Gullibility: Trusting sweet words instead of past wisdom leads to her tragic downfall.",
     "evidence": "Book Page 102-105: 'Oh no, no,' said the little Fly, 'to ask me is in vain, For who goes up your winding stair can ne'er come down again.'"
   },
   {
@@ -670,7 +696,7 @@
     ],
     "direct_answer": "The fly heeds her instincts, remembers her mother's advice, and flies away to safety.",
     "completed_sentence": "In an alternative happy ending, **[the fly spots the sticky web in time, recalls her mother's warning against vanity, and buzzes safely out the open window]**.",
-    "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Alertness: The fly suddenly notices the severed wings of past victims in the web.\n2. Wisdom Over Vanity: She thanks the spider politely for the compliment but refuses to step near the winding stair.\n3. Triumph: She zooms into the sunlight, spreading the message to other insects to beware of flattering predators.",
+    "explanation": "According to the story:\n\n1. Alertness: The fly suddenly notices the severed wings of past victims in the web.\n2. Wisdom Over Vanity: She thanks the spider politely for the compliment but refuses to step near the winding stair.\n3. Triumph: She zooms into the sunlight, spreading the message to other insects to beware of flattering predators.",
     "evidence": "Page 107 Exercise: 'If you are asked to give a happy ending to the poem, how will you save the fly?'"
   },
   {
@@ -686,7 +712,7 @@
     ],
     "direct_answer": "Peter the cat sprang into the air, did wild somersaults around the room, and leaped out through the window!",
     "completed_sentence": "After drinking the pain-killer, Peter the cat **[sprang two yards into the air, did frantic somersaults, banged into flowerpots, and sailed through the open window]**.",
-    "explanation": "Tom Sawyer fed Aunt Polly's pain-killer to Peter the cat, which triggered an explosive burst of crazy energy in the cat.",
+    "explanation": "According to the textbook, Tom Sawyer fed Aunt Polly's pain-killer to Peter the cat, which triggered an explosive burst of crazy energy in the cat.",
     "evidence": "Peter sprang two yards into the air, yelled frantic war-whoops, went tearing around the house doing somersaults, and leaped out through the open window."
   },
   {

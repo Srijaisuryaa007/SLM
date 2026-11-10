@@ -23,3 +23,4 @@ for (const item of qaBank) {
 
 fs.writeFileSync('mobile_app/assets/page_index.json', JSON.stringify(pageIndex, null, 2), 'utf8');
 console.log(`Synced ${added} high-value questions from qa_bank.json to page_index.json!`);
+

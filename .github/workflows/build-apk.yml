@@ -117,19 +117,16 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v2.0
-          name: English Class 9 AI Assistant v2.0 (Precision RAG & Domain Isolation)
+          tag_name: v2.1
+          name: English Class 9 AI Assistant v2.1 (Direct Textbook Answers For All Questions)
           body: |
-            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v2.0
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v2.1
 
-            - **Zero Cross-Contamination / Sachin Isolation**: Sachin Tendulkar excerpts are strictly isolated to cricket/Sachin queries. Questions about other stories (Tom Sawyer's cat, Seventeen Oranges, Old Man River, Ruskin Bond's tree, etc.) retrieve their exact corresponding story chunks and answers.
-            - **1,137 High-Accuracy Textbook Chunks**: Built from all 5 units with topic boosts, character entity tracking, and BM25 / TF-IDF scoring.
-            - **Creative & Understanding Question Support**: For character sketches (e.g. 'Write a character sketch of the spider'), creative endings, and analytical questions, provides:
-              - '💡 This question is based on your understanding and creativity!'
-              - Comprehensive structured model answers and traits.
+            - **Direct Textbook Answers (Zero Disclaimers)**: Answer all essay, paragraph, and character sketch questions directly according to the book without any 'based on your understanding' disclaimer banners.
+            - **Strict Entity Domain Isolation**: Prevents any cross-story contamination (Sachin Tendulkar is strictly locked to cricket queries; Tom Sawyer's cat, Seventeen Oranges, Old Man River, Ruskin Bond's tree all route accurately).
+            - **1,137 Pre-indexed High-Accuracy Chunks**: Spanning all 5 units with topic boosts and entity tracking.
             - **Highlighted Answers & Proofs**: Prominent green direct answer banners, highlighted fill-in-the-blank words, clear 2-column matching tables, and Book Page proof quotes.
-            - **Custom Page Number Support (All 122 Pages)**: Type any page (e.g. `106`, `Page 105`, `33`) to browse and tap any question.
-            - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~687 MB).
+            - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~688 MB).
           files: ./BrightPath-Qwen-Offline.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
