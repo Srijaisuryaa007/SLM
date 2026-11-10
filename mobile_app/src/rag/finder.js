@@ -9,7 +9,7 @@ const STOP = new Set(
 
 function getWords(text) {
   if (!text) return [];
-  const matches = text.toLowerCase().match(/[a-z0-9]+/g) || [];
+  const matches = (text.toLowerCase().match(/[a-z0-9]+/g) || []);
   return matches.filter((w) => !STOP.has(w));
 }
 
@@ -19,8 +19,8 @@ function normalize(text) {
 
 /**
  * Searches the English Class 9 textbook:
- * Tier 1: Comprehension Q&A Bank (Direct verified answer + textbook evidence).
- * Tier 2: Story Prose Sliding Window search for freeform questions.
+ * Tier 1: Comprehension & Exercise Q&A Bank (Direct verified answer + textbook proof).
+ * Tier 2: Story Reading Prose Sliding Window search for freeform questions.
  */
 export function findFact(question) {
   if (!question || !question.trim()) return null;
@@ -28,6 +28,7 @@ export function findFact(question) {
   const qNorm = normalize(question);
   const qWords = getWords(question);
   if (qWords.length === 0) return null;
+  const qWordSet = new Set(qWords);
 
   // ----------------------------------------------------
   // TIER 1: Comprehension Q&A Bank Match
@@ -39,6 +40,7 @@ export function findFact(question) {
         if (qNorm === normalize(alias)) {
           return {
             isDirectQA: true,
+            structured: item,
             answer: item.answer,
             page: item.page,
             evidence: item.evidence,
@@ -53,6 +55,7 @@ export function findFact(question) {
     if (qNorm === normalize(item.question)) {
       return {
         isDirectQA: true,
+        structured: item,
         answer: item.answer,
         page: item.page,
         evidence: item.evidence,
@@ -60,28 +63,55 @@ export function findFact(question) {
     }
   }
 
-  // 1c. High-confidence question keyword overlap (>= 75% question words match)
-  let bestQA = null;
-  let bestQAScore = 0;
+  // 1c. Intelligent keyword / alias / match-the-following overlap
+  let bestItem = null;
+  let bestScore = 0;
+
   for (const item of qaBank) {
-    const targetWords = new Set(getWords(item.question));
-    let matchCount = 0;
-    for (const w of qWords) {
-      if (targetWords.has(w)) matchCount++;
+    const qTargets = new Set(getWords(item.question));
+    const aliasTargets = new Set();
+    if (item.aliases) {
+      for (const a of item.aliases) {
+        getWords(a).forEach((w) => aliasTargets.add(w));
+      }
     }
-    const ratio = matchCount / qWords.length;
-    if (ratio >= 0.75 && matchCount > bestQAScore) {
-      bestQAScore = matchCount;
-      bestQA = item;
+
+    const matchKeys = new Set();
+    if (item.matches) {
+      for (const [k, v] of item.matches) {
+        getWords(k).forEach((w) => matchKeys.add(w));
+        getWords(v).forEach((w) => matchKeys.add(w));
+      }
+    }
+
+    const allItemWords = new Set([...qTargets, ...aliasTargets, ...matchKeys]);
+    let score = 0;
+    for (const w of qWords) {
+      if (allItemWords.has(w)) score++;
+    }
+
+    // Boost score if question asks to "match" and contains match keys
+    if ((qWordSet.has("match") || qWordSet.has("following")) && item.matches) {
+      let matchedCount = 0;
+      for (const w of qWords) {
+        if (matchKeys.has(w)) matchedCount++;
+      }
+      if (matchedCount >= 2) score += 10;
+    }
+
+    if (score > bestScore && score >= 2) {
+      bestScore = score;
+      bestItem = item;
     }
   }
 
-  if (bestQA) {
+  if (bestItem) {
     return {
       isDirectQA: true,
-      answer: bestQA.answer,
-      page: bestQA.page,
-      evidence: bestQA.evidence,
+      structured: bestItem,
+      answer: bestItem.answer,
+      page: bestItem.page,
+      evidence: bestItem.evidence,
     };
   }
 
@@ -89,7 +119,7 @@ export function findFact(question) {
   // TIER 2: Story Reading Prose Sliding Window Search
   // ----------------------------------------------------
   let bestChunk = null;
-  let bestScore = 0;
+  let bestStoryScore = 0;
   let bestPage = null;
 
   for (const page of bookPages) {
@@ -111,15 +141,15 @@ export function findFact(question) {
         if (cWords.has(w)) score++;
       }
 
-      if (score > bestScore) {
-        bestScore = score;
+      if (score > bestStoryScore) {
+        bestStoryScore = score;
         bestChunk = chunk;
         bestPage = page.book_page;
       }
     }
   }
 
-  if (bestScore >= 2 && bestChunk) {
+  if (bestStoryScore >= 2 && bestChunk) {
     return {
       isDirectQA: false,
       chunk: bestChunk,

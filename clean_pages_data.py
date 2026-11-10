@@ -31,3 +31,4 @@ with open('mobile_app/assets/facts.json', 'w', encoding='utf-8') as f:
     json.dump(cleaned_pages, f, indent=2, ensure_ascii=False)
 
 print("Saved cleaned pages to cleaned_english_class9.json and mobile_app/assets/facts.json!")
+
