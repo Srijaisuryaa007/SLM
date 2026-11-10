@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 def patch_llama():
     candidates = [
@@ -17,7 +18,7 @@ def patch_llama():
         print("Notice: LlamaContext.java not found in known paths, skipping patch.")
         return
 
-    print(f"Patching {target_path}...")
+    print(f"Reading {target_path}...")
     with open(target_path, "r", encoding="utf-8") as f:
         code = f.read()
 
@@ -25,10 +26,13 @@ def patch_llama():
         print("LlamaContext.java is already patched.")
         return
 
-    target = '    this.id = id;\n    this.context = initContext(\n      // String model,\n      params.getString("model"),'
-    
-    replacement = '''    this.id = id;
-    String modelPath = params.getString("model");
+    # Normalize line endings
+    code_normalized = code.replace("\r\n", "\n")
+
+    # Match: this.id = id; ... this.context = initContext( ... params.getString("model"),
+    pattern = r'(this\.id\s*=\s*id;\s*)(this\.context\s*=\s*initContext\(\s*(?://[^\n]*\n\s*)?params\.getString\("model"\),)'
+
+    replacement = r'''\1String modelPath = params.getString("model");
     try {
       File checkF = new File(modelPath);
       if (!checkF.isAbsolute() || !checkF.exists()) {
@@ -57,13 +61,18 @@ def patch_llama():
       // String model,
       modelPath,'''
 
-    if target in code:
-        code = code.replace(target, replacement)
-        with open(target_path, "w", encoding="utf-8") as f:
-            f.write(code)
-        print("Successfully patched LlamaContext.java for Android asset loading!")
-    else:
-        print("Warning: target signature not matched in LlamaContext.java.")
+    new_code, count = re.subn(pattern, replacement, code_normalized)
+    if count == 0:
+        print("ERROR: Regex pattern failed to match in LlamaContext.java!")
+        print("Here are lines 60-75 of the file:")
+        lines = code_normalized.split("\n")[55:80]
+        for i, l in enumerate(lines, 56):
+            print(f"{i}: {l}")
+        sys.exit(1)
+
+    with open(target_path, "w", encoding="utf-8") as f:
+        f.write(new_code)
+    print(f"Successfully applied regex patch to {target_path} (matches: {count})!")
 
 if __name__ == "__main__":
     patch_llama()

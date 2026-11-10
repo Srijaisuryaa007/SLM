@@ -40,22 +40,37 @@ export default function ChatScreen() {
         if (!isMounted) return;
         setStatusText('Loading Qwen 0.5B model...');
 
-        const ctx = await initLlama(
-          {
-            model: 'model.gguf',
-            is_model_asset: true,
-            n_ctx: 512,
-            n_threads: 2,
-            n_gpu_layers: 0,
-            use_mlock: false,
-          },
-          (progress) => {
-            if (isMounted) {
-              const pct = Math.round(progress * 100);
-              setStatusText(`Loading Model: ${pct}%`);
-            }
+        let ctx = null;
+        const candidates = Platform.OS === 'android'
+          ? ['/data/user/0/com.brightpathapp/files/model.gguf', '/data/data/com.brightpathapp/files/model.gguf', 'model.gguf']
+          : ['model.gguf'];
+
+        let lastErr = null;
+        for (const candidate of candidates) {
+          try {
+            ctx = await initLlama(
+              {
+                model: candidate,
+                is_model_asset: candidate === 'model.gguf',
+                n_ctx: 512,
+                n_threads: 2,
+                n_gpu_layers: 0,
+                use_mlock: false,
+              },
+              (progress) => {
+                if (isMounted) {
+                  const pct = Math.round(progress * 100);
+                  setStatusText(`Loading Model: ${pct}%`);
+                }
+              }
+            );
+            if (ctx) break;
+          } catch (e) {
+            lastErr = e;
           }
-        );
+        }
+
+        if (!ctx && lastErr) throw lastErr;
 
         if (isMounted) {
           llamaContext.current = ctx;

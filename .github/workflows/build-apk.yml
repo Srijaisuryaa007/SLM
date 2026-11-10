@@ -117,16 +117,15 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.4
-          name: English Class 9 AI Assistant v1.4 (Zero-Hallucination & Native Engine Fix)
+          tag_name: v1.5
+          name: English Class 9 AI Assistant v1.5 (Offline Neural Engine & Pure Textbook SLM)
           body: |
-            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.4
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.5
 
-            - **Fixed Native Inference**: Auto-extracts `model.gguf` to internal storage on first launch so the Qwen 0.5B neural engine runs natively on Android.
-            - **Exact Answer Grounding**: Solved the review question matching bug. Directly answers textbook comprehension questions (e.g., 'What did the visitor hide in the jackfruit tree?', 'Who was Sachin\'s coach?') with exact citations and evidence.
-            - **Completely Cleaned Data**: Removed all old dummy BrightPath coaching text and residual question bullets from story passages.
+            - **Dual-Path Neural Loading**: Connects directly to internal app storage and APK assets with regex-patched native C++ loader.
+            - **Pure English Class 9 Data**: 122 clean textbook pages without dummy records or residual question numbers.
+            - **Zero Hallucination Grounding**: Temperature 0.0 with exact textbook citations.
             - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~687 MB).
-            - **Download the APK below under Assets to install on your phone!**
           files: ./BrightPath-Qwen-Offline.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
