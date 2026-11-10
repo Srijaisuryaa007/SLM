@@ -1,13 +1,9 @@
-"""Ask the English Class 9 Book Assistant a question.
+"""Ask the English Class 9 Book Assistant a question or browse by page.
 
     python ask.py                                      # chat interactively
-    python ask.py -q "Who were Sachin's favourite players?"
+    python ask.py -q "Page 33"                         # pick questions from Page 33
+    python ask.py -q "Who was Sachin's coach?"
     python ask.py --model qwen2.5:0.5b
-
-What happens for every question:
-    1. FIND   the matching excerpt from English class 9.pdf (cleaned_english_class9.json)
-    2. BUILD  the prompt with the excerpt and zero-hallucination rules
-    3. ASK    the local SLM via Ollama
 """
 import argparse
 import json
@@ -21,13 +17,15 @@ from prompt import SYSTEM, make_message
 
 DATA_FILE = Path(__file__).parent / "cleaned_english_class9.json"
 QA_FILE = Path(__file__).parent / "textbook_qa.json"
+PAGE_INDEX_FILE = Path(__file__).parent / "mobile_app" / "assets" / "page_index.json"
+
 if not DATA_FILE.exists():
     raise FileNotFoundError(f"Cleaned book data not found: {DATA_FILE}")
 
 BOOK_PAGES = json.loads(DATA_FILE.read_text(encoding="utf-8"))
 QA_BANK = json.loads(QA_FILE.read_text(encoding="utf-8")) if QA_FILE.exists() else []
+PAGE_INDEX = json.loads(PAGE_INDEX_FILE.read_text(encoding="utf-8")) if PAGE_INDEX_FILE.exists() else {}
 
-# Small filler words that say nothing about the topic
 STOP = set(
     "a an the is are was were of for to in on at and or do does did i my me you your what whats how "
     "can could when who whom which where there it be been with about tell please much many have has had will would if any get "
@@ -39,8 +37,41 @@ def words(text):
     return set(re.findall(r"[a-z0-9]+", text.lower())) - STOP
 
 
+def check_page_or_unit(query):
+    q = query.lower().strip()
+    page_match = re.search(r'(?:book\s+)?(?:page|p\.?)\s*([0-9]{1,3})', q)
+    if not page_match and re.match(r'^[0-9]{1,3}$', q):
+        page_match = re.match(r'^([0-9]{1,3})$', q)
+
+    if page_match:
+        page_no = page_match.group(1)
+        if page_no in PAGE_INDEX.get("pages", {}):
+            return {
+                "type": "page",
+                "page": page_no,
+                "data": PAGE_INDEX["pages"][page_no]
+            }
+
+    unit_match = re.search(r'unit\s*([0-9]+)', q)
+    if unit_match:
+        unit_id = int(unit_match.group(1))
+        unit_info = next((u for u in PAGE_INDEX.get("units", []) if u["id"] == unit_id), None)
+        if unit_info:
+            unit_questions = []
+            for p in unit_info.get("pages", []):
+                p_str = str(p)
+                for q_item in PAGE_INDEX.get("pages", {}).get(p_str, {}).get("questions", []):
+                    if q_item not in unit_questions:
+                        unit_questions.append(q_item)
+            return {
+                "type": "unit",
+                "unit": unit_info["title"],
+                "questions": unit_questions
+            }
+    return None
+
+
 def find_qa_direct(question):
-    """Check if the question matches a known textbook comprehension question."""
     q_norm = re.sub(r'[^a-z0-9 ]', '', question.lower()).strip()
     q_w = words(question)
 
@@ -55,14 +86,13 @@ def find_qa_direct(question):
     for item in QA_BANK:
         target_words = words(item["question"])
         overlap = len(q_w & target_words)
-        if len(q_w) > 0 and (overlap / len(q_w)) >= 0.75 and overlap > best_score:
+        if len(q_w) > 0 and (overlap / len(q_w)) >= 0.70 and overlap > best_score:
             best_score = overlap
             best_item = item
     return best_item
 
 
 def find_excerpt(question):
-    """Find the most relevant 4-sentence excerpt from the English Class 9 textbook."""
     q = words(question)
     best_chunk, best_score, best_page = None, 0, None
     for p in BOOK_PAGES:
@@ -102,11 +132,25 @@ def ask_ollama(question, excerpt, page_no, model="qwen2.5:0.5b", host="http://lo
 
 
 def run(question, model):
+    picker = check_page_or_unit(question)
+    if picker:
+        if picker["type"] == "page":
+            d = picker["data"]
+            print(f"\n📘 BOOK PAGE {picker['page']} • {d.get('unit')} ({d.get('title')})")
+            print("Pick a question number to get the answer:")
+            for idx, q_text in enumerate(d.get("questions", []), 1):
+                print(f"  [{idx}] {q_text}")
+        else:
+            print(f"\n📚 {picker['unit']}")
+            for idx, q_text in enumerate(picker.get("questions", []), 1):
+                print(f"  [{idx}] {q_text}")
+        return
+
     qa_hit = find_qa_direct(question)
     if qa_hit:
-        print(f"\n1) DIRECT HIT: [Book Page {qa_hit['page']}] Matching Comprehension Question: '{qa_hit['question']}'")
+        print(f"\n1) DIRECT HIT: [Book Page {qa_hit['page']}] Matching Question: '{qa_hit['question']}'")
         print(f"2) CITATION  : \"{qa_hit['evidence']}\"")
-        print(f"3) ANSWER    : {qa_hit['answer']}")
+        print(f"3) ANSWER    :\n{qa_hit['answer']}")
         return
 
     excerpt, page = find_excerpt(question)

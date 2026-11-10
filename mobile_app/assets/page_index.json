@@ -1,0 +1,173 @@
+{
+  "units": [
+    {
+      "id": 1,
+      "title": "Unit 1: Learning the Game",
+      "author": "Sachin Tendulkar",
+      "pages": [1, 2, 3, 4, 6, 25]
+    },
+    {
+      "id": 2,
+      "title": "Unit 2: I Can't Climb Trees Anymore",
+      "author": "Ruskin Bond",
+      "pages": [28, 29, 30, 31, 32, 33]
+    },
+    {
+      "id": 4,
+      "title": "Unit 4: Seventeen Oranges",
+      "author": "Bill Naughton",
+      "pages": [88, 89, 91, 93, 97]
+    },
+    {
+      "id": 5,
+      "title": "Unit 5: Water – The Elixir of Life",
+      "author": "Sir C.V. Raman",
+      "pages": [118]
+    }
+  ],
+  "pages": {
+    "1": {
+      "unit": "Unit 1: Learning the Game",
+      "title": "Cricket Camp & Early Days",
+      "questions": [
+        "Who was Sachin's coach?",
+        "Who took Sachin to the cricket camp?",
+        "Who were Sachin's favourite players?"
+      ]
+    },
+    "2": {
+      "unit": "Unit 1: Learning the Game",
+      "title": "Changing Schools",
+      "questions": [
+        "Why did Sachin change his school to Shardashram Vidyamandir?"
+      ]
+    },
+    "3": {
+      "unit": "Unit 1: Learning the Game",
+      "title": "Practice & Rewards",
+      "questions": [
+        "What did Sachin do during the thirty-minute break?",
+        "What was placed on top of the stumps in the last 15 minutes?"
+      ]
+    },
+    "4": {
+      "unit": "Unit 1: Learning the Game",
+      "title": "Autobiography & Career",
+      "questions": [
+        "Who is Sachin Tendulkar?"
+      ]
+    },
+    "6": {
+      "unit": "Unit 1: Vocabulary & Exercises",
+      "title": "Synonyms & Antonyms Matching",
+      "questions": [
+        "Match the words in column A with their synonym in column B (Unit 1)",
+        "Match the words in column A with their antonym in column B (Unit 1)"
+      ]
+    },
+    "25": {
+      "unit": "Unit 1: Supplementary - The Envious Neighbour",
+      "title": "Fill in the Blanks",
+      "questions": [
+        "The old farmer and his wife loved the dog _________.",
+        "When the old couple became rich, they _________."
+      ]
+    },
+    "28": {
+      "unit": "Unit 2: I Can't Climb Trees Anymore",
+      "title": "The Old Granite House",
+      "questions": [
+        "The old house was built with _________.",
+        "Who said, 'A blessing rests on the house where the shadow of a tree falls'?"
+      ]
+    },
+    "29": {
+      "unit": "Unit 2: I Can't Climb Trees Anymore",
+      "title": "Visiting 25 Years Later",
+      "questions": [
+        "Does the visitor still live in the house?"
+      ]
+    },
+    "30": {
+      "unit": "Unit 2: I Can't Climb Trees Anymore",
+      "title": "Jackfruit Tree Hollow",
+      "questions": [
+        "What did the visitor hide in the jackfruit tree?"
+      ]
+    },
+    "31": {
+      "unit": "Unit 2: Author Profile",
+      "title": "Ruskin Bond Biography",
+      "questions": [
+        "Who wrote 'I Can't Climb Trees Anymore'?"
+      ]
+    },
+    "32": {
+      "unit": "Unit 2: Comprehension & Fill in the Blanks",
+      "title": "Theme & Settings",
+      "questions": [
+        "The story 'I Can't Climb Trees Anymore' highlights the importance of _________.",
+        "The house which was visited by the man _________."
+      ]
+    },
+    "33": {
+      "unit": "Unit 2: Exercises & Matching",
+      "title": "Gifts & Meanings Matching",
+      "questions": [
+        "The visitor gifted the _________ to the little girl.",
+        "Match the words in column A with the meanings in column B (Unit 2)",
+        "The visitor came back to the house because he _________."
+      ]
+    },
+    "88": {
+      "unit": "Unit 4: Seventeen Oranges",
+      "title": "The Docks & Delivery Job",
+      "questions": [
+        "Where did the narrator work in Seventeen Oranges?"
+      ]
+    },
+    "89": {
+      "unit": "Unit 4: Seventeen Oranges",
+      "title": "Clem Jones & The Box",
+      "questions": [
+        "What was Clem Jones carrying in the box?"
+      ]
+    },
+    "91": {
+      "unit": "Unit 4: Seventeen Oranges",
+      "title": "Swallowing the Evidence",
+      "questions": [
+        "What did the narrator do with the seventeen oranges?"
+      ]
+    },
+    "93": {
+      "unit": "Unit 4: Exercises & Multiple Choice",
+      "title": "Comprehension & Fill in the Blanks",
+      "questions": [
+        "The narrator was very fond of _________.",
+        "The narrator was searched by the policeman, because _________.",
+        "The narrator kept his mouth shut when questioned by Pongo, because _________.",
+        "The voice in the narrator's head advised him to _________.",
+        "Pongo found no trace of the oranges on the table, because _________."
+      ]
+    },
+    "97": {
+      "unit": "Unit 4: Grammar & Vocabulary",
+      "title": "Phrasal Verbs Matching",
+      "questions": [
+        "Match the phrasal verbs in Column A with their meanings in Column B (Unit 4)"
+      ]
+    },
+    "118": {
+      "unit": "Unit 5: Water – The Elixir of Life",
+      "title": "Sir C.V. Raman Essay Exercises",
+      "questions": [
+        "The real elixir of life according to Sir C.V. Raman is _________.",
+        "Water in a landscape is compared to the _________ in a human face.",
+        "What is the 'cheering sight' mentioned in Water – The Elixir of Life?",
+        "What is the imaginary elixir of life?",
+        "Egypt was made by which river?"
+      ]
+    }
+  }
+}

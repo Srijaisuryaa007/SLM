@@ -29,7 +29,9 @@ function HighlightedText({ text, baseStyle, highlightStyle }) {
           (part.startsWith('**') && part.endsWith('**')) ||
           (part.startsWith('[') && part.endsWith(']'))
         ) {
-          const clean = part.replace(/^\*\*|^\/|^\*|^\/|^\s+|\s+$|\*\*$/g, '').replace(/^\[|\]$/g, '');
+          const clean = part
+            .replace(/^\*\*|^\*|^\s+|\s+$|\*\*$/g, '')
+            .replace(/^\[|\]$/g, '');
           return (
             <Text key={index} style={[styles.inlineHighlight, highlightStyle]}>
               {` ${clean} `}
@@ -43,10 +45,55 @@ function HighlightedText({ text, baseStyle, highlightStyle }) {
 }
 
 /**
- * Educational Answer Card: Prominently highlights answers, fill-in-the-blanks,
- * match-the-following pairs, and textbook page proofs.
+ * Interactive Question Picker Card:
+ * Displays all questions on a selected Book Page or Unit as tappable cards.
  */
-function AnswerCard({ item, loading }) {
+function QuestionPickerCard({ item, onSelectQuestion }) {
+  return (
+    <View style={styles.pickerCard}>
+      <View style={styles.pickerHeader}>
+        <View style={styles.pickerBadge}>
+          <Text style={styles.pickerBadgeText}>
+            {item.page ? `📘 BOOK PAGE ${item.page}` : '📚 UNIT DIRECTORY'}
+          </Text>
+        </View>
+        <Text style={styles.pickerUnitText}>{item.unit}</Text>
+      </View>
+
+      {item.title ? (
+        <Text style={styles.pickerTitleText}>{item.title}</Text>
+      ) : null}
+
+      <Text style={styles.pickerInstruction}>
+        👇 Tap any question below to reveal the answer & textbook proof:
+      </Text>
+
+      <View style={styles.questionsContainer}>
+        {item.questions &&
+          item.questions.map((q, idx) => (
+            <TouchableOpacity
+              key={idx}
+              style={styles.questionPickBtn}
+              activeOpacity={0.7}
+              onPress={() => onSelectQuestion(q)}
+            >
+              <View style={styles.pickNumberBadge}>
+                <Text style={styles.pickNumberText}>{idx + 1}</Text>
+              </View>
+              <Text style={styles.questionPickText}>{q}</Text>
+              <Text style={styles.questionPickArrow}>➔</Text>
+            </TouchableOpacity>
+          ))}
+      </View>
+    </View>
+  );
+}
+
+/**
+ * Educational Answer Card: Prominently highlights answers, fill-in-the-blanks,
+ * match-the-following pairs, textbook page proofs, and follow-up doubt actions.
+ */
+function AnswerCard({ item, loading, onAskDoubt, onBrowsePage }) {
   const structured = item.structured;
 
   // 1. Structured Comprehension or Exercise Match
@@ -122,6 +169,27 @@ function AnswerCard({ item, loading }) {
             ) : null}
           </View>
         )}
+
+        {/* Follow-up Action Buttons */}
+        <View style={styles.followupRow}>
+          <TouchableOpacity
+            style={styles.doubtBtn}
+            onPress={() => onAskDoubt(structured.question)}
+          >
+            <Text style={styles.doubtBtnText}>❓ Have a doubt?</Text>
+          </TouchableOpacity>
+
+          {structured.page && (
+            <TouchableOpacity
+              style={styles.browseMoreBtn}
+              onPress={() => onBrowsePage(structured.page)}
+            >
+              <Text style={styles.browseMoreBtnText}>
+                📚 Page {structured.page} Questions
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
     );
   }
@@ -160,11 +228,12 @@ export default function ChatScreen() {
     {
       id: '1',
       role: 'assistant',
+      isQuestionPicker: false,
       text: null,
       structured: {
         direct_answer: 'Tamil Nadu English Class 9 AI Assistant Ready',
         explanation:
-          'Ask any question, fill in the blank, or match-the-following from your textbook (e.g., Learning the Game, I Can’t Climb Trees Anymore, Seventeen Oranges, Water – The Elixir of Life)!',
+          'Tap any Book Page or Unit chip at the top to see all questions, or ask any question directly!',
         page: '1 - 122',
         evidence: 'Grounded strictly on TN English Class 9 Textbook with Zero Hallucination.',
       },
@@ -263,14 +332,31 @@ export default function ChatScreen() {
 
     const botMsgId = (Date.now() + 1).toString();
 
-    // 1. SEARCH TEXTBOOK (High precision Q&A Bank or Clean Story Prose)
+    // 1. SEARCH TEXTBOOK (Page Directory, Comprehension Q&A Bank, or Story Prose)
     const ragResult = findFact(questionText);
+
+    // Case 0: Page / Unit Question Directory Request
+    if (ragResult && ragResult.isQuestionPicker) {
+      const botMsg = {
+        id: botMsgId,
+        role: 'assistant',
+        isQuestionPicker: true,
+        page: ragResult.page,
+        unit: ragResult.unit,
+        title: ragResult.title,
+        questions: ragResult.questions,
+      };
+      setMessages((prev) => [...prev, botMsg]);
+      setLoading(false);
+      return;
+    }
 
     // Case A: High-precision textbook exercise or direct hit
     if (ragResult && ragResult.isDirectQA) {
       const botMsg = {
         id: botMsgId,
         role: 'assistant',
+        isQuestionPicker: false,
         text: ragResult.answer,
         structured: ragResult.structured,
         fact: `Book Page ${ragResult.page}: "${ragResult.evidence}"`,
@@ -292,6 +378,7 @@ export default function ChatScreen() {
     const initialBotMsg = {
       id: botMsgId,
       role: 'assistant',
+      isQuestionPicker: false,
       text: '',
       structured: null,
       fact: citation,
@@ -346,6 +433,14 @@ export default function ChatScreen() {
     }
   };
 
+  const handleAskDoubt = (question) => {
+    handleSend(`Explain the answer to "${question}" with clear textbook context`);
+  };
+
+  const handleBrowsePage = (pageNumber) => {
+    handleSend(`Page ${pageNumber}`);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -366,63 +461,83 @@ export default function ChatScreen() {
         </View>
       </View>
 
-      {/* Suggested Quick Questions & Exercise Chips */}
+      {/* Quick Textbook Page & Unit Selector Bar */}
       <View style={styles.chipContainer}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.chipScroll}
         >
+          <Text style={styles.selectorLabel}>📖 Pick Page:</Text>
+
           <TouchableOpacity
-            style={styles.chip}
-            onPress={() =>
-              handleSend('The visitor gifted the _________ to the little girl.')
-            }
+            style={styles.pageChip}
+            onPress={() => handleSend('Page 33')}
           >
-            <Text style={styles.chipText}>🎯 Fill: Visitor's Gift?</Text>
+            <Text style={styles.pageChipText}>p. 33 (Gift & Match)</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.chip}
-            onPress={() =>
-              handleSend('Match the following: pruning, chiming, drenched')
-            }
+            style={styles.pageChip}
+            onPress={() => handleSend('Page 6')}
           >
-            <Text style={styles.chipText}>📋 Match: Unit 2 Words</Text>
+            <Text style={styles.pageChipText}>p. 6 (Synonyms & Antonyms)</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.chip}
-            onPress={() => handleSend("Who was Sachin's coach?")}
+            style={styles.pageChip}
+            onPress={() => handleSend('Page 1')}
           >
-            <Text style={styles.chipText}>🏏 Sachin's Coach?</Text>
+            <Text style={styles.pageChipText}>p. 1 (Sachin Camp)</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.chip}
-            onPress={() =>
-              handleSend('What did the visitor hide in the jackfruit tree?')
-            }
+            style={styles.pageChip}
+            onPress={() => handleSend('Page 30')}
           >
-            <Text style={styles.chipText}>🌳 Jackfruit Tree Treasure?</Text>
+            <Text style={styles.pageChipText}>p. 30 (Jackfruit Tree)</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.chip}
-            onPress={() =>
-              handleSend('What is the real elixir of life according to Sir C.V. Raman?')
-            }
+            style={styles.pageChip}
+            onPress={() => handleSend('Page 93')}
           >
-            <Text style={styles.chipText}>💧 Real Elixir of Life?</Text>
+            <Text style={styles.pageChipText}>p. 93 (17 Oranges)</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.chip}
-            onPress={() =>
-              handleSend('Where did the narrator work in Seventeen Oranges?')
-            }
+            style={styles.pageChip}
+            onPress={() => handleSend('Page 118')}
           >
-            <Text style={styles.chipText}>🍊 Seventeen Oranges Job?</Text>
+            <Text style={styles.pageChipText}>p. 118 (Elixir of Life)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.unitChip}
+            onPress={() => handleSend('Unit 2')}
+          >
+            <Text style={styles.unitChipText}>Unit 2 (Ruskin Bond)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.unitChip}
+            onPress={() => handleSend('Unit 1')}
+          >
+            <Text style={styles.unitChipText}>Unit 1 (Sachin)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.unitChip}
+            onPress={() => handleSend('Unit 4')}
+          >
+            <Text style={styles.unitChipText}>Unit 4 (Seventeen Oranges)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.unitChip}
+            onPress={() => handleSend('Unit 5')}
+          >
+            <Text style={styles.unitChipText}>Unit 5 (Water)</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
@@ -447,8 +562,18 @@ export default function ChatScreen() {
               <View style={styles.userBubble}>
                 <Text style={styles.userText}>{item.text}</Text>
               </View>
+            ) : item.isQuestionPicker ? (
+              <QuestionPickerCard
+                item={item}
+                onSelectQuestion={(q) => handleSend(q)}
+              />
             ) : (
-              <AnswerCard item={item} loading={loading} />
+              <AnswerCard
+                item={item}
+                loading={loading}
+                onAskDoubt={handleAskDoubt}
+                onBrowsePage={handleBrowsePage}
+              />
             )}
           </View>
         )}
@@ -464,7 +589,7 @@ export default function ChatScreen() {
             style={styles.textInput}
             value={input}
             onChangeText={setInput}
-            placeholder="Ask question, fill in blank, or match..."
+            placeholder="Type 'Page 33', 'Unit 2', or ask any question..."
             placeholderTextColor="#94A3B8"
             onSubmitEditing={() => handleSend()}
             returnKeyType="send"
@@ -546,20 +671,41 @@ const styles = StyleSheet.create({
   },
   chipScroll: {
     paddingHorizontal: 12,
+    alignItems: 'center',
   },
-  chip: {
-    backgroundColor: '#EFF6FF',
-    borderColor: '#BFDBFE',
-    borderWidth: 1,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
+  selectorLabel: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#475569',
     marginRight: 8,
   },
-  chipText: {
-    fontSize: 12.5,
-    fontWeight: '600',
+  pageChip: {
+    backgroundColor: '#EFF6FF',
+    borderColor: '#93C5FD',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 14,
+    marginRight: 6,
+  },
+  pageChipText: {
+    fontSize: 12,
+    fontWeight: '700',
     color: '#1D4ED8',
+  },
+  unitChip: {
+    backgroundColor: '#F0FDF4',
+    borderColor: '#86EFAC',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 14,
+    marginRight: 6,
+  },
+  unitChipText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#15803D',
   },
   messageList: {
     paddingHorizontal: 14,
@@ -567,10 +713,11 @@ const styles = StyleSheet.create({
   },
   msgWrapper: {
     marginVertical: 6,
-    maxWidth: '92%',
+    maxWidth: '96%',
   },
   userWrapper: {
     alignSelf: 'flex-end',
+    maxWidth: '85%',
   },
   botWrapper: {
     alignSelf: 'flex-start',
@@ -589,6 +736,94 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     lineHeight: 21,
     fontWeight: '500',
+  },
+  pickerCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 14,
+    borderWidth: 1.5,
+    borderColor: '#3B82F6',
+    elevation: 3,
+    shadowColor: '#1E40AF',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
+  },
+  pickerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
+  pickerBadge: {
+    backgroundColor: '#DBEAFE',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  pickerBadgeText: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#1E40AF',
+    letterSpacing: 0.5,
+  },
+  pickerUnitText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#334155',
+  },
+  pickerTitleText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#0F172A',
+    marginBottom: 4,
+  },
+  pickerInstruction: {
+    fontSize: 12.5,
+    color: '#475569',
+    marginBottom: 10,
+    fontStyle: 'italic',
+  },
+  questionsContainer: {
+    marginTop: 2,
+  },
+  questionPickBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F8FAFC',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginBottom: 8,
+  },
+  pickNumberBadge: {
+    backgroundColor: '#2563EB',
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  pickNumberText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '800',
+  },
+  questionPickText: {
+    flex: 1,
+    fontSize: 13.5,
+    fontWeight: '600',
+    color: '#0F172A',
+    lineHeight: 18,
+  },
+  questionPickArrow: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#2563EB',
+    marginLeft: 6,
   },
   educationalCard: {
     backgroundColor: '#FFFFFF',
@@ -765,6 +1000,37 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: '#475569',
     lineHeight: 18,
+  },
+  followupRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: '#F1F5F9',
+  },
+  doubtBtn: {
+    backgroundColor: '#FEF3C7',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  doubtBtnText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#B45309',
+  },
+  browseMoreBtn: {
+    backgroundColor: '#EFF6FF',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  browseMoreBtnText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#1D4ED8',
   },
   botText: {
     fontSize: 14.5,

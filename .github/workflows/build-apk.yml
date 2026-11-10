@@ -117,16 +117,17 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.6
-          name: English Class 9 AI Assistant v1.6 (Highlighted Answers & Proofs)
+          tag_name: v1.7
+          name: English Class 9 AI Assistant v1.7 (Interactive Page Directory & Doubt Resolver)
           body: |
-            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.6
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.7
 
-            - **Highlighted Direct Answers**: 🎯 Prominently highlights exact answers in green/emerald cards so students can identify answers instantly.
-            - **Highlighted Fill-in-the-Blanks**: 📝 Completed sentences with the blank filled in high-visibility yellow badge.
-            - **Formatted Match-the-Following**: 📋 Side-by-side matching table with clear `➔` arrows.
-            - **Textbook Proof & Citations**: 📖 High-contrast Book Page badges and exact textbook quotation proofs.
-            - **Pure English Class 9 Grounding**: 100% textbook knowledge with zero dummy coaching data.
+            - **Interactive Page & Unit Question Directory**: Ask by Page number (`Page 33`, `Page 6`, `Page 118`) or Unit (`Unit 1`, `Unit 2`, `Unit 4`, `Unit 5`) to get a list of tappable question cards without typing!
+            - **1-Tap Answer Revealer**: Tap any question from the list to instantly view the highlighted direct answer, completed sentence, and proof.
+            - **❓ Doubt & Query Resolver**: Instant follow-up button on every answer to clear student doubts with textbook context.
+            - **Highlighted Direct Answers**: 🎯 Prominently highlighted in emerald cards.
+            - **Highlighted Fill-in-the-Blanks**: 📝 Completed sentences with yellow blank highlight badges.
+            - **Formatted Match-the-Following**: 📋 Two-column matching table with arrows.
             - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~687 MB).
           files: ./BrightPath-Qwen-Offline.apk
         env:
