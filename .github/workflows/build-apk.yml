@@ -117,17 +117,17 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.7
-          name: English Class 9 AI Assistant v1.7 (Interactive Page Directory & Doubt Resolver)
+          tag_name: v1.8
+          name: English Class 9 AI Assistant v1.8 (Creative Guides & Fill-in-Blank Solutions)
           body: |
-            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.7
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.8
 
-            - **Interactive Page & Unit Question Directory**: Ask by Page number (`Page 33`, `Page 6`, `Page 118`) or Unit (`Unit 1`, `Unit 2`, `Unit 4`, `Unit 5`) to get a list of tappable question cards without typing!
-            - **1-Tap Answer Revealer**: Tap any question from the list to instantly view the highlighted direct answer, completed sentence, and proof.
+            - **Fixed Fill-in-the-Blanks**: Never repeats underscores or blanks. Accurately fills in the missing answer (e.g., 'Without trust there is no relationship at all' from Page 106/207) with highlighted yellow badges.
+            - **Creative & Understanding Questions**: For creative, essay, or character sketch questions (e.g., 'Write a character sketch of the spider'), provides:
+              - '💡 This question is based on your understanding and creativity!'
+              - A structured breakdown of character traits and model answers.
+            - **Interactive Page Directory**: Ask by Page number (`Page 33`, `Page 106`, `Page 6`) or Unit to get a list of tappable question cards without typing.
             - **❓ Doubt & Query Resolver**: Instant follow-up button on every answer to clear student doubts with textbook context.
-            - **Highlighted Direct Answers**: 🎯 Prominently highlighted in emerald cards.
-            - **Highlighted Fill-in-the-Blanks**: 📝 Completed sentences with yellow blank highlight badges.
-            - **Formatted Match-the-Following**: 📋 Two-column matching table with arrows.
             - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~687 MB).
           files: ./BrightPath-Qwen-Offline.apk
         env:

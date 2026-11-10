@@ -14,9 +14,9 @@
     },
     {
       "id": 4,
-      "title": "Unit 4: Seventeen Oranges",
-      "author": "Bill Naughton",
-      "pages": [88, 89, 91, 93, 97]
+      "title": "Unit 4: Seventeen Oranges & The Spider and the Fly",
+      "author": "Bill Naughton / Mary Botham Howitt",
+      "pages": [88, 89, 91, 93, 97, 105, 106, 107]
     },
     {
       "id": 5,
@@ -158,6 +158,31 @@
         "Match the phrasal verbs in Column A with their meanings in Column B (Unit 4)"
       ]
     },
+    "105": {
+      "unit": "Unit 4: Poem - The Spider and the Fly",
+      "title": "Creative Character Sketch & Paragraphs",
+      "questions": [
+        "Write a character sketch of the spider"
+      ]
+    },
+    "106": {
+      "unit": "Unit 4: Poem - The Spider and the Fly",
+      "title": "Listening Passage Fill in the Blanks",
+      "questions": [
+        "Without trust there is no ______________.",
+        "______________ is a very rare thing to find in life.",
+        "When people betray you learn from the _____________.",
+        "Don't let small bumps on the road _____________.",
+        "If we keep moving forward you will have a wonderfully __________________."
+      ]
+    },
+    "107": {
+      "unit": "Unit 4: Poem - The Spider and the Fly",
+      "title": "Creative Writing & Happy Ending",
+      "questions": [
+        "If you are asked to give a happy ending to the poem, how will you save the fly?"
+      ]
+    },
     "118": {
       "unit": "Unit 5: Water – The Elixir of Life",
       "title": "Sir C.V. Raman Essay Exercises",
@@ -171,3 +196,4 @@
     }
   }
 }
+

@@ -558,6 +558,139 @@ qa_list = [
         completed_sentence="When the old couple became rich, they **lived a comfortable life and were generous towards their poor neighbours**.",
         page=25,
         evidence="The good old couple became rich, bought themselves a piece of land, gave to the poor, and lived in comfort."
+    ),
+
+    # ==========================================
+    # UNIT 4: The Spider and the Fly (Listening Passage, Page 106 & 207)
+    # ==========================================
+    make_qa(
+        question="Without trust there is no ______________.",
+        direct_answer="relationship at all",
+        aliases=[
+            "without trust there is no",
+            "without trust there is no blank",
+            "without trust there is no relationship",
+            "without trust there is no relationship at all",
+            "without trust"
+        ],
+        completed_sentence="Without trust there is no **relationship at all**.",
+        explanation="Trust is the essential foundation of any relationship; without it, nothing can last.",
+        page=106,
+        evidence="Book Page 207 (Listening Passage for Page 106): 'Trust is one of the most important things anyone can have in a relationship because trust is what makes the foundation of a relationship. Without trust there is no relationship at all.'"
+    ),
+    make_qa(
+        question="______________ is a very rare thing to find in life.",
+        direct_answer="Trust",
+        aliases=[
+            "is a very rare thing to find in life",
+            "a very rare thing to find in life",
+            "trust is a very rare thing to find in life",
+            "blank is a very rare thing to find in life"
+        ],
+        completed_sentence="**Trust** is a very rare thing to find in life.",
+        explanation="Because it takes time to earn and can easily be broken, genuine trust is rare.",
+        page=106,
+        evidence="Book Page 207: 'Trust is a very rare thing to find in life and if you are able to give it in return, your life is so much better and more fulfilling.'"
+    ),
+    make_qa(
+        question="When people betray you learn from the _____________.",
+        direct_answer="situation",
+        aliases=[
+            "when people betray you learn from the",
+            "when people betray you",
+            "learn from the situation",
+            "when people betray you learn from the blank"
+        ],
+        completed_sentence="When people betray you, learn from the **situation**.",
+        explanation="Take betrayal as a life lesson rather than letting it defeat you.",
+        page=106,
+        evidence="Book Page 207: 'When people betray you, learn from the situation.'"
+    ),
+    make_qa(
+        question="Don't let small bumps on the road _____________.",
+        direct_answer="throw you back",
+        aliases=[
+            "dont let small bumps on the road",
+            "dont let on the road",
+            "dont let small bumps on the road throw you back",
+            "dont let small bumps"
+        ],
+        completed_sentence="Don’t let small bumps on the road **throw you back**.",
+        page=106,
+        evidence="Book Page 207: 'Don’t let small bumps on the road throw you back.'"
+    ),
+    make_qa(
+        question="If we keep moving forward you will have a wonderfully __________________.",
+        direct_answer="fulfilling life",
+        aliases=[
+            "if we keep moving forward you will have a wonderfully",
+            "you will have a wonderfully blank",
+            "wonderfully fulfilling life",
+            "if we keep moving forward"
+        ],
+        completed_sentence="If we keep moving forward, you will have a wonderfully **fulfilling life**.",
+        page=106,
+        evidence="Book Page 207: 'If we keep moving forward you will have a wonderfully fulfilling life.'"
+    ),
+
+    # ==========================================
+    # CREATIVE, UNDERSTANDING & ANALYTICAL QUESTIONS
+    # ==========================================
+    make_qa(
+        question="Write a character sketch of the spider",
+        direct_answer="Character Sketch: Cunning, Flattering, and Predatory Deceiver",
+        aliases=[
+            "write a character sketch of the spider",
+            "character sketch of the spider",
+            "character of the spider",
+            "describe the character of the spider",
+            "spider character sketch"
+        ],
+        completed_sentence="💡 This question is based on your **creative understanding** of the poem. Here is a model character sketch:",
+        explanation=(
+            "1. Cunning & Sweet-Tongued: The spider uses deceptive compliments, praising the fly's pearl-like eyes and gauzy wings to entice her into his parlor.\n"
+            "2. Shrewd & Patient: When food fails, he weaves a subtle web in a dark corner, confident that flattery will lure her back.\n"
+            "3. Ruthless & Predatory: As soon as the fly falls for his praises, he fiercely leaps out, drags her up his winding stair into his dismal den, and devours her.\n"
+            "4. Moral Symbolism: He represents deceitful flatterers in real life who seek to harm the innocent."
+        ),
+        page=105,
+        evidence="Unit 4 Poem 'The Spider and the Fly' by Mary Botham Howitt: Section C.1 'Write a character sketch of the spider.'"
+    ),
+    make_qa(
+        question="If you are asked to give a happy ending to the poem, how will you save the fly?",
+        direct_answer="Creative Happy Ending: The Fly Resists Flattery & Flies Away",
+        aliases=[
+            "if you are asked to give a happy ending to the poem",
+            "how will you save the fly",
+            "give a happy ending to the poem",
+            "happy ending the spider and the fly"
+        ],
+        completed_sentence="💡 This question is based on your **personal creativity and imagination**:",
+        explanation=(
+            "Model Happy Ending:\n"
+            "When the cunning spider invites the fly into his parlour and praises her robes of green and purple, the little fly pauses. She remembers her wise mother's advice to never trust flattering strangers. Looking firmly at the spider, she buzzes: 'Your sweet words cannot hide your greedy web!', turns away, and flies joyfully out into the golden sunshine. The disappointed spider retreats into his dark corner, learning that wisdom overcomes deceit."
+        ),
+        page=107,
+        evidence="Unit 4 Poem 'The Spider and the Fly' Exercise F: 'If you are asked to give a happy ending to the poem, how will you save the fly? Write in your own words.'"
+    ),
+    make_qa(
+        question="'Achrekar was a sincere coach'. Substantiate.",
+        direct_answer="Evidence of Achrekar Sir's Sincerity and Dedication",
+        aliases=[
+            "achrekar was a sincere coach substantiate",
+            "achrekar was a sincere coach",
+            "substantiate achrekar was a sincere coach",
+            "why was achrekar a sincere coach"
+        ],
+        completed_sentence="💡 This analytical question is based on your **understanding of Sachin's biography**:",
+        explanation=(
+            "1. Tireless Commitment: He held practice from 7:30 AM to 7:00 PM throughout summer, coaching morning and evening sessions.\n"
+            "2. Innovative Training: In the final 15 minutes, he placed a one rupee coin on top of the stumps, challenging every bowler to get Sachin out.\n"
+            "3. Strict Discipline: When Sachin bunked practice to watch a school cricket match, Sir slapped him and said: 'Don't watch other people play. Play so that other people watch you.'\n"
+            "4. Genuine Care: He gave Sachin money for vadapavs, rode him around Mumbai on his scooter to play matches, and advised his family to enroll him in Shardashram Vidyamandir."
+        ),
+        page=6,
+        evidence="Unit 1 'Learning the Game' Exercise B.1: 'Achrekar was a sincere coach'. Substantiate."
     )
 ]
 
