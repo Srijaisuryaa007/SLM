@@ -124,6 +124,58 @@ function AnswerCard({ item, loading, onAskDoubt, onBrowsePage }) {
           </View>
         ) : null}
 
+        {/* Multiple Choice Options Display (a, b, c, d) */}
+        {structured.options && structured.options.length > 0 ? (
+          <View style={styles.optionsBox}>
+            <Text style={styles.sectionHeading}>🔘 TEXTBOOK OPTIONS:</Text>
+            <View style={styles.optionsContainer}>
+              {structured.options.map((opt, idx) => {
+                const isCorrect =
+                  opt.letter.toLowerCase() ===
+                  (structured.correct_option || '').toLowerCase();
+                return (
+                  <View
+                    key={idx}
+                    style={[
+                      styles.optionRow,
+                      isCorrect && styles.optionRowCorrect,
+                    ]}
+                  >
+                    <View
+                      style={[
+                        styles.optionLetterBadge,
+                        isCorrect && styles.optionLetterBadgeCorrect,
+                      ]}
+                    >
+                      <Text
+                        style={[
+                          styles.optionLetterText,
+                          isCorrect && styles.optionLetterTextCorrect,
+                        ]}
+                      >
+                        {opt.letter.toUpperCase()}
+                      </Text>
+                    </View>
+                    <Text
+                      style={[
+                        styles.optionContentText,
+                        isCorrect && styles.optionContentTextCorrect,
+                      ]}
+                    >
+                      {opt.text}
+                    </Text>
+                    {isCorrect && (
+                      <View style={styles.correctBadge}>
+                        <Text style={styles.correctBadgeText}>✓ Correct</Text>
+                      </View>
+                    )}
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+        ) : null}
+
         {/* Match the Following Exercise Table */}
         {structured.matches && structured.matches.length > 0 ? (
           <View style={styles.matchesBox}>
@@ -906,6 +958,75 @@ const styles = StyleSheet.create({
     backgroundColor: '#FEF08A',
     color: '#854D0E',
     fontWeight: '700',
+  },
+  optionsBox: {
+    backgroundColor: '#F8FAFC',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    padding: 12,
+    marginBottom: 10,
+  },
+  optionsContainer: {
+    marginTop: 4,
+  },
+  optionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    borderRadius: 8,
+    paddingVertical: 7,
+    paddingHorizontal: 10,
+    marginBottom: 6,
+  },
+  optionRowCorrect: {
+    backgroundColor: '#ECFDF5',
+    borderColor: '#10B981',
+    borderWidth: 1.5,
+  },
+  optionLetterBadge: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#F1F5F9',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  optionLetterBadgeCorrect: {
+    backgroundColor: '#10B981',
+  },
+  optionLetterText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#475569',
+  },
+  optionLetterTextCorrect: {
+    color: '#FFFFFF',
+  },
+  optionContentText: {
+    flex: 1,
+    fontSize: 13.5,
+    color: '#334155',
+    fontWeight: '500',
+  },
+  optionContentTextCorrect: {
+    color: '#064E3B',
+    fontWeight: '700',
+  },
+  correctBadge: {
+    backgroundColor: '#D1FAE5',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginLeft: 6,
+  },
+  correctBadgeText: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#065F46',
   },
   matchesBox: {
     backgroundColor: '#F8FAFC',
