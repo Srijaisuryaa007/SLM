@@ -26,7 +26,7 @@ export function checkPageOrUnitRequest(query) {
   if (!query || !query.trim()) return null;
   const q = query.toLowerCase().trim();
 
-  // 1. Page match: "page 33", "p 33", "p. 33", "book page 33", "33"
+  // 1. Page match: "page 33", "p 33", "p. 33", "book page 33", "33", "page 106", "106"
   const pageMatch = q.match(/(?:book\s+)?(?:page|p\.?)\s*([0-9]{1,3})/i) || q.match(/^([0-9]{1,3})$/);
   if (pageMatch) {
     const pageNo = pageMatch[1];
@@ -39,6 +39,22 @@ export function checkPageOrUnitRequest(query) {
         unit: data.unit,
         title: data.title,
         questions: data.questions,
+      };
+    } else {
+      // Graceful fallback for any custom page number outside 1-122
+      return {
+        isQuestionPicker: true,
+        type: 'page',
+        page: pageNo,
+        unit: 'Tamil Nadu English Class 9',
+        title: `Book Page ${pageNo}`,
+        questions: [
+          `Read key excerpts from Book Page ${pageNo}`,
+          `Explain the main lesson concepts on Page ${pageNo}`,
+          `Browse Unit 4 Listening Exercises (Book Page 106)`,
+          `Browse Unit 2 (Book Page 33)`,
+          `Browse Unit 1 (Book Page 6)`
+        ],
       };
     }
   }
