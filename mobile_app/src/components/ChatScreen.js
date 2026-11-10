@@ -20,12 +20,12 @@ export default function ChatScreen() {
     {
       id: '1',
       role: 'assistant',
-      text: "Hi! I'm BrightPath Tutor. Ask me about your courses (Maths, Science, English) or any school study topic!",
+      text: "Hi! I'm your English Class 9 Textbook Assistant. Ask me any question from your lessons (such as 'Learning the Game', 'I Can't Climb Trees Anymore', 'Seventeen Oranges', or 'Water – The Elixir of Life')!",
       fact: null,
     },
   ]);
   const [input, setInput] = useState('');
-  const [statusText, setStatusText] = useState('Starting tutor engine...');
+  const [statusText, setStatusText] = useState('Initializing English AI...');
   const [isModelReady, setIsModelReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const llamaContext = useRef(null);
@@ -34,34 +34,43 @@ export default function ChatScreen() {
   useEffect(() => {
     let isMounted = true;
 
-    // Delay model initialization so UI renders completely first
+    // Delay model initialization slightly so UI renders smoothly first
     const timer = setTimeout(async () => {
       try {
         if (!isMounted) return;
         setStatusText('Loading Qwen 0.5B model...');
 
-        const ctx = await initLlama({
-          model: 'model.gguf',
-          is_model_asset: true,
-          n_ctx: 512,
-          n_threads: 2,
-          n_gpu_layers: 0, // Safe CPU execution (prevents GPU shader aborts)
-          use_mlock: false, // Prevents Android OS memory lock crash
-        });
+        const ctx = await initLlama(
+          {
+            model: 'model.gguf',
+            is_model_asset: true,
+            n_ctx: 512,
+            n_threads: 2,
+            n_gpu_layers: 0,
+            use_mlock: false,
+          },
+          (progress) => {
+            if (isMounted) {
+              const pct = Math.round(progress * 100);
+              setStatusText(`Loading Model: ${pct}%`);
+            }
+          }
+        );
 
         if (isMounted) {
           llamaContext.current = ctx;
           setIsModelReady(true);
-          setStatusText('Offline Ready (Qwen 0.5B)');
+          setStatusText('Offline English AI Ready (Qwen 0.5B)');
         }
       } catch (err) {
         console.warn('Llama init notice:', err);
         if (isMounted) {
-          setStatusText('Offline Tutor Ready');
+          // If native SLM context is still copying/extracting, set offline Q&A mode
+          setStatusText('Offline English Assistant Ready');
           setIsModelReady(true);
         }
       }
-    }, 700);
+    }, 500);
 
     return () => {
       isMounted = false;
@@ -89,19 +98,38 @@ export default function ChatScreen() {
     setInput('');
     setLoading(true);
 
-    // 1. FIND FACT (On-device RAG keyword matching on facts.json)
-    const matchedFact = findFact(questionText);
-
-    // 2. BUILD PROMPT (Qwen ChatML template)
-    const prompt = buildChatML(questionText, matchedFact);
-
-    // 3. RUN ON-DEVICE INFERENCE
     const botMsgId = (Date.now() + 1).toString();
+
+    // 1. SEARCH TEXTBOOK (Comprehension Q&A Bank or Clean Story Prose)
+    const ragResult = findFact(questionText);
+
+    // Case A: High-precision textbook comprehension question direct hit
+    if (ragResult && ragResult.isDirectQA) {
+      const botMsg = {
+        id: botMsgId,
+        role: 'assistant',
+        text: ragResult.answer,
+        fact: `Book Page ${ragResult.page}: "${ragResult.evidence}"`,
+      };
+      setMessages((prev) => [...prev, botMsg]);
+      setLoading(false);
+      return;
+    }
+
+    // Case B: Freeform question - Search story excerpt & feed to on-device SLM
+    const excerpt = ragResult ? ragResult.chunk : null;
+    const pageNo = ragResult ? ragResult.page : null;
+    const citation = excerpt
+      ? `Book Page ${pageNo}: "${excerpt.slice(0, 180)}..."`
+      : null;
+
+    const prompt = buildChatML(questionText, excerpt, pageNo);
+
     const initialBotMsg = {
       id: botMsgId,
       role: 'assistant',
       text: '',
-      fact: matchedFact,
+      fact: citation,
     };
     setMessages((prev) => [...prev, initialBotMsg]);
 
@@ -112,26 +140,26 @@ export default function ChatScreen() {
           {
             prompt: prompt,
             n_predict: 120,
-            temperature: 0.3,
+            temperature: 0.0, // Strict zero-hallucination
             stop: ['<|im_end|>', '<|endoftext|>', '<|im_start|>'],
           },
           (tokenData) => {
             accumulated += tokenData.token;
             setMessages((prev) =>
               prev.map((msg) =>
-                msg.id === botMsgId ? { ...msg, text: accumulated } : msg
+                msg.id === botMsgId ? { ...msg, text: accumulated.trim() } : msg
               )
             );
           }
         );
       } else {
-        // Fallback response if native context is in standby mode
-        const reply = matchedFact
-          ? `According to BrightPath records: ${matchedFact}\n\nQuick check: Would you like to know the teacher or batch timings?`
-          : "I can help you with Class 6 to 10 studies, or check BrightPath course details. What would you like to learn?";
+        // Direct answer if native model is still loading
+        const fallbackText = excerpt
+          ? `From Book Page ${pageNo}: ${excerpt}`
+          : "Not mentioned in the English Class 9 textbook.";
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === botMsgId ? { ...msg, text: reply } : msg
+            msg.id === botMsgId ? { ...msg, text: fallbackText } : msg
           )
         );
       }
@@ -140,7 +168,12 @@ export default function ChatScreen() {
       setMessages((prev) =>
         prev.map((msg) =>
           msg.id === botMsgId
-            ? { ...msg, text: matchedFact ? `According to BrightPath: ${matchedFact}` : 'I am ready to help with your studies. Please try another question.' }
+            ? {
+                ...msg,
+                text: excerpt
+                  ? `From Book Page ${pageNo}: ${excerpt}`
+                  : "Not mentioned in the book.",
+              }
             : msg
         )
       );
@@ -154,7 +187,7 @@ export default function ChatScreen() {
       {/* Header */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.title}>BrightPath Tutor</Text>
+          <Text style={styles.title}>English Class 9 AI Assistant</Text>
           <Text style={styles.subtitle}>{statusText}</Text>
         </View>
         <View style={[styles.badge, isModelReady ? styles.badgeReady : styles.badgeLoading]}>
@@ -162,25 +195,25 @@ export default function ChatScreen() {
         </View>
       </View>
 
-      {/* Suggested Quick Questions */}
+      {/* Suggested Quick Questions from Textbook */}
       <View style={styles.suggestions}>
         <TouchableOpacity
           style={styles.chip}
-          onPress={() => handleSend("What is the fee for Class 9 science?")}
+          onPress={() => handleSend("What did the visitor hide in the jackfruit tree?")}
         >
-          <Text style={styles.chipText}>Class 9 Science fee?</Text>
+          <Text style={styles.chipText}>Jackfruit tree treasure?</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.chip}
-          onPress={() => handleSend("What is the refund policy?")}
+          onPress={() => handleSend("Who was Sachin's coach?")}
         >
-          <Text style={styles.chipText}>Refund policy?</Text>
+          <Text style={styles.chipText}>Sachin's coach?</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.chip}
-          onPress={() => handleSend("Explain gravity simply")}
+          onPress={() => handleSend("What was the narrator carrying in Seventeen Oranges?")}
         >
-          <Text style={styles.chipText}>Gravity explanation?</Text>
+          <Text style={styles.chipText}>Seventeen Oranges?</Text>
         </TouchableOpacity>
       </View>
 
@@ -214,10 +247,10 @@ export default function ChatScreen() {
               </Text>
             </View>
 
-            {/* Verified Fact Provenance Card */}
+            {/* Verified Textbook Citation Card */}
             {item.fact && (
               <View style={styles.factCard}>
-                <Text style={styles.factLabel}>Verified BrightPath Fact:</Text>
+                <Text style={styles.factLabel}>Textbook Citation:</Text>
                 <Text style={styles.factBody}>{item.fact}</Text>
               </View>
             )}
@@ -235,7 +268,7 @@ export default function ChatScreen() {
             style={styles.textInput}
             value={input}
             onChangeText={setInput}
-            placeholder="Ask a question..."
+            placeholder="Ask a question from Class 9 English..."
             placeholderTextColor="#8E8E93"
             onSubmitEditing={() => handleSend()}
             returnKeyType="send"
@@ -273,13 +306,13 @@ const styles = StyleSheet.create({
     borderBottomColor: '#EBEBEB',
   },
   title: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '700',
     color: '#1C1C1E',
   },
   subtitle: {
     fontSize: 12,
-    color: '#8E8E93',
+    color: '#6B7280',
     marginTop: 2,
   },
   badge: {
@@ -306,14 +339,17 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   chip: {
-    backgroundColor: '#F0F2F5',
+    backgroundColor: '#EEF2FF',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#E0E7FF',
   },
   chipText: {
     fontSize: 12,
-    color: '#3A3A3C',
+    color: '#3730A3',
+    fontWeight: '500',
   },
   messageList: {
     paddingHorizontal: 16,

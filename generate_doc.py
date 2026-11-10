@@ -43,44 +43,9 @@ doc.add_paragraph()
 qa_heading = doc.add_heading("Part 1: Key Book Questions & Grounded AI Answers", level=1)
 qa_heading.style.font.color.rgb = RGBColor(24, 76, 120)
 
-sample_qa = [
-    {
-        "page": 1,
-        "question": "Who were Sachin's favourite players?",
-        "answer": "Sachin Tendulkar's favourite players were Sunil Gavaskar and the West Indian legend Viv Richards.",
-        "evidence": "I often tried to emulate the mannerisms of my favourite players, Sunil Gavaskar and the West Indian legend Viv Richards."
-    },
-    {
-        "page": 1,
-        "question": "What was special about Shardashram Vidyamandir in Mumbai?",
-        "answer": "Ramakant Achrekar Sir was the cricket coach at Shardashram Vidyamandir, and the school gave great importance to the game of cricket.",
-        "evidence": "Achrekar Sir ran summer camps too. Ajit, my brother, brought me to him... the school gave cricket supreme priority."
-    },
-    {
-        "page": 2,
-        "question": "What routine did Sachin follow in washing his clothes?",
-        "answer": "Sachin only had one set of cricket clothes, so he washed them as soon as he returned from the morning session and hung them to dry while he ate lunch, often playing the evening session in wet pockets.",
-        "evidence": "There was never quite enough time for the pockets to dry out completely, and for the entire duration of the camp I played with wet pockets."
-    },
-    {
-        "page": 2,
-        "question": "What suggestion did Achrekar Sir give to Sachin's father?",
-        "answer": "Achrekar Sir informed Sachin's father that Sachin had the potential to be a good cricketer and suggested moving him to Shardashram Vidyamandir where he could practice all year round.",
-        "evidence": "Sir informed Ajit that I had the potential to be a good cricketer if I practiced all year round... Achrekar Sir was keen for me to change schools."
-    },
-    {
-        "page": 3,
-        "question": "What did Sachin do during the thirty-minute break?",
-        "answer": "During the thirty-minute break, Achrekar Sir would give Sachin money to go and eat a vadapav, a popular Mumbai fast food.",
-        "evidence": "During the break, Sir would often give me some money to go and have a vadapav (a popular Mumbai fast food)."
-    },
-    {
-        "page": 3,
-        "question": "What happened during the last 15 minutes of net practice with the one rupee coin?",
-        "answer": "Sir placed a one rupee coin on top of the stumps, and every bowler in the camp bowled to Sachin; if Sachin survived without getting out, the coin was his.",
-        "evidence": "Sir would place a one rupee coin on top of the stumps and if I managed to avoid getting out, the coin was mine. In this session every bowler in the camp would come and bowl to me."
-    }
-]
+# Load Q&A Bank
+with open(r"c:\ds\mini_brightpath\textbook_qa.json", "r", encoding="utf-8") as f:
+    sample_qa = json.load(f)
 
 for item in sample_qa:
     qp = doc.add_paragraph()

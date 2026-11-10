@@ -20,10 +20,12 @@ from pathlib import Path
 from prompt import SYSTEM, make_message
 
 DATA_FILE = Path(__file__).parent / "cleaned_english_class9.json"
+QA_FILE = Path(__file__).parent / "textbook_qa.json"
 if not DATA_FILE.exists():
     raise FileNotFoundError(f"Cleaned book data not found: {DATA_FILE}")
 
 BOOK_PAGES = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+QA_BANK = json.loads(QA_FILE.read_text(encoding="utf-8")) if QA_FILE.exists() else []
 
 # Small filler words that say nothing about the topic
 STOP = set(
@@ -37,12 +39,37 @@ def words(text):
     return set(re.findall(r"[a-z0-9]+", text.lower())) - STOP
 
 
+def find_qa_direct(question):
+    """Check if the question matches a known textbook comprehension question."""
+    q_norm = re.sub(r'[^a-z0-9 ]', '', question.lower()).strip()
+    q_w = words(question)
+
+    for item in QA_BANK:
+        for alias in item.get("aliases", []):
+            if q_norm == alias:
+                return item
+        if q_norm == re.sub(r'[^a-z0-9 ]', '', item["question"].lower()).strip():
+            return item
+
+    best_item, best_score = None, 0
+    for item in QA_BANK:
+        target_words = words(item["question"])
+        overlap = len(q_w & target_words)
+        if len(q_w) > 0 and (overlap / len(q_w)) >= 0.75 and overlap > best_score:
+            best_score = overlap
+            best_item = item
+    return best_item
+
+
 def find_excerpt(question):
     """Find the most relevant 4-sentence excerpt from the English Class 9 textbook."""
     q = words(question)
     best_chunk, best_score, best_page = None, 0, None
     for p in BOOK_PAGES:
-        sentences = re.split(r'(?<=[.!?])\s+', p["text"])
+        text = p["text"]
+        if "a) " in text and "b) " in text and "c) " in text:
+            continue
+        sentences = re.split(r'(?<=[.!?])\s+', text)
         for i in range(len(sentences)):
             chunk = " ".join(sentences[i:i+4])
             c_words = words(chunk)
@@ -75,6 +102,13 @@ def ask_ollama(question, excerpt, page_no, model="qwen2.5:0.5b", host="http://lo
 
 
 def run(question, model):
+    qa_hit = find_qa_direct(question)
+    if qa_hit:
+        print(f"\n1) DIRECT HIT: [Book Page {qa_hit['page']}] Matching Comprehension Question: '{qa_hit['question']}'")
+        print(f"2) CITATION  : \"{qa_hit['evidence']}\"")
+        print(f"3) ANSWER    : {qa_hit['answer']}")
+        return
+
     excerpt, page = find_excerpt(question)
     page_no = page["book_page"] if page else None
     print(f"\n1) FIND   : [Book Page {page_no if page_no else '?'}] {excerpt[:120] if excerpt else 'No match'}...")

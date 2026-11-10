@@ -79,6 +79,9 @@ jobs:
           npm install
           npm install llama.rn@0.12.9
 
+      - name: Patch llama.rn Android Native Asset Loader
+        run: python3 patch_llama.py
+
       - name: Pre-bundle Standalone Offline JavaScript (No Metro Needed)
         working-directory: BrightPathApp
         run: |
@@ -114,16 +117,16 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.3
-          name: BrightPath Mobile Offline v1.3 (English Class 9 Edition)
+          tag_name: v1.4
+          name: English Class 9 AI Assistant v1.4 (Zero-Hallucination & Native Engine Fix)
           body: |
-            ### 📱 BrightPath Offline Tutor (Qwen 2.5 0.5B SLM) - v1.3 English Class 9 Edition
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.4
 
-            - **English Class 9 Textbook**: Built-in 122 cleaned pages from Page VIII onwards.
-            - **Zero Hallucination Grounding**: On-device RAG answering strictly from textbook facts.
-            - **Upgraded llama.rn**: v0.12.9 native C++ inference on ARM64 CPU.
+            - **Fixed Native Inference**: Auto-extracts `model.gguf` to internal storage on first launch so the Qwen 0.5B neural engine runs natively on Android.
+            - **Exact Answer Grounding**: Solved the review question matching bug. Directly answers textbook comprehension questions (e.g., 'What did the visitor hide in the jackfruit tree?', 'Who was Sachin\'s coach?') with exact citations and evidence.
+            - **Completely Cleaned Data**: Removed all old dummy BrightPath coaching text and residual question bullets from story passages.
             - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~687 MB).
-            - **Tap the APK below under Assets to install on your phone!**
+            - **Download the APK below under Assets to install on your phone!**
           files: ./BrightPath-Qwen-Offline.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

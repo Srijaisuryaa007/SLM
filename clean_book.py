@@ -60,13 +60,21 @@ def extract_clean_page(page):
             raw_lines.append(line_str)
 
     full_page = " ".join(raw_lines)
-    # Extract embedded questions (e.g. • What did... ?)
-    questions = re.findall(r'•\s*([^•\n\?]+\?)', full_page)
-    # Remove the question bullets from the main story reading text
-    clean_prose = re.sub(r'•\s*[^•\n\?]+\?', '', full_page)
+    
+    # Extract embedded comprehension questions before stripping them
+    bullet_qs = re.findall(r'•\s*([^•\n\?]+\?)', full_page)
+    numbered_qs = re.findall(r'\b\d+\.\s*([^0-9\n\?]+\?)', full_page)
+    all_qs = [q.strip() for q in (bullet_qs + numbered_qs) if len(q.strip()) > 10]
+
+    # Clean prose by stripping out bulleted and numbered review questions
+    clean_prose = full_page
+    clean_prose = re.sub(r'•\s*[^•\n\?]+\?', ' ', clean_prose)
+    clean_prose = re.sub(r'\b\d+\.\s*[^0-9\n\?]+\?', ' ', clean_prose)
+    # Also strip stray trailing question numbers like "1. 2."
+    clean_prose = re.sub(r'\b\d+\.\s*(?=\d+\.|$)', ' ', clean_prose)
     clean_prose = re.sub(r'\s+', ' ', clean_prose).strip()
 
-    return clean_prose, [q.strip() for q in questions]
+    return clean_prose, all_qs
 
 cleaned_book = []
 for pno in range(8, len(doc)):
@@ -84,4 +92,7 @@ print(f"Extracted {len(cleaned_book)} cleaned pages!")
 with open(r"c:\ds\mini_brightpath\cleaned_english_class9.json", "w", encoding="utf-8") as f:
     json.dump(cleaned_book, f, indent=2, ensure_ascii=False)
 
-print("Saved updated cleaned_english_class9.json with clean prose & questions separated!")
+with open(r"c:\ds\mini_brightpath\mobile_app\assets\facts.json", "w", encoding="utf-8") as f:
+    json.dump(cleaned_book, f, indent=2, ensure_ascii=False)
+
+print("Saved clean prose to cleaned_english_class9.json and mobile_app/assets/facts.json!")

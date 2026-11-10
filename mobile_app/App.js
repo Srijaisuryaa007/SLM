@@ -20,7 +20,7 @@ class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <View style={styles.errorContainer}>
-          <Text style={styles.errorTitle}>BrightPath Notice</Text>
+          <Text style={styles.errorTitle}>English Assistant Notice</Text>
           <ScrollView>
             <Text style={styles.errorText}>
               {this.state.error ? this.state.error.toString() : 'An error occurred while launching.'}

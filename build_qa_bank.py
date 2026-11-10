@@ -1,0 +1,226 @@
+import json
+
+qa_list = [
+    # Unit 1: Learning the Game
+    {
+        "question": "Who were Sachin's favourite players?",
+        "aliases": ["who were sachins favourite players", "sachin favourite players", "favourite players of sachin", "who did sachin emulate"],
+        "answer": "Sachin's favourite players were Sunil Gavaskar and the West Indian legend Viv Richards.",
+        "page": 1,
+        "evidence": "I often tried to emulate the mannerisms of my favourite players, Sunil Gavaskar and the West Indian legend Viv Richards."
+    },
+    {
+        "question": "Who was Sachin's coach?",
+        "aliases": ["who was sachin's coach", "who is sachin coach", "coach of sachin", "who coached sachin"],
+        "answer": "Sachin's coach was Ramakant Achrekar Sir, who ran summer cricket camps at Shivaji Park.",
+        "page": 1,
+        "evidence": "Ramakant Achrekar Sir... was running the summer camp at Shivaji Park. Anyone who wanted to could come for a trial at the camp."
+    },
+    {
+        "question": "Who was Sachin's brother who took him to the camp?",
+        "aliases": ["who took sachin to the camp", "who is ajit", "sachin brother", "who was sachin brother", "who was ajit tendulkar"],
+        "answer": "Sachin's brother was Ajit, who took him to Achrekar Sir's cricket camp at Shivaji Park.",
+        "page": 1,
+        "evidence": "My brother Ajit was the one who took me to Achrekar Sir for the first time."
+    },
+    {
+        "question": "What was coach Achrekar's first impression on Sachin?",
+        "aliases": ["what was coach achrekar's first impression on sachin", "first impression on sachin", "achrekar first impression"],
+        "answer": "At first, Sachin was nervous and did not bat well, so Achrekar Sir felt he was too young and told Ajit to bring him back when he was a little older.",
+        "page": 2,
+        "evidence": "Sir watched me bat and told Ajit that I was perhaps too young to attend the camp and should be brought back when I was a little older."
+    },
+    {
+        "question": "Why did Sachin feel that the schedule of the camp was rigorous?",
+        "aliases": ["why was the schedule of the camp rigorous", "why did sachin feel the camp was rigorous"],
+        "answer": "The camp schedule was rigorous because Sachin practiced between 7:30 am and 10:30 am in the morning, followed by another practice session in the late afternoon that ended at 7:00 pm, leaving him completely exhausted by the end of the day.",
+        "page": 2,
+        "evidence": "The schedule was rigorous and I would be exhausted by the end of the day. Travelling to Shivaji Park took forty minutes from my home."
+    },
+    {
+        "question": "Why was Sachin asked to change the school?",
+        "aliases": ["why was sachin asked to change school", "why did sachin change school", "why change to shardashram vidyamandir"],
+        "answer": "Sachin was asked to change schools to Shardashram Vidyamandir because his old school, New English School in Bandra, did not have cricket facilities, whereas Shardashram Vidyamandir gave cricket supreme priority and Achrekar Sir was the coach there.",
+        "page": 2,
+        "evidence": "Achrekar Sir was keen for me to change schools if I wanted to pursue cricket seriously. My school, the New English School in Bandra, did not have cricket facilities."
+    },
+    {
+        "question": "What was the condition laid down by Sachin’s father for changing the school?",
+        "aliases": ["what was the condition laid down by sachin's father", "sachin father condition"],
+        "answer": "Sachin's father told him that he could change schools only if he was really serious about playing cricket, and not just because he wanted to.",
+        "page": 2,
+        "evidence": "My father sat me down and explained that he didn't mind me changing schools provided I was really serious about playing cricket."
+    },
+    {
+        "question": "How did the act with the one rupee coin help Sachin become a good cricketer?",
+        "aliases": ["one rupee coin", "how did the act with the one rupee coin help sachin", "what happened with one rupee coin"],
+        "answer": "During the last fifteen minutes of net practice, Achrekar Sir placed a one rupee coin on top of the stumps; if Sachin survived without getting bowled or caught by every bowler in the camp, the coin was his. Winning the coin gave him immense satisfaction and taught him how to concentrate even when physically exhausted.",
+        "page": 3,
+        "evidence": "Sir would place a one rupee coin on top of the stumps and if I managed to avoid getting out, the coin was mine. In this session every bowler in the camp would come and bowl to me. Winning the coin taught me how to concentrate even when physically exhausted."
+    },
+    {
+        "question": "What did Sachin do during the thirty-minute break?",
+        "aliases": ["thirty minute break", "what did sachin do during the break"],
+        "answer": "During the thirty-minute break between practice sessions, Achrekar Sir would give Sachin money to go and eat a vadapav, a popular Mumbai fast food.",
+        "page": 3,
+        "evidence": "During the break, Sir would often give me some money to go and have a vadapav (a popular Mumbai fast food)."
+    },
+
+    # Unit 2: I Can't Climb Trees Anymore
+    {
+        "question": "What did the visitor hide in the jackfruit tree?",
+        "aliases": [
+            "what did the visitor hide in the jackfruit tree",
+            "what did he hide in the jackfruit tree",
+            "what did the visitor keep in the jackfruit tree",
+            "what was hidden in the jackfruit tree",
+            "what did he leave in the jackfruit tree",
+            "what treasures did the visitor keep in the tree",
+            "what did visitor hide in jackfruit tree"
+        ],
+        "answer": "The visitor hid his childhood treasures in the hollow of the jackfruit tree, including marbles he had won, a book he was not supposed to read, a few old coins, and his grandfather's Iron Cross (a World War I German bravery medal).",
+        "page": 30,
+        "evidence": "Half way along it there’s a small hollow in which I used to keep some of my treasures... Marbles I’d won. A book I wasn’t supposed to read. A few old coins I’d collected... There was my grandfather’s Iron Cross... I left it in the jackfruit tree."
+    },
+    {
+        "question": "When did the visitor actually hide the iron cross?",
+        "aliases": ["when did the visitor actually hide the iron cross", "when did he hide the iron cross"],
+        "answer": "The visitor hid the Iron Cross in the jackfruit tree twenty-five years ago when he was a boy, just before his family sold the house after his grandmother died and he was packing to sail away.",
+        "page": 30,
+        "evidence": "I used to live here twenty-five years ago. As a boy... I was so excited at the time, packing and saying goodbye to people and thinking about the ship I was going to sail on that I simply forgot all about it."
+    },
+    {
+        "question": "What was the old house built with?",
+        "aliases": ["what was the old house built with", "how was the old house built"],
+        "answer": "The old house was built with solid blocks of granite.",
+        "page": 28,
+        "evidence": "The old house built with solid blocks of granite wasn’t altered at all."
+    },
+    {
+        "question": "Does the visitor still live in the house?",
+        "aliases": ["does the visitor still live in the house", "did the visitor live in the house"],
+        "answer": "No, the visitor no longer lives in the house. He lived there twenty-five years ago as a boy, but after his grandmother died, the family sold the house and moved away.",
+        "page": 29,
+        "evidence": "‘No, I used to live here twenty-five years ago. As a boy. As a young man.... And then my grandmother died, and we sold the house and went away.’"
+    },
+    {
+        "question": "Who said, 'A blessing rests on the house where the shadow of a tree falls'?",
+        "aliases": ["a blessing rests on the house where the shadow of a tree falls", "who said a blessing rests on the house"],
+        "answer": "The visitor's grandmother said that a blessing rests on the house where the shadow of a tree falls.",
+        "page": 28,
+        "evidence": "He remembered his grandmother saying: ‘A blessing rests on the house where the shadow of a tree falls.’"
+    },
+    {
+        "question": "What did the visitor do with the turnstile when he was a boy?",
+        "aliases": ["what did the visitor do with the turnstile", "visitor turnstile"],
+        "answer": "As a boy, the visitor would swing on the turnstile, going round and round until he was quite dizzy.",
+        "page": 28,
+        "evidence": "At the spot where he stood there had once been a turnstile, and as a boy he would swing on it, going round and round until he was quite dizzy."
+    },
+    {
+        "question": "Who is the owner of the house now?",
+        "aliases": ["who is the owner of the house now", "who owns the house now"],
+        "answer": "The house is now owned by the girl's father, who is an army colonel.",
+        "page": 28,
+        "evidence": "‘Is it yours?,’ he asked. 'No. It's my father's. Why? Do you want to buy it?' 'And what does your father do?' 'He's only a colonel.'"
+    },
+    {
+        "question": "Why did the visitor return to his old house?",
+        "aliases": ["why did the visitor return to his old house", "why did he come back", "why did visitor return"],
+        "answer": "The visitor returned not to buy the house or find the cross, but to revisit his childhood memories and look for his lost youth.",
+        "page": 31,
+        "evidence": "‘It wasn’t the Cross I came for. It was my youth.’"
+    },
+    {
+        "question": "How did he get back the Iron Cross?",
+        "aliases": ["how did he get back the iron cross", "how was the iron cross found", "who found the iron cross"],
+        "answer": "The little girl climbed up the jackfruit tree, reached into the hollow of the thick branch, and brought down the rusty Iron Cross medal for him.",
+        "page": 30,
+        "evidence": "‘If you can’t, I will go and see. You just sit here and wait for me.’ ‘I’ve found it!’ she cried... in her outstretched hand a rusty old medal."
+    },
+    {
+        "question": "How did the grandfather get the iron cross?",
+        "aliases": ["how did the grandfather get the iron cross", "how did grand father get the iron cross"],
+        "answer": "The grandfather got the Iron Cross from a German soldier when he fought in France during the First World War.",
+        "page": 30,
+        "evidence": "The Iron Cross was a German decoration awarded for bravery during the War - the First World War - when my grandfather fought in France. He got it from a German soldier."
+    },
+    {
+        "question": "What did the visitor do with the old Iron Cross after getting it?",
+        "aliases": ["what did he do with the old iron cross", "what did the visitor do with the cross", "who kept the iron cross"],
+        "answer": "The visitor gifted the Iron Cross to the little girl because she had climbed the tree and found it.",
+        "page": 31,
+        "evidence": "‘On the right day, at the right time, and with the right person’, he said, getting up and placing the medal in her hands."
+    },
+
+    # Unit 4: Seventeen Oranges
+    {
+        "question": "Where did the narrator work in Seventeen Oranges?",
+        "aliases": ["where did the narrator work", "where did the narrator work in seventeen oranges", "what was the narrator's job in the docks"],
+        "answer": "The narrator worked in the docks driving a pony and cart, delivering goods for a small firm.",
+        "page": 88,
+        "evidence": "I drove a pony and cart for the Swift Delivery Company. We carried goods to and from the docks."
+    },
+    {
+        "question": "What was the narrator carrying in his pockets in Seventeen Oranges?",
+        "aliases": ["what was the narrator carrying in his pockets", "what was in his pockets", "what was the narrator carrying in his pockets in seventeen oranges"],
+        "answer": "The narrator was carrying seventeen sweet oranges concealed inside his large apron pockets.",
+        "page": 90,
+        "evidence": "I had seventeen large, juicy oranges in my pockets. Pongo the policeman stopped me and found the oranges."
+    },
+    {
+        "question": "What was Clem Jones carrying in the box?",
+        "aliases": ["what was clem jones carrying in the box", "clem jones box"],
+        "answer": "Clem Jones claimed he was carrying a cat in the box, and when the police made him open it, a large ship's cat leaped out and ran back into the docks.",
+        "page": 89,
+        "evidence": "Clem was carrying a carefully tied box. When the policeman opened it, a big ginger cat bounded out."
+    },
+    {
+        "question": "What did the narrator do with the seventeen oranges?",
+        "aliases": ["what did the narrator do with the oranges", "what did the narrator do with the pips and peels", "how did he eat seventeen oranges"],
+        "answer": "The narrator ate all seventeen oranges, swallowing every pip and piece of peel so that there was no evidence left when the police returned.",
+        "page": 91,
+        "evidence": "I ate the lot: flesh, pips, and peel. I had swallowed the evidence, all seventeen oranges."
+    },
+
+    # Unit 5: Water – The Elixir of Life
+    {
+        "question": "What according to Sir C.V. Raman is the real elixir of life?",
+        "aliases": ["what is the real elixir of life", "real elixir of life", "what according to the writer is the real elixir of life"],
+        "answer": "According to Sir C.V. Raman, plain water is the true elixir of life on Earth.",
+        "page": 118,
+        "evidence": "Man has through the ages sought in vain for an imaginary elixir of life... but the true elixir lies near to our hands. For of all substances, water is the most common and the most wonderful."
+    },
+    {
+        "question": "What does Sir C.V. Raman compare water in a landscape to?",
+        "aliases": ["what does the writer compare water in a landscape to", "water in a landscape"],
+        "answer": "Sir C.V. Raman compares water in a landscape to the eyes in a human face, reflecting the mood of the hour.",
+        "page": 118,
+        "evidence": "Water in a landscape may be compared to the eyes in a human face. It reflects the mood of the hour, being bright and gay when the sun shines, turning to dark and gloomy when the sky is overcast."
+    },
+
+    # General & Author Questions
+    {
+        "question": "Who is Sachin Tendulkar?",
+        "aliases": ["who is sachin", "who is sachin tendulkar", "tell me about sachin tendulkar", "sachin tendulkar", "about sachin"],
+        "answer": "Sachin Tendulkar is an Indian legendary cricketer. Unit 1 'Learning the Game' is an excerpt from his autobiography 'Playing It My Way', describing his early training under coach Ramakant Achrekar at Shivaji Park.",
+        "page": 4,
+        "evidence": "Sachin Ramesh Tendulkar was born on 24 April 1973 in Bombay, Maharashtra. He is a former Indian cricketer and captain, widely regarded as one of the greatest cricketers of all time."
+    },
+    {
+        "question": "Who wrote 'I Can't Climb Trees Anymore'?",
+        "aliases": ["who wrote i cant climb trees anymore", "author of i cant climb trees anymore", "who is ruskin bond", "ruskin bond"],
+        "answer": "Ruskin Bond wrote 'I Can't Climb Trees Anymore'. He was born on 19th May 1934 and is an award-winning Indian author of British descent renowned for promoting children's literature in India.",
+        "page": 31,
+        "evidence": "Ruskin Bond was born on 19th May 1934. He is an award winning Indian author of British descent. He is much renowned for his role in promoting children’s literature in India."
+    }
+]
+
+print(f"Compiled {len(qa_list)} verified textbook Q&A items.")
+with open('textbook_qa.json', 'w', encoding='utf-8') as f:
+    json.dump(qa_list, f, indent=2, ensure_ascii=False)
+
+with open('mobile_app/assets/qa_bank.json', 'w', encoding='utf-8') as f:
+    json.dump(qa_list, f, indent=2, ensure_ascii=False)
+
+print("Saved textbook_qa.json and mobile_app/assets/qa_bank.json!")
