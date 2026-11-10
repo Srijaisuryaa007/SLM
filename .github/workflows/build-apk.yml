@@ -117,15 +117,15 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v2.2
-          name: English Class 9 AI Assistant v2.2 (Textbook MCQ Options a, b, c, d Display)
+          tag_name: v2.3
+          name: English Class 9 AI Assistant v2.3 (Complete In-Text & Book-Back Exercises)
           body: |
-            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v2.2
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v2.3
 
-            - **Full Multiple Choice Question Options (a, b, c, d)**: When textbook questions have options, the AI renders every option (a, b, c, d) in an interactive card, highlighting the correct option in emerald green with a '✓ Correct' badge and direct answer banner.
-            - **Complete Character Sketches & Summaries**: Answers questions like 'Write a character sketch of the spider' and poem summaries directly from the textbook without 'Not mentioned in the book' or disclaimers.
-            - **Listening Comprehension Solutions**: Fills in listening blanks like 'Without trust there is no relationship at all' directly from the official Page 207 transcript.
-            - **Strict Entity Domain Isolation**: Retains zero-hallucination isolation across all 5 units.
+            - **Complete In-Text Margin Questions**: Answers all local margin questions inside the book (e.g., Water – The Elixir of Life all 15 questions, Libyan desert vs Nile valley, rainfed tanks, civilized forests, cheapest transport).
+            - **'Based on your understanding of the play / story' MCQs**: Full interactive choice cards (a, b, c, d) with correct option highlighted in emerald green and direct answer banners.
+            - **Complete 'Match the following' Tables**: Formatted 2-column tables for Page 6 Synonyms/Antonyms, Page 60 Old Man River character roles, and Page 97 Phrasal Verbs.
+            - **Dictionary Synonyms & Antonyms Exercises**: Full answers for Page 61 flood terms, Page 7 homophones, and Page 94 word choices.
             - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~688 MB).
           files: ./BrightPath-Qwen-Offline.apk
         env:

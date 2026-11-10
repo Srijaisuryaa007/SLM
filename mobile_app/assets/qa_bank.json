@@ -1682,5 +1682,1207 @@
     "completed_sentence": "The poem begins with the spider's **[welcoming / invitation]** of the fly into his parlour.",
     "explanation": "Summary completion (Page 105): 1. welcoming 2. invites 3. prettiest 4. wise/alert 5. friend 6. bed 7. sheets 8. declines 9. flattery 10. wings 11. eyes 12. crest 13. looking-glass 14. flattered 15. prey 16. vanity.",
     "evidence": "Book Page 105 Exercise B: Complete the summary by filling in the spaces with suitable words."
+  },
+  {
+    "page": 6,
+    "question": "Match the words in column A with their synonym in column B",
+    "aliases": [
+      "match the words in column a with their synonym in column b",
+      "synonyms match page 6",
+      "match synonyms learning the game",
+      "synonym match sachin",
+      "synonyms column a and b page 6"
+    ],
+    "direct_answer": "1. ease ➔ effortless | 2. evolve ➔ progress | 3. excess ➔ surplus | 4. survive ➔ endure | 5. immense ➔ great",
+    "matches": [
+      [
+        "1. ease",
+        "effortless"
+      ],
+      [
+        "2. evolve",
+        "progress"
+      ],
+      [
+        "3. excess",
+        "surplus"
+      ],
+      [
+        "4. survive",
+        "endure"
+      ],
+      [
+        "5. immense",
+        "great"
+      ]
+    ],
+    "completed_sentence": "Synonym Matches: **[ease ➔ effortless, evolve ➔ progress, excess ➔ surplus, survive ➔ endure, immense ➔ great]**.",
+    "explanation": "Standard vocabulary synonym matching exercise from Unit 1: Learning the Game (Page 6).",
+    "evidence": "Book Page 6 Vocabulary C: Match the words in column A with their synonym in column B."
+  },
+  {
+    "page": 6,
+    "question": "Match the words in column A with their antonym in column B",
+    "aliases": [
+      "match the words in column a with their antonym in column b",
+      "antonyms match page 6",
+      "match antonyms learning the game",
+      "antonym match sachin",
+      "antonyms column a and b page 6"
+    ],
+    "direct_answer": "1. concentrate ➔ distract | 2. inevitable ➔ preventable | 3. occasional ➔ continual | 4. complete ➔ incomplete | 5. insane ➔ wise / sane",
+    "matches": [
+      [
+        "1. concentrate",
+        "distract"
+      ],
+      [
+        "2. inevitable",
+        "preventable"
+      ],
+      [
+        "3. occasional",
+        "continual"
+      ],
+      [
+        "4. complete",
+        "incomplete"
+      ],
+      [
+        "5. insane",
+        "wise / sane"
+      ]
+    ],
+    "completed_sentence": "Antonym Matches: **[concentrate ➔ distract, inevitable ➔ preventable, occasional ➔ continual, complete ➔ incomplete, insane ➔ wise]**.",
+    "explanation": "Standard vocabulary antonym matching exercise from Unit 1: Learning the Game (Page 6).",
+    "evidence": "Book Page 6 Vocabulary D: Match the words in column A with their antonym in column B."
+  },
+  {
+    "page": 7,
+    "question": "Consult a dictionary to find the homophones for the given words",
+    "aliases": [
+      "consult a dictionary to find the homophones for the given words",
+      "homophones page 7",
+      "find homophones page 7",
+      "homophones dictionary exercise",
+      "homophones learning the game"
+    ],
+    "direct_answer": "1. in ➔ inn | 2. know ➔ no | 3. be ➔ bee | 4. to ➔ two / too | 5. watt ➔ what | 6. right ➔ write | 7. were ➔ wear | 8. bare ➔ bear | 9. herd ➔ heard | 10. throne ➔ thrown",
+    "matches": [
+      [
+        "1. in",
+        "inn"
+      ],
+      [
+        "2. know",
+        "no"
+      ],
+      [
+        "3. be",
+        "bee"
+      ],
+      [
+        "4. to",
+        "two / too"
+      ],
+      [
+        "5. watt",
+        "what"
+      ],
+      [
+        "6. right",
+        "write / rite"
+      ],
+      [
+        "7. were",
+        "wear / ware"
+      ],
+      [
+        "8. bare",
+        "bear"
+      ],
+      [
+        "9. herd",
+        "heard"
+      ],
+      [
+        "10. throne",
+        "thrown"
+      ]
+    ],
+    "completed_sentence": "Homophones: **[in ➔ inn, know ➔ no, be ➔ bee, to ➔ two, watt ➔ what, right ➔ write, were ➔ wear, bare ➔ bear, herd ➔ heard, throne ➔ thrown]**.",
+    "explanation": "Homophones are words that sound identical in pronunciation but differ in meaning, origin, and spelling.",
+    "evidence": "Book Page 7 Vocabulary F: Consult a dictionary, to find the homophones for the given words."
+  },
+  {
+    "page": 25,
+    "question": "Identify the character or speaker: They gathered the treasure.",
+    "aliases": [
+      "they gathered the treasure",
+      "identify the character or speaker they gathered the treasure"
+    ],
+    "direct_answer": "The good old couple",
+    "completed_sentence": "Character / Speaker: **[The good old couple]**.",
+    "explanation": "After their faithful dog Muko guided them to a spot in the garden and barked, the kind couple dug and discovered gold and silver.",
+    "evidence": "Book Page 25 Exercise A.1: 'They gathered the treasure.'"
+  },
+  {
+    "page": 25,
+    "question": "Identify the character or speaker: The pine tree under which I am buried, to be cut down and made into a mortar.",
+    "aliases": [
+      "the pine tree under which i am buried",
+      "pine tree under which i am buried to be cut down and made into a mortar"
+    ],
+    "direct_answer": "The spirit of the dog (Muko)",
+    "completed_sentence": "Character / Speaker: **[The spirit of the dog (Muko)]**.",
+    "explanation": "The dog's spirit appeared in a dream to the good old man and instructed him to cut down the pine tree at his grave to make a mortar.",
+    "evidence": "Book Page 25 Exercise A.2: 'The pine tree under which, I am burried, to be cut down and made into a mortar.'"
+  },
+  {
+    "page": 25,
+    "question": "Identify the character or speaker: They dug, and found nothing but a quantity of dirt and nasty offal.",
+    "aliases": [
+      "they dug and found nothing but a quantity of dirt and nasty offal",
+      "found nothing but a quantity of dirt and nasty offal"
+    ],
+    "direct_answer": "The envious / greedy neighbours",
+    "completed_sentence": "Character / Speaker: **[The envious / greedy neighbours]**.",
+    "explanation": "Envious of the kind couple's fortune, the wicked neighbours borrowed the dog and forced him to dig, only finding putrid offal.",
+    "evidence": "Book Page 25 Exercise A.3: 'They dug, and found nothing but a quantity of dirt and nasty offal.'"
+  },
+  {
+    "page": 25,
+    "question": "Identify the character or speaker: He had not to wait long before he was called into the prince's palace, and ordered to exhibit his power.",
+    "aliases": [
+      "he had not to wait long before he was called into the princes palace",
+      "ordered to exhibit his power envious neighbour"
+    ],
+    "direct_answer": "The good old man",
+    "completed_sentence": "Character / Speaker: **[The good old man]**.",
+    "explanation": "The good old man used the magical ash from the burnt mortar to make withered cherry trees burst into blossom before the prince.",
+    "evidence": "Book Page 25 Exercise A.4: 'He had not to wait long before he was called into the prince's palace, and ordered to exhibit his power.'"
+  },
+  {
+    "page": 25,
+    "question": "Identify the character or speaker: BOW, WOW, WOW!",
+    "aliases": [
+      "bow wow wow",
+      "bow wow wow identify character or speaker"
+    ],
+    "direct_answer": "The dog (Muko)",
+    "completed_sentence": "Character / Speaker: **[The dog (Muko)]**.",
+    "explanation": "The faithful dog barked 'Bow, wow, wow!' while scratching the ground to alert his masters to the buried gold.",
+    "evidence": "Book Page 25 Exercise A.5: 'BOW, WOW, WOW!'"
+  },
+  {
+    "page": 32,
+    "question": "Based on your understanding of the story, indicate True or False: I Can't Climb Trees Anymore",
+    "aliases": [
+      "true or false i cant climb trees anymore",
+      "page 32 true or false",
+      "indicate either t or f against the columns",
+      "true false statements i cant climb trees anymore"
+    ],
+    "direct_answer": "1. F | 2. T | 3. T | 4. T | 5. T | 6. F | 7. T | 8. F | 9. F | 10. F",
+    "matches": [
+      [
+        "1. The visitor had hidden a few old coins in the tree",
+        "False (He hid an iron cross and marble)"
+      ],
+      [
+        "2. The jackfruit tree was still there",
+        "True"
+      ],
+      [
+        "3. As a boy the visitor used to swing on the turnstile",
+        "True"
+      ],
+      [
+        "4. The visitor had sold the house",
+        "True"
+      ],
+      [
+        "5. A girl came out of the house",
+        "True"
+      ],
+      [
+        "6. The visitor’s grandfather used to sit on the stone bench",
+        "False (Grandmother used to sit there)"
+      ],
+      [
+        "7. The visitor was able to remember the music of a piano",
+        "True"
+      ],
+      [
+        "8. The visitor was able to climb the jackfruit tree",
+        "False (He couldn't climb anymore)"
+      ],
+      [
+        "9. The purpose of the visit was to buy the house back",
+        "False (Looking for his lost youth)"
+      ],
+      [
+        "10. The visitor climbed over the wall easily",
+        "False (He struggled with breathing heavily)"
+      ]
+    ],
+    "completed_sentence": "True/False Statements: **[1-F, 2-T, 3-T, 4-T, 5-T, 6-F, 7-T, 8-F, 9-F, 10-F]**.",
+    "explanation": "True or False exercise from Unit 2: I Can't Climb Trees Anymore by Ruskin Bond (Page 32).",
+    "evidence": "Book Page 32 Exercise A: Based on your understanding of the story, indicate either ‘T’ (True) or ‘F’ (False)."
+  },
+  {
+    "page": 59,
+    "question": "The radio announced that__________________________",
+    "aliases": [
+      "the radio announced that",
+      "radio announced old man river",
+      "what did the radio announce old man river"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "the river was above the flood stage."
+      },
+      {
+        "letter": "b",
+        "text": "the Burnet Dam had given way."
+      },
+      {
+        "letter": "c",
+        "text": "there will be a cloud burst."
+      },
+      {
+        "letter": "d",
+        "text": "they will be a cyclone."
+      }
+    ],
+    "correct_option": "a",
+    "direct_answer": "Option a) the river was above the flood stage.",
+    "completed_sentence": "The radio announced that **[the river was above the flood stage]** (Option a).",
+    "explanation": "In Dorothy Deming's play, the radio emergency broadcast announced rising water levels exceeding the flood stage.",
+    "evidence": "Book Page 59 Exercise A.1: The radio announced that a. the river was above the flood stage."
+  },
+  {
+    "page": 59,
+    "question": "Mother couldn't get home from Mrs. Brant's because_____________",
+    "aliases": [
+      "mother couldnt get home from mrs brants because",
+      "why couldnt mother get home old man river",
+      "mother couldnt return because"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "it was raining heavily."
+      },
+      {
+        "letter": "b",
+        "text": "the bridges between home and the town were under water."
+      },
+      {
+        "letter": "c",
+        "text": "there was an emergency at Mrs. Brant's house."
+      },
+      {
+        "letter": "d",
+        "text": "she had broken her leg."
+      }
+    ],
+    "correct_option": "b",
+    "direct_answer": "Option b) the bridges between home and the town were under water.",
+    "completed_sentence": "Mother couldn't get home because **[the bridges between home and the town were under water]** (Option b).",
+    "explanation": "Flash flooding submerged the river bridges, stranding Mrs. March in town at Mrs. Brant's residence.",
+    "evidence": "Book Page 59 Exercise A.2: Mother couldn't get home from Mrs. Brant's because b. the bridges between home and the town were under water."
+  },
+  {
+    "page": 59,
+    "question": "The Burnett Dam gave away as____________",
+    "aliases": [
+      "the burnett dam gave away as",
+      "why did burnett dam give way",
+      "burnett dam gave way because"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "it rained for days."
+      },
+      {
+        "letter": "b",
+        "text": "the dam was weak."
+      },
+      {
+        "letter": "c",
+        "text": "it rained heavily and the snow was melting."
+      },
+      {
+        "letter": "d",
+        "text": "the maintenance was poor."
+      }
+    ],
+    "correct_option": "c",
+    "direct_answer": "Option c) it rained heavily and the snow was melting.",
+    "completed_sentence": "The Burnett Dam gave away as **[it rained heavily and the snow was melting]** (Option c).",
+    "explanation": "A violent cloudburst combined with rapid snowmelt overwhelmed the dam's capacity.",
+    "evidence": "Book Page 59 Exercise A.3: The Burnett Dam gave away as c. it rained heavily and the snow was melting."
+  },
+  {
+    "page": 60,
+    "question": "Match the following by drawing a line across column A and B: Old Man River",
+    "aliases": [
+      "match the following old man river",
+      "match the following by drawing a line across column a and b",
+      "column a and b old man river",
+      "match characters old man river",
+      "amy betty rose sara match"
+    ],
+    "direct_answer": "1. Amy ➔ Blankets | 2. Betty ➔ Flashlight | 3. Rose ➔ Tubs and pails | 4. Sara ➔ Fractured leg | 5. Jim ➔ Rescues the children | 6. Penny Marsh ➔ Nurse | 7. Mr. Peters ➔ Red Cross | 8. Mother ➔ Mrs. Brant's | 9. Dick ➔ Dentist | 10. Dad ➔ To Chicago on business",
+    "matches": [
+      [
+        "1. Amy",
+        "Blankets"
+      ],
+      [
+        "2. Betty",
+        "Flashlight"
+      ],
+      [
+        "3. Rose",
+        "Tubs and pails"
+      ],
+      [
+        "4. Sara",
+        "Fractured leg"
+      ],
+      [
+        "5. Jim",
+        "Rescues the children"
+      ],
+      [
+        "6. Penny Marsh",
+        "Nurse"
+      ],
+      [
+        "7. Mr. Peters",
+        "Red Cross"
+      ],
+      [
+        "8. Mother",
+        "Mrs. Brant's"
+      ],
+      [
+        "9. Dick",
+        "Dentist"
+      ],
+      [
+        "10. Dad",
+        "To Chicago on business"
+      ]
+    ],
+    "completed_sentence": "Old Man River Matches: **[Amy ➔ Blankets, Betty ➔ Flashlight, Rose ➔ Tubs & pails, Sara ➔ Fractured leg, Jim ➔ Rescues children, Penny Marsh ➔ Nurse, Mr. Peters ➔ Red Cross, Mother ➔ Mrs. Brant's, Dick ➔ Dentist, Dad ➔ Chicago]**.",
+    "explanation": "Complete 10-character assignment matching table from the play Old Man River (Book Page 60).",
+    "evidence": "Book Page 60 Exercise C: Match the following by drawing a line across column A and B."
+  },
+  {
+    "page": 61,
+    "question": "Using a dictionary, find out the synonyms and the antonyms of the words given below",
+    "aliases": [
+      "using a dictionary find out the synonyms and the antonyms of the words given below",
+      "synonyms and antonyms page 61",
+      "dictionary synonyms antonyms old man river",
+      "hard flood interrupt scared synonyms antonyms",
+      "vocabulary table page 61"
+    ],
+    "direct_answer": "1. Hard: Syn=difficult, Ant=easy | 2. Flood: Syn=deluge/overflow, Ant=drought/trickle | 3. Interrupt: Syn=disturb/break in, Ant=continue/proceed | 4. Scared: Syn=frightened, Ant=confident/bold | 5. Irritation: Syn=annoyance, Ant=delight/comfort | 6. Organize: Syn=arrange/plan, Ant=disorganize | 7. Serious: Syn=grave/critical, Ant=trivial/funny | 8. Snappy: Syn=irritable, Ant=patient/polite | 9. Emergency: Syn=crisis, Ant=normalcy | 10. Rescue: Syn=save/deliver, Ant=abandon/endanger",
+    "matches": [
+      [
+        "1. Hard (Adj)",
+        "Syn: difficult | Ant: easy"
+      ],
+      [
+        "2. Flood (Noun/Verb)",
+        "Syn: deluge, overflow | Ant: drought, trickle"
+      ],
+      [
+        "3. Interrupt (Verb)",
+        "Syn: disturb, break in | Ant: continue, proceed"
+      ],
+      [
+        "4. Scared (Adj)",
+        "Syn: frightened, terrified | Ant: confident, fearless"
+      ],
+      [
+        "5. Irritation (Noun)",
+        "Syn: annoyance | Ant: delight, pleasure"
+      ],
+      [
+        "6. Organize (Verb)",
+        "Syn: arrange, coordinate | Ant: confuse, disorganize"
+      ],
+      [
+        "7. Serious (Adj)",
+        "Syn: grave, solemn | Ant: trivial, lighthearted"
+      ],
+      [
+        "8. Snappy (Adj)",
+        "Syn: irritable, touchy | Ant: patient, calm"
+      ],
+      [
+        "9. Emergency (Noun)",
+        "Syn: crisis, urgency | Ant: calm, normalcy"
+      ],
+      [
+        "10. Rescue (Verb/Noun)",
+        "Syn: save, deliver | Ant: abandon, endanger"
+      ]
+    ],
+    "completed_sentence": "Vocabulary Table: **[Hard (difficult/easy), Flood (deluge/drought), Interrupt (disturb/continue), Scared (frightened/confident), Irritation (annoyance/delight), Organize (arrange/confuse), Serious (grave/trivial), Snappy (irritable/patient), Emergency (crisis/normalcy), Rescue (save/abandon)]**.",
+    "explanation": "Comprehensive dictionary exercise from Unit 3 (Page 61) defining parts of speech, synonyms, and antonyms for flood emergency terms.",
+    "evidence": "Book Page 61 Vocabulary E: Using a dictionary, find out the synonyms and the antonyms of the words given below."
+  },
+  {
+    "page": 94,
+    "question": "The voice in his head asked the narrator to eat the evidence.",
+    "aliases": [
+      "the voice in his head asked the narrator to eat the evidence",
+      "synonym of evidence seventeen oranges",
+      "find the synonym for evidence"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "proof"
+      },
+      {
+        "letter": "b",
+        "text": "contradict"
+      },
+      {
+        "letter": "c",
+        "text": "disprove"
+      },
+      {
+        "letter": "d",
+        "text": "refute"
+      }
+    ],
+    "correct_option": "a",
+    "direct_answer": "Option a) proof",
+    "completed_sentence": "The voice in his head asked the narrator to eat the **[proof]** (evidence) (Option a).",
+    "explanation": "Evidence means available facts or information indicating whether a belief is valid; a synonym is proof.",
+    "evidence": "Book Page 94 Exercise D.1: The voice in his head asked the narrator to eat the evidence. a) proof."
+  },
+  {
+    "page": 94,
+    "question": "Clem looked at Pongo furiously.",
+    "aliases": [
+      "clem looked at pongo furiously",
+      "synonym of furiously seventeen oranges",
+      "find the synonym for furiously"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "politely"
+      },
+      {
+        "letter": "b",
+        "text": "gently"
+      },
+      {
+        "letter": "c",
+        "text": "angrily"
+      },
+      {
+        "letter": "d",
+        "text": "calmly"
+      }
+    ],
+    "correct_option": "c",
+    "direct_answer": "Option c) angrily",
+    "completed_sentence": "Clem looked at Pongo **[angrily]** (furiously) (Option c).",
+    "explanation": "Furiously means in an extremely angry or violent manner; a synonym is angrily.",
+    "evidence": "Book Page 94 Exercise D.2: Clem looked at Pongo furiously. c) angrily."
+  },
+  {
+    "page": 94,
+    "question": "When Pongo caught the narrator with the oranges, he was very frightened.",
+    "aliases": [
+      "when pongo caught the narrator with the oranges he was very frightened",
+      "synonym of frightened seventeen oranges",
+      "find the synonym for frightened"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "undaunted"
+      },
+      {
+        "letter": "b",
+        "text": "afraid"
+      },
+      {
+        "letter": "c",
+        "text": "valiant"
+      },
+      {
+        "letter": "d",
+        "text": "brave"
+      }
+    ],
+    "correct_option": "b",
+    "direct_answer": "Option b) afraid",
+    "completed_sentence": "When Pongo caught the narrator with the oranges, he was very **[afraid]** (frightened) (Option b).",
+    "explanation": "Frightened means afraid or anxious; a direct synonym is afraid.",
+    "evidence": "Book Page 94 Exercise D.3: When Pongo caught the narrator with the oranges, he was very frightened. b) afraid."
+  },
+  {
+    "page": 94,
+    "question": "The narrator was quiet, when Pongo questioned him.",
+    "aliases": [
+      "the narrator was quiet when pongo questioned him",
+      "synonym of quiet seventeen oranges",
+      "find the synonym for quiet"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "furious"
+      },
+      {
+        "letter": "b",
+        "text": "noisy"
+      },
+      {
+        "letter": "c",
+        "text": "silent"
+      },
+      {
+        "letter": "d",
+        "text": "agitated"
+      }
+    ],
+    "correct_option": "c",
+    "direct_answer": "Option c) silent",
+    "completed_sentence": "The narrator was **[silent]** (quiet), when Pongo questioned him (Option c).",
+    "explanation": "Quiet in this context means keeping mouth shut and not speaking; a direct synonym is silent.",
+    "evidence": "Book Page 94 Exercise D.4: The narrator was quiet, when Pongo questioned him. c) silent."
+  },
+  {
+    "page": 94,
+    "question": "The narrator was in trouble because he took the oranges.",
+    "aliases": [
+      "the narrator was in trouble because he took the oranges",
+      "synonym of trouble seventeen oranges",
+      "find the synonym for trouble"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "peace"
+      },
+      {
+        "letter": "b",
+        "text": "difficulty"
+      },
+      {
+        "letter": "c",
+        "text": "harmony"
+      },
+      {
+        "letter": "d",
+        "text": "comfort"
+      }
+    ],
+    "correct_option": "b",
+    "direct_answer": "Option b) difficulty",
+    "completed_sentence": "The narrator was in **[difficulty]** (trouble) because he took the oranges (Option b).",
+    "explanation": "Trouble denotes difficulty, distress, or problems; a direct synonym is difficulty.",
+    "evidence": "Book Page 94 Exercise D.5: The narrator was in trouble because he took the oranges. b) difficulty."
+  },
+  {
+    "page": 94,
+    "question": "Seventeen oranges were hidden in the narrator’s pockets.",
+    "aliases": [
+      "seventeen oranges were hidden in the narrators pockets",
+      "antonym of hidden seventeen oranges",
+      "find the antonym for hidden"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "exposed"
+      },
+      {
+        "letter": "b",
+        "text": "masked"
+      },
+      {
+        "letter": "c",
+        "text": "concealed"
+      },
+      {
+        "letter": "d",
+        "text": "buried"
+      }
+    ],
+    "correct_option": "a",
+    "direct_answer": "Option a) exposed",
+    "completed_sentence": "Seventeen oranges were **[exposed]** (antonym of hidden) in the pockets (Option a).",
+    "explanation": "Hidden means kept out of sight; the antonym is exposed (visible, uncovered).",
+    "evidence": "Book Page 94 Exercise E.1: Seventeen oranges were hidden in the narrator’s pockets. a) exposed."
+  },
+  {
+    "page": 94,
+    "question": "Clem Jones was ordered to open the box.",
+    "aliases": [
+      "clem jones was ordered to open the box",
+      "antonym of ordered seventeen oranges",
+      "find the antonym for ordered"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "prepared"
+      },
+      {
+        "letter": "b",
+        "text": "arranged"
+      },
+      {
+        "letter": "c",
+        "text": "forced"
+      },
+      {
+        "letter": "d",
+        "text": "requested"
+      }
+    ],
+    "correct_option": "d",
+    "direct_answer": "Option d) requested",
+    "completed_sentence": "Clem Jones was **[requested]** (antonym of ordered) to open the box (Option d).",
+    "explanation": "Ordered denotes commanding authoritatively; the opposite is requested (asking politely).",
+    "evidence": "Book Page 94 Exercise E.2: Clem Jones was ordered to open the box. d) requested."
+  },
+  {
+    "page": 94,
+    "question": "Pongo locked the narrator inside the cabin.",
+    "aliases": [
+      "pongo locked the narrator inside the cabin",
+      "antonym of locked seventeen oranges",
+      "find the antonym for locked"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "closed"
+      },
+      {
+        "letter": "b",
+        "text": "sealed"
+      },
+      {
+        "letter": "c",
+        "text": "released"
+      },
+      {
+        "letter": "d",
+        "text": "chocked"
+      }
+    ],
+    "correct_option": "c",
+    "direct_answer": "Option c) released",
+    "completed_sentence": "Pongo **[released]** (antonym of locked) the narrator inside the cabin (Option c).",
+    "explanation": "Locked means fastened or confined; the opposite is released (set free).",
+    "evidence": "Book Page 94 Exercise E.3: Pongo locked the narrator inside the cabin. c) released."
+  },
+  {
+    "page": 94,
+    "question": "Pongo carefully searched the narrator’s pockets.",
+    "aliases": [
+      "pongo carefully searched the narrators pockets",
+      "antonym of carefully seventeen oranges",
+      "find the antonym for carefully"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "attentively"
+      },
+      {
+        "letter": "b",
+        "text": "carelessly"
+      },
+      {
+        "letter": "c",
+        "text": "cautiously"
+      },
+      {
+        "letter": "d",
+        "text": "strictly"
+      }
+    ],
+    "correct_option": "b",
+    "direct_answer": "Option b) carelessly",
+    "completed_sentence": "Pongo **[carelessly]** (antonym of carefully) searched the pockets (Option b).",
+    "explanation": "Carefully means with great attention; the antonym is carelessly.",
+    "evidence": "Book Page 94 Exercise E.4: Pongo carefully searched the narrator’s pockets. b) carelessly."
+  },
+  {
+    "page": 94,
+    "question": "The narrator of the story felt very sick for a week",
+    "aliases": [
+      "the narrator of the story felt very sick for a week",
+      "antonym of sick seventeen oranges",
+      "find the antonym for sick"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "healthy"
+      },
+      {
+        "letter": "b",
+        "text": "disordered"
+      },
+      {
+        "letter": "c",
+        "text": "feeble"
+      },
+      {
+        "letter": "d",
+        "text": "unhealthy"
+      }
+    ],
+    "correct_option": "a",
+    "direct_answer": "Option a) healthy",
+    "completed_sentence": "The narrator felt very **[healthy]** (antonym of sick) for a week (Option a).",
+    "explanation": "Sick means unwell or ill; the antonym is healthy.",
+    "evidence": "Book Page 94 Exercise E.5: The narrator of the story felt very sick for a week. a) healthy."
+  },
+  {
+    "page": 96,
+    "question": "In New York Mr Scotti left the plane because he thought he",
+    "aliases": [
+      "in new york mr scotti left the plane because he thought he",
+      "mr scotti new york plane",
+      "why did scotti get off plane in new york"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "had to change the plane."
+      },
+      {
+        "letter": "b",
+        "text": "was in Rome."
+      },
+      {
+        "letter": "c",
+        "text": "had to phone his cousins."
+      },
+      {
+        "letter": "d",
+        "text": "had to look at the airport."
+      }
+    ],
+    "correct_option": "b",
+    "direct_answer": "Option b) was in Rome.",
+    "completed_sentence": "Mr Scotti left the plane because he thought he **[was in Rome]** (Option b).",
+    "explanation": "On a flight from America to Italy, the plane made an interim stop at JFK Airport in New York. Scotti mistakenly believed he had reached Rome.",
+    "evidence": "Book Page 96 Exercise K.1: In New York Mr Scotti left the plane because he thought he (b) was in Rome."
+  },
+  {
+    "page": 96,
+    "question": "He asked the policeman for information in Italian because he",
+    "aliases": [
+      "he asked the policeman for information in italian because he",
+      "scotti policeman italian",
+      "why scotti asked policeman in italian"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "thought he was in Italy."
+      },
+      {
+        "letter": "b",
+        "text": "knew the policeman."
+      },
+      {
+        "letter": "c",
+        "text": "didn't speak any other language."
+      },
+      {
+        "letter": "d",
+        "text": "liked the language."
+      }
+    ],
+    "correct_option": "a",
+    "direct_answer": "Option a) thought he was in Italy.",
+    "completed_sentence": "Scotti asked in Italian because he **[thought he was in Italy]** (Option a).",
+    "explanation": "Convinced he was roaming the streets of Rome, he naturally addressed the officer in Italian.",
+    "evidence": "Book Page 96 Exercise K.2: He asked the policeman for information in Italian because he (a) thought he was in Italy."
+  },
+  {
+    "page": 96,
+    "question": "On the next day, Mr Scotti was __________ at how the local people responded to his queries.",
+    "aliases": [
+      "on the next day mr scotti was at how the local people responded",
+      "scotti surprised english drivers"
+    ],
+    "options": [
+      {
+        "letter": "a",
+        "text": "surprised"
+      },
+      {
+        "letter": "b",
+        "text": "unhappy"
+      },
+      {
+        "letter": "c",
+        "text": "glad"
+      },
+      {
+        "letter": "d",
+        "text": "upset"
+      }
+    ],
+    "correct_option": "a",
+    "direct_answer": "Option a) surprised",
+    "completed_sentence": "Mr Scotti was **[surprised]** at how the local people responded in English (Option a).",
+    "explanation": "After travelling around by bus for 12 hours, he was baffled why everyone spoke English in what he thought was Rome.",
+    "evidence": "Book Page 96 Exercise K.3: On the next day, Mr Scotti was (a) surprised."
+  },
+  {
+    "page": 97,
+    "question": "Find the meanings of phrasal verbs by using a dictionary",
+    "aliases": [
+      "find the meanings of phrasal verbs by using a dictionary",
+      "phrasal verbs page 97",
+      "phrasal verbs column a and b page 97",
+      "meanings of phrasal verbs using dictionary seventeen oranges"
+    ],
+    "direct_answer": "1. fond of ➔ liking someone or something | 2. hidden away ➔ concealed in a secret place | 3. lock up ➔ to imprison or securely enclose | 4. laughed at ➔ ridiculed or mocked | 5. look at ➔ inspect or examine | 6. bring up ➔ raise or mention | 7. gave up ➔ surrendered or stopped trying | 8. went through ➔ examined thoroughly | 9. finish off ➔ consume or destroy completely | 10. figure out ➔ understand or solve",
+    "matches": [
+      [
+        "1. fond of",
+        "liking someone or something very much"
+      ],
+      [
+        "2. hidden away",
+        "concealed in a secret, secure place"
+      ],
+      [
+        "3. lock up",
+        "to imprison or shut in securely"
+      ],
+      [
+        "4. laughed at",
+        "ridiculed, teased, or mocked"
+      ],
+      [
+        "5. look at",
+        "to inspect, observe, or examine"
+      ],
+      [
+        "6. bring up",
+        "to raise, educate, or mention"
+      ],
+      [
+        "7. gave up",
+        "surrendered or stopped attempting"
+      ],
+      [
+        "8. went through",
+        "searched, examined, or experienced"
+      ],
+      [
+        "9. finish off",
+        "to consume, eat, or destroy completely"
+      ],
+      [
+        "10. figure out",
+        "to understand, solve, or calculate"
+      ]
+    ],
+    "completed_sentence": "Phrasal Verbs Dictionary Meanings: **[fond of (liking), hidden away (concealed), lock up (imprison), laughed at (mocked), look at (inspect), bring up (mention), gave up (surrendered), went through (searched), finish off (consume completely), figure out (understand)]**.",
+    "explanation": "Complete 10 phrasal verb dictionary definition exercise from Unit 4: Seventeen Oranges (Book Page 97).",
+    "evidence": "Book Page 97 Grammar A: Find the meanings by using a dictionary and complete Column B."
+  },
+  {
+    "page": 118,
+    "question": "What is the 'wonderful difference' the writer talks about in the passage?",
+    "aliases": [
+      "what is the wonderful difference the writer talks about in the passage",
+      "wonderful difference c v raman",
+      "libyan desert and nile valley difference"
+    ],
+    "direct_answer": "The contrast between the arid Libyan desert and the green, fertile valley of the Nile.",
+    "completed_sentence": "The wonderful difference is **[between the barren Libyan desert without a speck of green life, and the fertile, teeming valley of the River Nile]**.",
+    "explanation": "Standing on the line separating the Libyan Desert from the Valley of the Nile, on one side is a sea of sand, while on the other is one of the most fertile areas on Earth, separated solely by the water of the Nile.",
+    "evidence": "Book Page 118: 'On one side was visible a sea of billowing sand without a speck of green... on the other side lay one of the greenest, most fertile and densely populated areas... What made this wonderful difference? Why, it is the water of the River Nile!'"
+  },
+  {
+    "page": 118,
+    "question": "What is the 'cheering sight' mentioned in the paragraph?",
+    "aliases": [
+      "what is the cheering sight mentioned in the paragraph",
+      "cheering sight water elixir",
+      "rainfed tanks south india"
+    ],
+    "direct_answer": "The rainfed tanks of South India when they are full of water.",
+    "completed_sentence": "The cheering sight is **[the rainfed tanks of South India when they are full of water]**.",
+    "explanation": "Though often shallow, these South Indian tanks play a vital role in agriculture and are beautiful when reflecting the sunrise or sunset.",
+    "evidence": "Book Page 118: 'The rainfed tanks that are so common in South India – Alas! often so sadly neglected in their maintenance – are a cheering sight when they are full.'"
+  },
+  {
+    "page": 118,
+    "question": "What does the writer compare water in a landscape to?",
+    "aliases": [
+      "what does the writer compare water in a landscape to",
+      "water in landscape compared to",
+      "eyes in a human face"
+    ],
+    "direct_answer": "The eyes in a human face, reflecting the mood of the hour.",
+    "completed_sentence": "Water in a landscape is compared to **[the eyes in a human face, reflecting the mood of the hour]**.",
+    "explanation": "It is bright and gay when the sun shines, and turns dark and gloomy when the sky is overcast.",
+    "evidence": "Book Page 118: 'Water in a landscape may be compared to the eyes in a human face. It reflects the mood of the hour...'"
+  },
+  {
+    "page": 119,
+    "question": "How does the water in rainfed tanks get its colour?",
+    "aliases": [
+      "how does the water in rainfed tanks get its colour",
+      "colour of water in rainfed tanks",
+      "silt in suspension"
+    ],
+    "direct_answer": "From the silt or finely divided soil carried in suspension from the catchment area.",
+    "completed_sentence": "Water in rainfed tanks gets its colour from **[the finely divided soil or silt carried in suspension, reflecting the nature of the earth in the catchment area]**.",
+    "explanation": "The color varies with the earth in the catchment area and is most vivid immediately following rain.",
+    "evidence": "Book Page 119: 'One of the most remarkable facts about water is its power to carry silt... This is the origin of the characteristic colour of the water in rainfed tanks.'"
+  },
+  {
+    "page": 119,
+    "question": "What other factors add to the erosion of precious soil?",
+    "aliases": [
+      "what other factors add to the erosion of precious soil",
+      "contributory causes of soil erosion"
+    ],
+    "direct_answer": "The slope of the land, removal of vegetation, ruts gathering momentum, and absence of check bunds.",
+    "completed_sentence": "Additional factors causing soil erosion are **[the slope of the land, removal of protective vegetative cover, ruts gathering flow momentum, and the absence of any checks to the water flow]**.",
+    "explanation": "These factors accelerate the speed and volume of moving water, dislodging precious topsoil.",
+    "evidence": "Book Page 119: 'Contributory causes are the slope of the land, removal of the natural protective coat of vegetation, the existence of ruts... and the absence of any checks of such flow.'"
+  },
+  {
+    "page": 120,
+    "question": "How does prevention of soil erosion serve a double purpose?",
+    "aliases": [
+      "how does prevention of soil erosion serve a double purpose",
+      "double purpose soil erosion",
+      "double purpose water conservation"
+    ],
+    "direct_answer": "It protects fertile topsoil from washing away, and conserves rainwater in the soil.",
+    "completed_sentence": "Prevention of soil erosion serves a double purpose by **[preserving fertile topsoil from being washed away and keeping moisture stored in the ground where it is needed]**.",
+    "explanation": "Techniques that check rushing water simultaneously conserve moisture in the ground, supporting crops.",
+    "evidence": "Book Page 120: '...adoption of techniques preventing soil erosion would also help to conserve and keep the water where it is wanted... and such techniques therefore serve a double purpose.'"
+  },
+  {
+    "page": 120,
+    "question": "What are the two sources of water?",
+    "aliases": [
+      "what are the two sources of water",
+      "two sources of water water elixir",
+      "ultimate source of water"
+    ],
+    "direct_answer": "Rain (or snowfall) and artesian water.",
+    "completed_sentence": "The two primary sources of water are **[rain/snowfall and artesian (sub-surface) water]**.",
+    "explanation": "Rainfall is the ultimate primary source for all surface water, rivers, and seasonal agriculture.",
+    "evidence": "Book Page 120: 'Apart from artesian water the ultimate source in all cases is rain or snowfall.'"
+  },
+  {
+    "page": 120,
+    "question": "What happens to the rain water?",
+    "aliases": [
+      "what happens to the rain water",
+      "what happens to rainwater in india"
+    ],
+    "direct_answer": "An immense quantity runs off the ground into rivers and flows away to waste into the sea.",
+    "completed_sentence": "An immense quantity of rain water **[runs off into streams and rivers and flows away into the sea as waste]**.",
+    "explanation": "Harnessing these rivers on a national scale could turn scrub jungle into fertile farmland.",
+    "evidence": "Book Page 120: 'Much of it flows down into the streams and rivers and ultimately finds its way to the sea. Incredibly large quantities of the precious fluid are thus lost to the country.'"
+  },
+  {
+    "page": 121,
+    "question": "What is the idea of civilized forest?",
+    "aliases": [
+      "what is the idea of civilized forest",
+      "civilized forest c v raman",
+      "afforestation civilized forest"
+    ],
+    "direct_answer": "Systematic planting of suitable trees in every available area as distinguished from wild, untamed jungle.",
+    "completed_sentence": "A civilized forest is **[the systematic planting of suitable trees in every available area to create organized, productive forests as opposed to wild jungle]**.",
+    "explanation": "Civilized forests check soil erosion, conserve rainfall, provide cheap firewood, and save farmyard manure for fertilization.",
+    "evidence": "Book Page 121: 'The systematic planting of suitable trees in every possible or even in impossible areas, and the development of what one can call civilized forests, as distinguished from wild and untamed jungle, is one of the most urgent needs of India.'"
+  },
+  {
+    "page": 121,
+    "question": "What is the cheapest means of transport?",
+    "aliases": [
+      "what is the cheapest means of transport",
+      "cheapest transport c v raman",
+      "internal waterways transport"
+    ],
+    "direct_answer": "Boats and barges through canals and rivers (internal waterways).",
+    "completed_sentence": "The cheapest means of internal transport is **[by boats and barges through canals and rivers (waterways)]**.",
+    "explanation": "Water transport requires far less fuel and infrastructure expenditure than road or rail networks.",
+    "evidence": "Book Page 121: 'By far the cheapest form of internal transport in a country is by boats and barges through canals and rivers.'"
+  },
+  {
+    "page": 121,
+    "question": "How can you make a difference in the countryside?",
+    "aliases": [
+      "how can you make a difference in the countryside",
+      "difference in the countryside water elixir",
+      "hydro electric power countryside"
+    ],
+    "direct_answer": "By developing internal waterways and tapping hydroelectric power from harnessed water.",
+    "completed_sentence": "A difference in the countryside can be made by **[developing internal water transport and generating hydroelectric power to uplift the rural economy]**.",
+    "explanation": "Electric power transforms agriculture, enables rural cottage industries, and improves village life.",
+    "evidence": "Book Page 121: 'The availability of electric power would make a tremendous difference to the life of the countryside and enable rural economy to be improved in various directions.'"
+  },
+  {
+    "page": 59,
+    "question": "Based on your understanding of the play, choose the correct answer and fill in the blanks: Old Man River",
+    "aliases": [
+      "based on your understanding of the play choose the correct answer",
+      "based on your understanding of the play choose the correct answer and fill in the blanks",
+      "choose the correct answer old man river",
+      "old man river mcqs"
+    ],
+    "direct_answer": "1. Option a) the river was above the flood stage | 2. Option b) bridges under water | 3. Option c) rained heavily and snow melting | 4. Option a) power house out of commission | 5. Option b) broken leg below knee",
+    "matches": [
+      [
+        "1. The radio announced that",
+        "Option a) the river was above the flood stage."
+      ],
+      [
+        "2. Mother couldn't get home because",
+        "Option b) the bridges between home and town were under water."
+      ],
+      [
+        "3. The Burnett Dam gave away as",
+        "Option c) it rained heavily and the snow was melting."
+      ],
+      [
+        "4. There was no power because",
+        "Option a) the power house was out of commission."
+      ],
+      [
+        "5. Why splint up Sara's leg with pillows?",
+        "Option b) She had broken her leg below the knee."
+      ]
+    ],
+    "completed_sentence": "Old Man River (Page 59-60 MCQs): **[1-a, 2-b, 3-c, 4-a, 5-b]**.",
+    "explanation": "Complete solutions to Section A: Choose the correct answer from the play Old Man River (Pages 59-60).",
+    "evidence": "Book Page 59-60 Exercise A: Based on your understanding of the play, choose the correct answer and fill in the blanks."
+  },
+  {
+    "page": 25,
+    "question": "Based on your understanding of the story choose the right answers from the given options: The Envious Neighbour",
+    "aliases": [
+      "based on your understanding of the story choose the right answers from the given options",
+      "choose the right answers the envious neighbour",
+      "the envious neighbour mcqs"
+    ],
+    "direct_answer": "1. Option b) as if it was their own baby | 2. Option c) lived comfortable life and generous to poor | 3. Option c) a pile of gold",
+    "matches": [
+      [
+        "1. The old farmer and his wife loved the dog",
+        "Option b) as if it was their own baby."
+      ],
+      [
+        "2. When the old couple became rich, they",
+        "Option c) lived a comfortable life and were generous towards poor neighbours."
+      ],
+      [
+        "3. The greedy couple borrowed the mortar to make",
+        "Option c) a pile of gold."
+      ]
+    ],
+    "completed_sentence": "The Envious Neighbour MCQs: **[1-b, 2-c, 3-c]**.",
+    "explanation": "Complete solutions to Section B: Choose the right answers from The Envious Neighbour (Pages 25-26).",
+    "evidence": "Book Page 25-26 Exercise B: Based on your understanding of the story choose the right answers."
+  },
+  {
+    "page": 32,
+    "question": "Based on your understanding of the story, answer the following questions by choosing the correct answer: I Can't Climb Trees Anymore",
+    "aliases": [
+      "based on your understanding of the story answer the following questions by choosing the correct answer",
+      "choose the correct answer i cant climb trees anymore",
+      "i cant climb trees anymore mcqs"
+    ],
+    "direct_answer": "1. Option b) youth | 2. Option a) remained unchanged | 3. Option a) Grand mother | 4. Option b) looking for lost youth | 5. Option a) iron cross",
+    "matches": [
+      [
+        "1. The story highlights the importance of",
+        "Option b) youth."
+      ],
+      [
+        "2. The house visited by the man",
+        "Option a) remained unchanged."
+      ],
+      [
+        "3. Who said A blessing rests on the house where shadow falls?",
+        "Option a) Grand mother."
+      ],
+      [
+        "4. The visitor came back because he",
+        "Option b) was looking for his lost youth."
+      ],
+      [
+        "5. The visitor gifted to the little girl",
+        "Option a) iron cross."
+      ]
+    ],
+    "completed_sentence": "I Can't Climb Trees Anymore MCQs: **[1-b, 2-a, 3-a, 4-b, 5-a]**.",
+    "explanation": "Complete solutions to Section B: Choose the correct answer from I Can't Climb Trees Anymore (Pages 32-33).",
+    "evidence": "Book Page 32-33 Exercise B: Based on your understanding of the story, answer the following questions by choosing the correct answer."
+  },
+  {
+    "page": 93,
+    "question": "From your reading of the text, choose the correct answers: Seventeen Oranges",
+    "aliases": [
+      "from your reading of the text choose the correct answers",
+      "choose the correct answers seventeen oranges",
+      "seventeen oranges mcqs"
+    ],
+    "direct_answer": "1. Option c) eating oranges | 2. Option d) pockets were bulging | 3. Option a) anything said held as evidence | 4. Option b) eat all oranges | 5. Option c) narrator had eaten them all",
+    "matches": [
+      [
+        "1. The narrator was very fond of",
+        "Option c) eating oranges."
+      ],
+      [
+        "2. Narrator searched by policeman because",
+        "Option d) his pockets were bulging."
+      ],
+      [
+        "3. Narrator kept mouth shut because",
+        "Option a) anything said would be held as evidence."
+      ],
+      [
+        "4. The voice in narrator's head advised him to",
+        "Option b) eat all the oranges."
+      ],
+      [
+        "5. Pongo found no trace of oranges because",
+        "Option c) narrator had eaten them all."
+      ]
+    ],
+    "completed_sentence": "Seventeen Oranges MCQs: **[1-c, 2-d, 3-a, 4-b, 5-c]**.",
+    "explanation": "Complete solutions to Section A: Choose the correct answers from Seventeen Oranges (Page 93).",
+    "evidence": "Book Page 93 Exercise A: From your reading of the text, choose the correct answers from the options given below."
   }
 ]
