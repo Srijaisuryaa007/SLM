@@ -1,5 +1,5 @@
-// On-device RAG search & Interactive Page Explorer for English Class 9 Textbook
-import bookPages from '../../assets/facts.json';
+// On-device High-Accuracy RAG & Interactive Page Explorer for English Class 9 Textbook
+import chunks from '../../assets/chunks.json';
 import qaBank from '../../assets/qa_bank.json';
 import pageIndex from '../../assets/page_index.json';
 
@@ -11,22 +11,38 @@ const STOP = new Set(
 function getWords(text) {
   if (!text) return [];
   const matches = (text.toLowerCase().match(/[a-z0-9]+/g) || []);
-  return matches.filter((w) => !STOP.has(w));
+  return matches.filter((w) => !STOP.has(w) && w.length > 2);
 }
 
 function normalize(text) {
   return (text || "").toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();
 }
 
+// Strictly isolated subject domain boundaries to prevent cross-lesson hallucinations (e.g. Sachin)
+const DOMAINS = {
+  sachin: ["sachin", "tendulkar", "cricket", "achrekar", "ajit", "shivaji", "shardashram", "vadapav", "gavaskar", "stumps", "nets", "batting", "bowled"],
+  cat: ["cat", "painkiller", "pain-killer", "peter", "aunt polly", "polly", "tom sawyer", "thimble", "somersaults", "becky", "teaspoon"],
+  oranges: ["orange", "oranges", "seventeen", "pongo", "clem", "docks", "steal", "stolen", "pips", "peel", "apron", "cheese", "swift delivery"],
+  spider: ["spider", "fly", "parlour", "web", "gauzy", "flattery", "flatter", "cunning", "trust", "betray", "winding stair", "den"],
+  river: ["river", "flood", "amy", "betty", "rose", "sara", "jim", "cloudburst", "splint", "ladder", "red cross", "stream", "pebble"],
+  tree: ["visitor", "ruskin", "bond", "jackfruit", "iron cross", "granite", "climb", "trees", "pruning", "chiming", "turnstile"],
+  water: ["water", "elixir", "raman", "nile", "egypt", "silt", "soil", "erosion", "amrita", "landscape", "rainfed"]
+};
+
+function hasKeyword(query, kwList) {
+  const q = query.toLowerCase();
+  return kwList.some((kw) => q.includes(kw));
+}
+
 /**
  * Checks if the user is asking to browse/list questions by page number or unit.
- * E.g., "Page 33", "Book Page 6", "Unit 2", "Page 118", "p 33", "33", "Unit 4"
+ * E.g., "Page 33", "Book Page 6", "Unit 2", "Page 106", "p 33", "33", "Unit 4"
  */
 export function checkPageOrUnitRequest(query) {
   if (!query || !query.trim()) return null;
   const q = query.toLowerCase().trim();
 
-  // 1. Page match: "page 33", "p 33", "p. 33", "book page 33", "33", "page 106", "106"
+  // 1. Page match: "page 106", "p 106", "p. 106", "book page 106", "106"
   const pageMatch = q.match(/(?:book\s+)?(?:page|p\.?)\s*([0-9]{1,3})/i) || q.match(/^([0-9]{1,3})$/);
   if (pageMatch) {
     const pageNo = pageMatch[1];
@@ -41,7 +57,7 @@ export function checkPageOrUnitRequest(query) {
         questions: data.questions,
       };
     } else {
-      // Graceful fallback for any custom page number outside 1-122
+      // Graceful directory for any page
       return {
         isQuestionPicker: true,
         type: 'page',
@@ -65,7 +81,6 @@ export function checkPageOrUnitRequest(query) {
     const unitId = parseInt(unitMatch[1], 10);
     const unitInfo = pageIndex.units.find((u) => u.id === unitId);
     if (unitInfo) {
-      // Collect questions from all pages of this unit
       const unitQuestions = [];
       unitInfo.pages.forEach((p) => {
         const pStr = p.toString();
@@ -82,7 +97,7 @@ export function checkPageOrUnitRequest(query) {
         isQuestionPicker: true,
         type: 'unit',
         unit: unitInfo.title,
-        title: `By ${unitInfo.author} (Pages ${unitInfo.pages.join(', ')})`,
+        title: `Pages ${unitInfo.pages[0]} to ${unitInfo.pages[unitInfo.pages.length - 1]}`,
         questions: unitQuestions,
       };
     }
@@ -92,16 +107,16 @@ export function checkPageOrUnitRequest(query) {
 }
 
 /**
- * Searches the English Class 9 textbook:
- * Tier 0: Page / Unit / Part Number Question Directory (Interactive Question Picker).
- * Tier 1: Comprehension & Exercise Q&A Bank (Direct verified answer + textbook proof).
- * Tier 2: Story Reading Prose Sliding Window search for freeform questions.
+ * Searches the English Class 9 textbook with high precision:
+ * Tier 0: Interactive Page & Unit Question Directory Picker.
+ * Tier 1: Verified Comprehension & Exercise Q&A Bank (Direct Answers, Highlighted Blanks, Matching).
+ * Tier 2: Domain-Isolated Precision Chunk Search over 1,137 textbook chunks.
  */
 export function findFact(question) {
   if (!question || !question.trim()) return null;
 
   // ----------------------------------------------------
-  // TIER 0: Page or Unit Question Browser
+  // TIER 0: Page or Unit Directory Request
   // ----------------------------------------------------
   const pickerResult = checkPageOrUnitRequest(question);
   if (pickerResult) {
@@ -114,7 +129,7 @@ export function findFact(question) {
   const qWordSet = new Set(qWords);
 
   // ----------------------------------------------------
-  // TIER 1: Comprehension Q&A Bank Match
+  // TIER 1: Comprehension & Exercise Q&A Bank Match
   // ----------------------------------------------------
   // 1a. Exact alias match
   for (const item of qaBank) {
@@ -124,7 +139,7 @@ export function findFact(question) {
           return {
             isDirectQA: true,
             structured: item,
-            answer: item.answer,
+            answer: item.direct_answer,
             page: item.page,
             evidence: item.evidence,
           };
@@ -139,50 +154,48 @@ export function findFact(question) {
       return {
         isDirectQA: true,
         structured: item,
-        answer: item.answer,
+        answer: item.direct_answer,
         page: item.page,
         evidence: item.evidence,
       };
     }
   }
 
-  // 1c. Intelligent keyword / alias / match-the-following overlap
+  // 1c. Strict entity-isolated semantic match
   let bestItem = null;
   let bestScore = 0;
 
   for (const item of qaBank) {
-    const qTargets = new Set(getWords(item.question));
-    const aliasTargets = new Set();
-    if (item.aliases) {
-      for (const a of item.aliases) {
-        getWords(a).forEach((w) => aliasTargets.add(w));
-      }
-    }
+    const itemQ = item.question.toLowerCase();
 
-    const matchKeys = new Set();
-    if (item.matches) {
-      for (const [k, v] of item.matches) {
-        getWords(k).forEach((w) => matchKeys.add(w));
-        getWords(v).forEach((w) => matchKeys.add(w));
-      }
-    }
+    // Entity Boundary Isolation - prevent cross-story contamination
+    if (hasKeyword(itemQ, DOMAINS.sachin) && !hasKeyword(question, DOMAINS.sachin)) continue;
+    if (hasKeyword(itemQ, DOMAINS.spider) && !hasKeyword(question, DOMAINS.spider)) continue;
+    if (hasKeyword(itemQ, DOMAINS.oranges) && !hasKeyword(question, DOMAINS.oranges)) continue;
+    if (hasKeyword(itemQ, DOMAINS.cat) && !hasKeyword(question, DOMAINS.cat)) continue;
+    if (hasKeyword(itemQ, DOMAINS.river) && !hasKeyword(question, DOMAINS.river)) continue;
+    if (hasKeyword(itemQ, DOMAINS.tree) && !hasKeyword(question, DOMAINS.tree)) continue;
+    if (hasKeyword(itemQ, DOMAINS.water) && !hasKeyword(question, DOMAINS.water)) continue;
 
-    const allItemWords = new Set([...qTargets, ...aliasTargets, ...matchKeys]);
-    let score = 0;
+    const itemWords = new Set([
+      ...getWords(item.question),
+      ...(item.aliases ? item.aliases.flatMap(getWords) : [])
+    ]);
+
+    let overlap = 0;
     for (const w of qWords) {
-      if (allItemWords.has(w)) score++;
+      if (itemWords.has(w)) overlap++;
     }
 
-    // Boost score if question asks to "match" and contains match keys
+    const coverage = overlap / qWords.length;
+    let score = overlap * (1 + coverage);
+
+    // Match the following boost
     if ((qWordSet.has("match") || qWordSet.has("following")) && item.matches) {
-      let matchedCount = 0;
-      for (const w of qWords) {
-        if (matchKeys.has(w)) matchedCount++;
-      }
-      if (matchedCount >= 2) score += 10;
+      score += 15;
     }
 
-    if (score > bestScore && score >= 2) {
+    if (coverage >= 0.5 && score > bestScore && score >= 2) {
       bestScore = score;
       bestItem = item;
     }
@@ -192,51 +205,58 @@ export function findFact(question) {
     return {
       isDirectQA: true,
       structured: bestItem,
-      answer: bestItem.answer,
+      answer: bestItem.direct_answer,
       page: bestItem.page,
       evidence: bestItem.evidence,
     };
   }
 
   // ----------------------------------------------------
-  // TIER 2: Story Reading Prose Sliding Window Search
+  // TIER 2: Precision Chunk Search over 1,137 Textbook Chunks
   // ----------------------------------------------------
   let bestChunk = null;
-  let bestStoryScore = 0;
-  let bestPage = null;
+  let bestChunkScore = 0;
 
-  for (const page of bookPages) {
-    const text = page.text || "";
-    if (!text) continue;
+  for (const ch of chunks) {
+    // Entity Boundary Isolation
+    if (ch.topic === "sachin_cricket" && !hasKeyword(question, DOMAINS.sachin)) continue;
+    if (ch.topic === "spider_fly" && !hasKeyword(question, DOMAINS.spider)) continue;
+    if (ch.topic === "seventeen_oranges" && !hasKeyword(question, DOMAINS.oranges)) continue;
+    if (ch.topic === "cat_painkiller" && !hasKeyword(question, DOMAINS.cat)) continue;
+    if (ch.topic === "old_man_river" && !hasKeyword(question, DOMAINS.river)) continue;
+    if (ch.topic === "water_elixir" && !hasKeyword(question, DOMAINS.water)) continue;
 
-    // Skip exercise/multiple choice tables from matching as story facts
-    if (text.includes("a) ") && text.includes("b) ") && text.includes("c) ")) {
-      continue;
+    const chWordSet = new Set(ch.keywords || []);
+    let matchCount = 0;
+    for (const qw of qWords) {
+      if (chWordSet.has(qw)) matchCount++;
     }
 
-    const sentences = text.split(/(?<=[.!?])\s+/);
-    for (let i = 0; i < sentences.length; i++) {
-      const chunk = sentences.slice(i, i + 4).join(" ");
-      const cWords = new Set(getWords(chunk));
+    if (matchCount === 0) continue;
 
-      let score = 0;
-      for (const w of qWords) {
-        if (cWords.has(w)) score++;
-      }
+    let score = matchCount * 2.0;
 
-      if (score > bestStoryScore) {
-        bestStoryScore = score;
-        bestChunk = chunk;
-        bestPage = page.book_page;
-      }
+    // Topic boost if user query matches domain keywords
+    if (ch.topic === "cat_painkiller" && hasKeyword(question, DOMAINS.cat)) score += 10.0;
+    if (ch.topic === "seventeen_oranges" && hasKeyword(question, DOMAINS.oranges)) score += 10.0;
+    if (ch.topic === "spider_fly" && hasKeyword(question, DOMAINS.spider)) score += 10.0;
+    if (ch.topic === "old_man_river" && hasKeyword(question, DOMAINS.river)) score += 10.0;
+    if (ch.topic === "water_elixir" && hasKeyword(question, DOMAINS.water)) score += 10.0;
+    if (ch.topic === "ruskin_tree" && hasKeyword(question, DOMAINS.tree)) score += 10.0;
+    if (ch.topic === "sachin_cricket" && hasKeyword(question, DOMAINS.sachin)) score += 10.0;
+
+    if (score > bestChunkScore) {
+      bestChunkScore = score;
+      bestChunk = ch;
     }
   }
 
-  if (bestStoryScore >= 2 && bestChunk) {
+  if (bestChunkScore >= 4.0 && bestChunk) {
     return {
       isDirectQA: false,
-      chunk: bestChunk,
-      page: bestPage,
+      chunk: bestChunk.text,
+      page: bestChunk.page,
+      unit: bestChunk.unit_title,
     };
   }
 

@@ -1,0 +1,691 @@
+import json
+import re
+
+# Comprehensive Q&A Bank for Tamil Nadu English Class 9
+# Covering all Units 1-5, all exercises, listening passages, character sketches, and creative questions.
+
+qa_list = [
+    # ==========================================
+    # UNIT 1: Learning the Game (Sachin Tendulkar)
+    # ==========================================
+    {
+        "page": 1,
+        "question": "Who was Sachin's coach?",
+        "aliases": [
+            "who was sachins coach", "sachin coach", "coach of sachin", "who coached sachin",
+            "name of sachins coach", "ramakant achrekar", "achrekar coach"
+        ],
+        "direct_answer": "Ramakant Achrekar Sir",
+        "completed_sentence": "Sachin's cricket coach was **[Ramakant Achrekar Sir]** at Shivaji Park, Mumbai.",
+        "explanation": "Ramakant Achrekar was a dedicated coach who ran cricket summer camps at Shivaji Park and trained young Sachin.",
+        "evidence": "My induction into the Mumbai cricket circuit could have ended in failure – but for Ajit’s insistence... Achrekar Sir was running summer camps at Shivaji Park."
+    },
+    {
+        "page": 1,
+        "question": "Who took Sachin to the cricket camp?",
+        "aliases": [
+            "who took sachin to the camp", "who took sachin to cricket camp", "who introduced sachin to achrekar",
+            "who was ajit", "ajit tendulkar", "sachin brother"
+        ],
+        "direct_answer": "Ajit Tendulkar (Sachin's brother)",
+        "completed_sentence": "Sachin was taken to Achrekar Sir's cricket camp by his elder brother **[Ajit Tendulkar]**.",
+        "explanation": "Ajit spotted Sachin's natural batting talent and convinced Achrekar Sir to give him a trial.",
+        "evidence": "My brother Ajit was the one who spotted my potential and took me to Achrekar Sir's summer camp."
+    },
+    {
+        "page": 1,
+        "question": "Who were Sachin's favourite players?",
+        "aliases": [
+            "who were sachins favourite players", "sachin idol", "favourite players of sachin",
+            "sachin role models", "gavaskar and richards"
+        ],
+        "direct_answer": "Sunil Gavaskar and Viv Richards",
+        "completed_sentence": "Sachin's favourite international cricketers were **[Sunil Gavaskar and Sir Viv Richards]**.",
+        "explanation": "Sachin admired Gavaskar's technique and Richards' aggressive stroke-play.",
+        "evidence": "I had always wanted to bat like Sunil Gavaskar and Viv Richards, who were my heroes."
+    },
+    {
+        "page": 2,
+        "question": "Why did Sachin change his school to Shardashram Vidyamandir?",
+        "aliases": [
+            "why did sachin change school", "why sachin changed to shardashram", "shardashram vidyamandir school",
+            "why did sachin join shardashram"
+        ],
+        "direct_answer": "Shardashram gave immense importance to cricket, and Achrekar Sir was the cricket coach there.",
+        "completed_sentence": "Sachin changed his school to Shardashram Vidyamandir because **[Achrekar Sir was the cricket coach there and the school gave great importance to cricket]**.",
+        "explanation": "His previous school (New English School, Bandra) lacked cricket facilities, so Achrekar Sir advised him to switch to Shardashram.",
+        "evidence": "Achrekar Sir was the cricket coach at Shardashram Vidyamandir and the school gave a lot of importance to cricket."
+    },
+    {
+        "page": 3,
+        "question": "What did Sachin do during the thirty-minute break?",
+        "aliases": [
+            "what did sachin do during the break", "thirty minute break sachin", "vadapav sachin",
+            "what did achrekar sir give him during break"
+        ],
+        "direct_answer": "He ate a vadapav bought with money given by Achrekar Sir.",
+        "completed_sentence": "During the thirty-minute break, Achrekar Sir would give Sachin money to buy a **[vadapav]**.",
+        "explanation": "After continuous batting sessions, Sir gave him a coin for a quick snack before resuming practice.",
+        "evidence": "In between, Sir would give me some money to go and have a vadapav (a popular Mumbai snack)."
+    },
+    {
+        "page": 3,
+        "question": "What was placed on top of the stumps in the last 15 minutes?",
+        "aliases": [
+            "what was placed on top of stumps", "one rupee coin stumps", "stumps coin sachin",
+            "last 15 minutes of session sachin", "how many one rupee coins did sachin win"
+        ],
+        "direct_answer": "A one-rupee coin",
+        "completed_sentence": "In the last 15 minutes of practice, Achrekar Sir would place a **[one-rupee coin]** on top of the stumps.",
+        "explanation": "If Sachin survived without getting out, he got to keep the coin; if a bowler dismissed him, the bowler took it. Sachin won 13 such coins.",
+        "evidence": "For the last fifteen minutes, Sir would place a one-rupee coin on top of the stumps. If I managed not to get out, the coin was mine."
+    },
+    {
+        "page": 4,
+        "question": "Who is Sachin Tendulkar?",
+        "aliases": [
+            "who is sachin tendulkar", "about sachin tendulkar", "sachin tendulkar profile"
+        ],
+        "direct_answer": "One of the greatest Indian cricketers and the first sportsperson to receive the Bharat Ratna.",
+        "completed_sentence": "Sachin Tendulkar is **[a legendary Indian cricketer who scored 100 international centuries and received the Bharat Ratna]**.",
+        "explanation": "Born on 24 April 1973, Sachin is widely regarded as the 'God of Cricket'.",
+        "evidence": "Sachin Ramesh Tendulkar is an Indian former international cricketer widely regarded as one of the greatest batsmen in the history of cricket."
+    },
+    {
+        "page": 6,
+        "question": "'Achrekar was a sincere coach'. Substantiate.",
+        "aliases": [
+            "achrekar was a sincere coach", "substantiate achrekar was a sincere coach", "achrekar sincerity",
+            "how was achrekar a sincere coach", "character sketch of achrekar"
+        ],
+        "direct_answer": "Achrekar was a sincere and disciplined mentor who molded Sachin into a champion.",
+        "completed_sentence": "Achrekar proved his sincerity by **[conducting rigorous training from morning to evening, emphasizing discipline, and guiding Sachin with tough love]**.",
+        "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Rigorous Training: Sir coached Sachin from 7:30 AM to 7:00 PM every day at Shivaji Park.\n2. Tough Love & Discipline: When Sachin bunked nets to watch a school match, Sir slapped him and reminded him that people should watch him play, not the other way around.\n3. Innovative Motivation: Placing a one-rupee coin on stumps pushed Sachin to maintain concentration under extreme exhaustion.",
+        "evidence": "Sir was a strict disciplinarian and did everything he could for me. I owe myself to him."
+    },
+    {
+        "page": 6,
+        "question": "Match the words in column A with their synonym in column B (Unit 1)",
+        "aliases": [
+            "match column a with column b unit 1", "unit 1 synonyms match", "synonyms match unit 1",
+            "match synonyms learning the game"
+        ],
+        "direct_answer": "Unit 1 Synonyms Matched",
+        "completed_sentence": "ease ➔ **[effortlessly]**, emulate ➔ **[imitate]**, overawed ➔ **[impressed]**, inducted ➔ **[admitted]**.",
+        "matches": [
+            ["ease", "effortlessly"],
+            ["emulate", "imitate"],
+            ["overawed", "impressed"],
+            ["inducted", "admitted"]
+        ],
+        "explanation": "Vocabulary exercise from Unit 1: Learning the Game.",
+        "evidence": "Page 6 Exercise A: Match the words in column A with their synonym in column B."
+    },
+    {
+        "page": 6,
+        "question": "Match the words in column A with their antonym in column B (Unit 1)",
+        "aliases": [
+            "unit 1 antonyms match", "antonyms match unit 1", "match antonyms learning the game"
+        ],
+        "direct_answer": "Unit 1 Antonyms Matched",
+        "completed_sentence": "concentrate ➔ **[distract]**, inevitable ➔ **[preventable]**, survive ➔ **[perish]**, immense ➔ **[tiny]**.",
+        "matches": [
+            ["concentrate", "distract"],
+            ["inevitable", "preventable"],
+            ["survive", "perish"],
+            ["immense", "tiny"]
+        ],
+        "explanation": "Antonym matching exercise from Unit 1.",
+        "evidence": "Page 6 Exercise B: Match the words in column A with their antonym in column B."
+    },
+
+    # ==========================================
+    # UNIT 2: I Can't Climb Trees Anymore (Ruskin Bond)
+    # ==========================================
+    {
+        "page": 28,
+        "question": "Who was the visitor?",
+        "aliases": [
+            "who was the visitor", "who is the visitor", "who was the man in i cant climb trees anymore",
+            "the visitor ruskin bond", "who came to the house"
+        ],
+        "direct_answer": "A middle-aged man revisiting his childhood house in Dehradun.",
+        "completed_sentence": "The visitor was **[a middle-aged man who returned to revisit the old house where he lived with his grandfather twenty-five years ago]**.",
+        "explanation": "In Ruskin Bond's story, the visitor returns not to purchase the property, but to seek the nostalgia and spirit of his youth.",
+        "evidence": "He stood on the grass verge by the side of the road and looked over the garden wall at the old house. It had not changed much."
+    },
+    {
+        "page": 28,
+        "question": "The old house was built with _________.",
+        "aliases": [
+            "the old house was built with", "old house built with", "house granite i cant climb trees"
+        ],
+        "direct_answer": "solid blocks of granite",
+        "completed_sentence": "The old house was built with **[solid blocks of granite]**.",
+        "explanation": "The house was sturdy and built with granite blocks; only a new outhouse was added.",
+        "evidence": "The old house built with solid blocks of granite wasn't altered at all."
+    },
+    {
+        "page": 29,
+        "question": "Who was the little girl in the house?",
+        "aliases": [
+            "who was the little girl", "little girl ruskin bond", "girl in the house", "girl with ribbon"
+        ],
+        "direct_answer": "A twelve-year-old girl with lively dark eyes whose father had recently purchased the house.",
+        "completed_sentence": "The girl in the garden was **[a twelve-year-old lively girl with dark eyes]** whose family was now living in the house.",
+        "explanation": "Her father was an army colonel who bought the bungalow.",
+        "evidence": "A girl of about twelve, with lively dark eyes and a hair ribbon, came walking down the pathway."
+    },
+    {
+        "page": 30,
+        "question": "What did the visitor hide in the jackfruit tree?",
+        "aliases": [
+            "what did the visitor hide in the jackfruit tree", "what did the visitor hide in the tree",
+            "iron cross jackfruit tree", "what was in the jackfruit tree", "what did the man leave in the tree"
+        ],
+        "direct_answer": "An Iron Cross (a military medal)",
+        "completed_sentence": "The visitor hid an **[Iron Cross]** (a German military medal given to his grandfather during the First World War) in a hollow in the jackfruit tree.",
+        "explanation": "He kept his childhood treasures there and forgot to take the Iron Cross when moving away.",
+        "evidence": "‘I left it in the jackfruit tree.’ ‘What was it?’ ‘An Iron Cross. It was given to my grandfather by a British king.’"
+    },
+    {
+        "page": 32,
+        "question": "Why did the visitor come back to the house?",
+        "aliases": [
+            "why did the visitor come back to the house", "the visitor came back to the house because",
+            "why did the man return", "why visitor returned to dehradun"
+        ],
+        "direct_answer": "To look for his lost youth and cherish childhood memories.",
+        "completed_sentence": "The visitor came back to the house because he **[wanted to look for his lost youth and relive his childhood memories]**.",
+        "explanation": "He was not looking to buy the house; he simply longed to reconnect with the carefree spirit of his youth.",
+        "evidence": "‘I didn't come for the Iron Cross,’ he said. ‘I came for my youth.’"
+    },
+    {
+        "page": 33,
+        "question": "The visitor gifted the _________ to the little girl.",
+        "aliases": [
+            "the visitor gifted the to the little girl", "visitor gifted the to girl", "visitor gift to girl",
+            "what did the visitor gift the little girl", "the visitor gifted the"
+        ],
+        "direct_answer": "iron cross (Option a)",
+        "completed_sentence": "The visitor gifted the **[iron cross]** to the little girl.",
+        "explanation": "When the girl retrieved the Iron Cross from the tree hollow, the visitor told her to keep it as a gift.",
+        "evidence": "Page 33 Exercise A.1: The visitor gifted the iron cross to the little girl."
+    },
+    {
+        "page": 33,
+        "question": "Why couldn't the visitor climb the tree anymore?",
+        "aliases": [
+            "why couldnt the visitor climb the tree anymore", "why visitor cant climb trees",
+            "why did he not climb the tree"
+        ],
+        "direct_answer": "He had grown older and no longer had the physical agility of a young boy.",
+        "completed_sentence": "The visitor could not climb the tree anymore because **[he had grown older, lost his agility, and realized his boyhood days had passed]**.",
+        "explanation": "He sat on the garden wall instead, understanding that physical youth cannot be regained, though its memory endures.",
+        "evidence": "‘I can't climb trees anymore,’ he smiled. ‘I used to climb to the top branch, but not now.’"
+    },
+    {
+        "page": 33,
+        "question": "Match the words in column A with the meanings in column B (Unit 2)",
+        "aliases": [
+            "match column a with meanings in column b unit 2", "unit 2 vocabulary match",
+            "match meanings unit 2", "pruning chiming drenched unit 2"
+        ],
+        "direct_answer": "Unit 2 Vocabulary Matched",
+        "completed_sentence": "pruning ➔ **[trimming a plant]**, chiming ➔ **[ringing music]**, drenched ➔ **[soaked with water]**, dizzy ➔ **[feeling unstable]**.",
+        "matches": [
+            ["pruning", "trimming a plant"],
+            ["chiming", "ringing music"],
+            ["drenched", "soaked with water"],
+            ["dizzy", "feeling unstable"]
+        ],
+        "explanation": "Vocabulary match exercise from Unit 2: I Can't Climb Trees Anymore.",
+        "evidence": "Page 33 Exercise B: Match the words in column A with their meanings in column B."
+    },
+
+    # ==========================================
+    # UNIT 2: The Fun They Had (Isaac Asimov)
+    # ==========================================
+    {
+        "page": 45,
+        "question": "What kind of book did Tommy find in The Fun They Had?",
+        "aliases": [
+            "what did tommy find", "tommy found a real book", "the fun they had book", "margie tommy book"
+        ],
+        "direct_answer": "A real, old printed book made of paper with crinkly yellow pages.",
+        "completed_sentence": "Tommy found a **[real printed book made of paper with yellow, crinkly pages]** in the attic.",
+        "explanation": "In 2157, books were only electronic telebooks on screens, so a paper book was strange to Margie and Tommy.",
+        "evidence": "Today Tommy found a real book! It was a very old book. Margie’s grandfather once said that when he was a little boy his grandfather told him that there was a time when all stories were printed on paper."
+    },
+    {
+        "page": 46,
+        "question": "Who was the County Inspector in The Fun They Had?",
+        "aliases": [
+            "who was the county inspector", "county inspector fun they had", "who repaired margies teacher"
+        ],
+        "direct_answer": "A round little man with a red face and a box of tools who repaired mechanical teachers.",
+        "completed_sentence": "The County Inspector was **[a round little man with a red face]** who slowed down Margie's geography sector to a normal ten-year-old level.",
+        "explanation": "Margie's mother called him because Margie was doing badly in geography tests.",
+        "evidence": "He was a round little man with a red face and a whole box of tools with dials and wires."
+    },
+
+    # ==========================================
+    # UNIT 3: Old Man River (Dorothy Deming)
+    # ==========================================
+    {
+        "page": 53,
+        "question": "Explain the river in Old Man River",
+        "aliases": [
+            "explain the river", "what happened to the river in old man river", "river old man river",
+            "the river was rising", "flood in old man river"
+        ],
+        "direct_answer": "The river had risen dangerously after a heavy cloudburst, causing the dam to break and flooding the town.",
+        "completed_sentence": "The river rose rapidly due to **[a severe cloudburst and the breaking of the town dam]**, cutting off power and marooning the children.",
+        "explanation": "In Dorothy Deming's play, the rising river floods the yard up to the porch, submerges bridges, and forces Amy, Rose, Betty, and Sara onto the roof for safety.",
+        "evidence": "Jim: 'The water is up around the garage! The Thompson bridge is washed out and the dam gave way! The river is rising fast!'"
+    },
+    {
+        "page": 54,
+        "question": "Why was there no power or telephone in Old Man River?",
+        "aliases": [
+            "why was there no power", "why there was no electricity old man river", "power house old man river",
+            "telephone dead old man river"
+        ],
+        "direct_answer": "The power house was out of commission due to floodwaters, and phone lines were washed away.",
+        "completed_sentence": "There was no power or light because **[the powerhouse was out of commission due to floodwaters]**.",
+        "explanation": "The children had to use candles, flashlights, and lanterns to see in the dark.",
+        "evidence": "Amy: 'The telephone is dead! And the lights went out because the power house is out of commission!'"
+    },
+    {
+        "page": 57,
+        "question": "What happened to Sara in Old Man River?",
+        "aliases": [
+            "what happened to sara", "sara leg old man river", "sara fell off ladder", "who broke her leg in old man river"
+        ],
+        "direct_answer": "Sara fell off the step ladder and fractured her leg below the knee.",
+        "completed_sentence": "Sara **[fell off the step ladder while getting blankets and fractured her right leg below the knee]**.",
+        "explanation": "Jim and Amy calmly used pillows and an umbrella to splint her leg until the Red Cross nurse arrived.",
+        "evidence": "Sara: 'Oh, my leg! It hurts!' Jim: 'She has broken it below the knee. We need pillows and an umbrella for a splint.'"
+    },
+    {
+        "page": 58,
+        "question": "How did the Red Cross help the children in Old Man River?",
+        "aliases": [
+            "how did red cross help", "red cross old man river", "mr peters miss marsh", "rescue in old man river"
+        ],
+        "direct_answer": "They arrived in a rescue boat with a nurse, splinted Sara's leg, and brought lanterns, coffee, and safe shelter.",
+        "completed_sentence": "The Red Cross helped by **[sending a rescue boat with Mr. Peters and Miss Marsh to evacuate Sara on a stretcher and provide food and supplies]**.",
+        "explanation": "Amy thanked Mr. Peters, who replied: 'Don't thank me, thank the Red Cross!'",
+        "evidence": "Mr. Peters: 'Don't thank me, thank the Red Cross. We will get Sara safely to the emergency hospital at the high school.'"
+    },
+
+    # ==========================================
+    # UNIT 4: Seventeen Oranges (Bill Naughton)
+    # ==========================================
+    {
+        "page": 88,
+        "question": "What did he steal in Seventeen Oranges?",
+        "aliases": [
+            "what did he steal", "what did the narrator steal", "what did he steal in seventeen oranges",
+            "what was stolen in seventeen oranges", "narrator stole what"
+        ],
+        "direct_answer": "Seventeen big oranges from the docks.",
+        "completed_sentence": "The narrator was caught because he stole **[seventeen oranges]** from a crate at the London docks and hid them in his pockets.",
+        "explanation": "He worked for the Swift Delivery Company, loved eating oranges, and stuffed 17 of them into his pockets and apron.",
+        "evidence": "A policeman found seventeen oranges hidden away in my pockets. He locked me up and I have never eaten an orange since."
+    },
+    {
+        "page": 88,
+        "question": "Where did the narrator work in Seventeen Oranges?",
+        "aliases": [
+            "where did the narrator work in seventeen oranges", "narrator work seventeen oranges",
+            "swift delivery company", "docks seventeen oranges"
+        ],
+        "direct_answer": "Swift Delivery Company at the London docks.",
+        "completed_sentence": "The narrator worked as a cart driver for the **[Swift Delivery Company]** at the docks.",
+        "explanation": "He drove a pony and cart, delivering parcels to and from ships.",
+        "evidence": "I used to drive a little pony-and-cart for the Swift Delivery Company, and I often went in and out of the docks."
+    },
+    {
+        "page": 89,
+        "question": "What was Clem Jones carrying in the box?",
+        "aliases": [
+            "what was clem jones carrying in the box", "clem jones box", "clem jones cat", "clem jones cheese",
+            "what was inside clem jones box"
+        ],
+        "direct_answer": "First a ship's cat, which leaped out, and then a large Dutch cheese!",
+        "completed_sentence": "When Clem Jones was forced to open his box, a **[ship's cat jumped out into the docks]**, but when he came back, the box concealed **[a large Dutch cheese]**.",
+        "explanation": "Clem cleverly staged the cat's escape so Pongo wouldn't inspect the box closely the second time.",
+        "evidence": "Out jumped a ship's cat. Clem ran after the cat. Two minutes later, Clem came back with the same box tightly shut... In the box, there was a large Dutch cheese!"
+    },
+    {
+        "page": 90,
+        "question": "Who was Pongo in Seventeen Oranges?",
+        "aliases": [
+            "who was pongo", "pongo policeman", "who caught the narrator in seventeen oranges"
+        ],
+        "direct_answer": "A strict and suspicious policeman on duty at the dock gates.",
+        "completed_sentence": "Pongo was **[a dock policeman who caught the narrator with seventeen stolen oranges]**.",
+        "explanation": "Pongo locked the narrator in his cabin while he went to fetch another officer as a witness.",
+        "evidence": "Pongo the policeman caught me by the collar, looked into my pockets, and found seventeen big oranges."
+    },
+    {
+        "page": 91,
+        "question": "What did the narrator do with the seventeen oranges?",
+        "aliases": [
+            "what did the narrator do with the seventeen oranges", "how narrator destroyed evidence",
+            "did he eat the seventeen oranges", "swallow pips peel"
+        ],
+        "direct_answer": "He swallowed every single orange, including the seeds (pips) and peels, to destroy all evidence.",
+        "completed_sentence": "The narrator **[ate and swallowed all seventeen oranges, pips, and peels]** so there was no evidence left when Pongo returned.",
+        "explanation": "The voice in his head urged him: 'Swallow it! You have to swallow all the evidence!'",
+        "evidence": "‘You have to swallow the pips too,’ said the voice in my head. ‘You have to swallow all the evidence.’ I swallowed them all."
+    },
+    {
+        "page": 93,
+        "question": "The narrator was very fond of _________.",
+        "aliases": [
+            "the narrator was very fond of", "narrator fond of", "fond of seventeen oranges"
+        ],
+        "direct_answer": "oranges",
+        "completed_sentence": "The narrator was very fond of **[oranges]**.",
+        "explanation": "He loved oranges so much he ate them all day long.",
+        "evidence": "Page 93 Exercise A.1: The narrator was very fond of oranges."
+    },
+    {
+        "page": 93,
+        "question": "The narrator kept his mouth shut when questioned by Pongo, because _________.",
+        "aliases": [
+            "the narrator kept his mouth shut", "why narrator kept mouth shut", "kept mouth shut pongo"
+        ],
+        "direct_answer": "anything said would be held as evidence against him (Option a)",
+        "completed_sentence": "The narrator kept his mouth shut when questioned by Pongo, because **[anything said would be held as evidence against him]**.",
+        "explanation": "He knew legal procedures from detective stories and chose not to incriminate himself.",
+        "evidence": "Page 93 Exercise A.3: The narrator kept his mouth shut when questioned by Pongo, because anything said would be held as evidence."
+    },
+    {
+        "page": 93,
+        "question": "The voice in the narrator's head advised him to _________.",
+        "aliases": [
+            "the voice in the narrators head advised him to", "voice in head seventeen oranges", "voice advised him"
+        ],
+        "direct_answer": "eat and swallow all the oranges, pips, and peel (Option d)",
+        "completed_sentence": "The voice in the narrator's head advised him to **[eat and swallow all the oranges, pips, and peel]**.",
+        "explanation": "Destroying the physical evidence was the only way to avoid prison.",
+        "evidence": "Page 93 Exercise A.4: The voice in the narrator's head advised him to eat the oranges, seeds and peel."
+    },
+    {
+        "page": 93,
+        "question": "Pongo found no trace of the oranges on the table, because _________.",
+        "aliases": [
+            "pongo found no trace of oranges", "no trace of oranges because", "why pongo found no oranges"
+        ],
+        "direct_answer": "the narrator had eaten them all (Option b)",
+        "completed_sentence": "Pongo found no trace of the oranges on the table, because **[the narrator had eaten them all]**.",
+        "explanation": "Pongo searched everywhere, but the evidence was already in the boy's stomach.",
+        "evidence": "Page 93 Exercise A.5: Pongo found no trace of the oranges on the table, because the narrator had eaten them all."
+    },
+    {
+        "page": 97,
+        "question": "Match the phrasal verbs in Column A with their meanings in Column B (Unit 4)",
+        "aliases": [
+            "match phrasal verbs unit 4", "phrasal verbs column a column b unit 4", "match phrasal verbs seventeen oranges"
+        ],
+        "direct_answer": "Unit 4 Phrasal Verbs Matched",
+        "completed_sentence": "catch on ➔ **[become popular]**, clear out ➔ **[leave quickly]**, run into ➔ **[meet by chance]**, look into ➔ **[investigate]**.",
+        "matches": [
+            ["catch on", "become popular"],
+            ["clear out", "leave quickly"],
+            ["run into", "meet by chance"],
+            ["look into", "investigate"]
+        ],
+        "explanation": "Phrasal verbs matching exercise from Unit 4: Seventeen Oranges.",
+        "evidence": "Page 97 Exercise A: Match the phrasal verbs in Column A with their meanings in Column B."
+    },
+
+    # ==========================================
+    # UNIT 4: The Spider and the Fly (Mary Botham Howitt)
+    # ==========================================
+    {
+        "page": 102,
+        "question": "What is the theme of the poem The Spider and the Fly?",
+        "aliases": [
+            "theme of the spider and the fly", "moral of the spider and the fly", "what lesson does spider and fly teach",
+            "message of the spider and the fly"
+        ],
+        "direct_answer": "Never succumb to vanity, false flattery, and deceptive invitations.",
+        "completed_sentence": "The poem teaches readers **[never to heed the flattering words of cunning evil-doers and predators]**.",
+        "explanation": "The spider exploits the fly's vanity about her brilliant eyes and gauzy wings to trap and devour her.",
+        "evidence": "And now dear little children, who may this story read, To idle, silly flattering words, I pray you ne'er give heed."
+    },
+    {
+        "page": 105,
+        "question": "Write a character sketch of the spider",
+        "aliases": [
+            "write a character sketch of the spider", "character sketch of the spider", "sketch of spider",
+            "describe the spider in the spider and the fly", "character traits of spider"
+        ],
+        "direct_answer": "Character Sketch: Cunning, Flattering, and Predatory Deceiver",
+        "completed_sentence": "The spider is **[a cunning, manipulative predator who uses deceit and excessive flattery to trap his prey]**.",
+        "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Deceitful & Sly: He pretends to offer hospitality, inviting the fly to his 'prettiest little parlour' and offering soft resting beds.\n2. Master of Flattery: When practical bribes fail, he attacks the fly's vanity, praising her 'gauzy wings', 'brilliant eyes', and 'robes of pearl and silver'.\n3. Patient & Ruthless: He knows flattery never fails. The moment the fly returns, he pounces, drags her into his dismal den, and devours her.\n4. Symbolic Representation: Represents sweet-tongued predators in society who exploit human vanity.",
+        "evidence": "Book Page 102-105: 'Sweet creature!' said the Spider, 'you’re witty and you’re wise, How handsome are your gauzy wings, how brilliant are your eyes!'"
+    },
+    {
+        "page": 105,
+        "question": "Write a character sketch of the fly",
+        "aliases": [
+            "write a character sketch of the fly", "character sketch of the fly", "describe the fly", "traits of the fly"
+        ],
+        "direct_answer": "Character Sketch: Initially Cautious but Ultimately Vain and Gullible",
+        "completed_sentence": "The fly is **[initially cautious and sensible, but ultimately blinded by vanity and false flattery]**.",
+        "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Sensible Caution: She initially rejects all invitations, knowing that whoever enters the spider's parlour never comes down again.\n2. Fatal Flaw (Vanity): She cannot resist compliments about her diamond eyes and beautiful crest.\n3. Gullibility: Trusting sweet words instead of past wisdom leads to her tragic downfall.",
+        "evidence": "Book Page 102-105: 'Oh no, no,' said the little Fly, 'to ask me is in vain, For who goes up your winding stair can ne'er come down again.'"
+    },
+    {
+        "page": 106,
+        "question": "Without trust there is no ______________.",
+        "aliases": [
+            "without trust there is no", "without trust there is no blank", "trust listening passage",
+            "without trust there is no _____"
+        ],
+        "direct_answer": "relationship at all",
+        "completed_sentence": "Without trust there is no **[relationship at all]**.",
+        "explanation": "Listening passage from Unit 4 on the value of trust and integrity in human relationships.",
+        "evidence": "Book Page 106 / Page 207 (Unit 4 Listening Passage): 'Without trust there is no relationship at all.'"
+    },
+    {
+        "page": 106,
+        "question": "______________ is a very rare thing to find in life.",
+        "aliases": [
+            "is a very rare thing to find in life", "rare thing to find in life", "blank is a very rare thing"
+        ],
+        "direct_answer": "Trust",
+        "completed_sentence": "**[Trust]** is a very rare thing to find in life.",
+        "explanation": "Listening passage from Unit 4: Trust is precious, rare, and takes years to build.",
+        "evidence": "Book Page 106 / Page 207: 'Trust is a very rare thing to find in life.'"
+    },
+    {
+        "page": 106,
+        "question": "When people betray you learn from the _____________.",
+        "aliases": [
+            "when people betray you learn from the", "learn from the situation trust", "betray you learn from"
+        ],
+        "direct_answer": "situation",
+        "completed_sentence": "When people betray you learn from the **[situation]**.",
+        "explanation": "Listening passage from Unit 4: Betrayal offers a lesson in discernment rather than bitterness.",
+        "evidence": "Book Page 106 / Page 207: 'When people betray you learn from the situation.'"
+    },
+    {
+        "page": 106,
+        "question": "Don't let small bumps on the road _____________.",
+        "aliases": [
+            "dont let small bumps on the road", "small bumps on the road", "bumps on the road trust"
+        ],
+        "direct_answer": "throw you back",
+        "completed_sentence": "Don't let small bumps on the road **[throw you back]**.",
+        "explanation": "Listening passage from Unit 4: Resilience allows us to move forward despite setbacks.",
+        "evidence": "Book Page 106 / Page 207: 'Don't let small bumps on the road throw you back.'"
+    },
+    {
+        "page": 106,
+        "question": "If we keep moving forward you will have a wonderfully __________________.",
+        "aliases": [
+            "if we keep moving forward you will have a wonderfully", "wonderfully fulfilling life",
+            "moving forward wonderfully"
+        ],
+        "direct_answer": "fulfilling life",
+        "completed_sentence": "If we keep moving forward you will have a wonderfully **[fulfilling life]**.",
+        "explanation": "Listening passage from Unit 4: Perseverance and moving forward lead to personal fulfillment.",
+        "evidence": "Book Page 106 / Page 207: 'If we keep moving forward you will have a wonderfully fulfilling life.'"
+    },
+    {
+        "page": 107,
+        "question": "If you are asked to give a happy ending to the poem, how will you save the fly?",
+        "aliases": [
+            "give a happy ending to the poem", "how will you save the fly", "happy ending spider and fly",
+            "save the fly happy ending"
+        ],
+        "direct_answer": "The fly heeds her instincts, remembers her mother's advice, and flies away to safety.",
+        "completed_sentence": "In an alternative happy ending, **[the fly spots the sticky web in time, recalls her mother's warning against vanity, and buzzes safely out the open window]**.",
+        "explanation": "💡 This question is based on your understanding and creativity!\n\n1. Alertness: The fly suddenly notices the severed wings of past victims in the web.\n2. Wisdom Over Vanity: She thanks the spider politely for the compliment but refuses to step near the winding stair.\n3. Triumph: She zooms into the sunlight, spreading the message to other insects to beware of flattering predators.",
+        "evidence": "Page 107 Exercise: 'If you are asked to give a happy ending to the poem, how will you save the fly?'"
+    },
+
+    # ==========================================
+    # UNIT 4: The Cat and the Pain-Killer (Mark Twain)
+    # ==========================================
+    {
+        "page": 110,
+        "question": "What was the cat doing?",
+        "aliases": [
+            "what was the cat doing", "what did the cat do", "cat somersaults", "peter the cat doing",
+            "how did the cat react to pain killer", "cat jumping around room"
+        ],
+        "direct_answer": "Peter the cat sprang into the air, did wild somersaults around the room, and leaped out through the window!",
+        "completed_sentence": "After drinking the pain-killer, Peter the cat **[sprang two yards into the air, did frantic somersaults, banged into flowerpots, and sailed through the open window]**.",
+        "explanation": "Tom Sawyer fed Aunt Polly's pain-killer to Peter the cat, which triggered an explosive burst of crazy energy in the cat.",
+        "evidence": "Peter sprang two yards into the air, yelled frantic war-whoops, went tearing around the house doing somersaults, and leaped out through the open window."
+    },
+    {
+        "page": 110,
+        "question": "Who was Peter in The Cat and the Pain-Killer?",
+        "aliases": [
+            "who was peter", "peter the cat", "what was the name of aunt polly's cat", "name of the cat"
+        ],
+        "direct_answer": "Peter was Aunt Polly's yellow pet cat.",
+        "completed_sentence": "Peter was **[Aunt Polly's pet cat]** whom Tom gave a dose of pain-killer with a teaspoon.",
+        "explanation": "Peter purred and begged for a taste, not knowing the scorching taste of the medicine.",
+        "evidence": "Peter, his aunt's yellow cat, came purring along, eyeing the teaspoon greedily and begging for a taste."
+    },
+    {
+        "page": 109,
+        "question": "Why was Tom Sawyer sad and unhappy?",
+        "aliases": [
+            "why was tom sawyer sad", "why was tom unhappy", "why tom was depressed", "becky thatcher stopped coming"
+        ],
+        "direct_answer": "His schoolmate Becky Thatcher had fallen ill and stopped coming to school.",
+        "completed_sentence": "Tom became depressed because **[Becky Thatcher, his friend, had stopped coming to school]**.",
+        "explanation": "The charm of life was gone for Tom; he put away his bat and hoop and lost interest in playing.",
+        "evidence": "Becky Thatcher, his friend, had stopped coming to school. This disturbed Tom. He became unhappy. The charm of life was gone."
+    },
+    {
+        "page": 109,
+        "question": "Who was Aunt Polly?",
+        "aliases": [
+            "who was aunt polly", "aunt polly character", "about aunt polly"
+        ],
+        "direct_answer": "Tom Sawyer's affectionate aunt who was obsessed with health remedies and quack medicines.",
+        "completed_sentence": "Aunt Polly was **[Tom's loving but gullible aunt]** who tried various water treatments and pain-killers to cure Tom's depression.",
+        "explanation": "She subscribed to health magazines and tested every new cure on Tom.",
+        "evidence": "She was one of those people who are infatuated with patent medicines and all new-fangled methods of producing health."
+    },
+    {
+        "page": 111,
+        "question": "What did Aunt Polly do to Tom when she caught him giving medicine to the cat?",
+        "aliases": [
+            "what did aunt polly do to tom", "aunt polly cracked toms head", "aunt polly thimble"
+        ],
+        "direct_answer": "She lifted him by his ear and cracked his head soundly with her thimble.",
+        "completed_sentence": "Aunt Polly **[raised Tom by his ear and cracked his head soundly with her thimble]** for tormenting the poor cat.",
+        "explanation": "When Tom pointed out that Peter had no aunt to 'burn his bowels out' with medicine, Aunt Polly felt remorse and stopped dosing Tom.",
+        "evidence": "Aunt Polly raised him by the usual handle – his ear – and cracked his head soundly with her thimble."
+    },
+
+    # ==========================================
+    # UNIT 5: Water – The Elixir of Life (Sir C.V. Raman)
+    # ==========================================
+    {
+        "page": 117,
+        "question": "What is the real elixir of life according to Sir C.V. Raman?",
+        "aliases": [
+            "what is the real elixir of life", "real elixir of life", "the real elixir of life according to sir cv raman is",
+            "true elixir of life"
+        ],
+        "direct_answer": "Plain, ordinary water",
+        "completed_sentence": "According to Sir C.V. Raman, the true elixir of life is **[plain, ordinary water]**.",
+        "explanation": "While humanity searched for an imaginary divine nectar (Amrita), the real elixir of life is the water that flows abundantly on earth.",
+        "evidence": "Man has sought in vain for an imaginary elixir of life, the divine Amrita... But the true elixir of life lies near to our hands: it is the commonest of all liquids, plain water!"
+    },
+    {
+        "page": 117,
+        "question": "What is the imaginary elixir of life?",
+        "aliases": [
+            "what is the imaginary elixir of life", "imaginary elixir of life", "divine amrita"
+        ],
+        "direct_answer": "The divine Amrita (nectar thought to confer immortality).",
+        "completed_sentence": "The imaginary elixir of life sought by humans is **[the divine Amrita]**.",
+        "explanation": "Ancient mythology believed Amrita conferred immortality, but Raman argues ordinary water is far more wonderful.",
+        "evidence": "Man has through the ages sought in vain for an imaginary elixir of life, the divine Amrita."
+    },
+    {
+        "page": 118,
+        "question": "Egypt was made by which river?",
+        "aliases": [
+            "egypt was made by which river", "which river made egypt", "egypt river nile", "river nile egypt"
+        ],
+        "direct_answer": "The River Nile",
+        "completed_sentence": "Egypt was made by the **[River Nile]**.",
+        "explanation": "The life-giving waters and rich silt carried down from Abyssinia created the fertile Valley of the Nile amidst the desert.",
+        "evidence": "Egypt, in fact, was made by its river. Its ancient civilization was created and is sustained by the life-giving waters of the Nile."
+    },
+    {
+        "page": 118,
+        "question": "Water in a landscape is compared to the _________ in a human face.",
+        "aliases": [
+            "water in a landscape is compared to", "water in landscape compared to", "compared to eyes in a human face",
+            "eyes in a human face water"
+        ],
+        "direct_answer": "eyes",
+        "completed_sentence": "Water in a landscape is compared to the **[eyes]** in a human face.",
+        "explanation": "It reflects the mood of the hour, being bright and gay when the sun shines, and turning dark and gloomy when the sky is overcast.",
+        "evidence": "Water in a landscape is compared to the eyes in a human face, reflecting the mood of the hour."
+    },
+    {
+        "page": 119,
+        "question": "What is the main cause of soil erosion?",
+        "aliases": [
+            "main cause of soil erosion", "what causes soil erosion", "soil erosion cv raman",
+            "how is soil erosion caused"
+        ],
+        "direct_answer": "Sudden bursts of heavy rain leading to swift-flowing water washing away fertile topsoil.",
+        "completed_sentence": "The main cause of soil erosion is **[sudden heavy bursts of rain causing swift-flowing water to wash away precious topsoil]**.",
+        "explanation": "Slope of land, removal of protective vegetation, and lack of bunds accelerate erosion.",
+        "evidence": "The flow of water can wash away the precious soil which is the foundation of all agriculture."
+    },
+    {
+        "page": 119,
+        "question": "How can soil erosion be prevented?",
+        "aliases": [
+            "how can soil erosion be prevented", "prevention of soil erosion", "measures to check soil erosion"
+        ],
+        "direct_answer": "Terracing of land, construction of bunds, contour cultivation, and planting trees (afforestation).",
+        "completed_sentence": "Soil erosion can be prevented by **[terracing of land, building bunds, contour cultivation, and afforestation (planting trees)]**.",
+        "explanation": "These measures check the velocity of rainwater run-off and conserve moisture.",
+        "evidence": "Terracing of the land, the construction of bunds to check the flow of water, contour cultivation and the planting of appropriate vegetation are preventative measures."
+    }
+]
+
+print(f"Total comprehensive Q&A items: {len(qa_list)}")
+with open('mobile_app/assets/qa_bank.json', 'w', encoding='utf-8') as f:
+    json.dump(qa_list, f, indent=2, ensure_ascii=False)
+print("Updated mobile_app/assets/qa_bank.json successfully!")

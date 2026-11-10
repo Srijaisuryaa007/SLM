@@ -117,17 +117,18 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
         with:
-          tag_name: v1.9
-          name: English Class 9 AI Assistant v1.9 (All 122 Pages & Custom Page Directory)
+          tag_name: v2.0
+          name: English Class 9 AI Assistant v2.0 (Precision RAG & Domain Isolation)
           body: |
-            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v1.9
+            ### 📱 English Class 9 AI Assistant (Qwen 2.5 0.5B SLM) - v2.0
 
-            - **Custom Page Number Support (All 122 Pages)**: Type ANY page number (e.g. `Page 106`, `Page 105`, `Page 50`, `Page 33`, `106`) to immediately pull up all questions, exercises, and topics from that exact page!
-            - **No More 'Not Found'**: Graceful directory lookup across all 122 textbook pages.
-            - **Fixed Fill-in-the-Blanks**: Never repeats blanks. Accurately fills in the missing answer (e.g., 'Without trust there is no relationship at all' from Page 106/207) with highlighted yellow badges.
-            - **Creative & Understanding Questions**: For creative, essay, or character sketch questions (e.g., 'Write a character sketch of the spider'), provides:
+            - **Zero Cross-Contamination / Sachin Isolation**: Sachin Tendulkar excerpts are strictly isolated to cricket/Sachin queries. Questions about other stories (Tom Sawyer's cat, Seventeen Oranges, Old Man River, Ruskin Bond's tree, etc.) retrieve their exact corresponding story chunks and answers.
+            - **1,137 High-Accuracy Textbook Chunks**: Built from all 5 units with topic boosts, character entity tracking, and BM25 / TF-IDF scoring.
+            - **Creative & Understanding Question Support**: For character sketches (e.g. 'Write a character sketch of the spider'), creative endings, and analytical questions, provides:
               - '💡 This question is based on your understanding and creativity!'
-              - A structured breakdown of character traits and model answers.
+              - Comprehensive structured model answers and traits.
+            - **Highlighted Answers & Proofs**: Prominent green direct answer banners, highlighted fill-in-the-blank words, clear 2-column matching tables, and Book Page proof quotes.
+            - **Custom Page Number Support (All 122 Pages)**: Type any page (e.g. `106`, `Page 105`, `33`) to browse and tap any question.
             - **100% Offline Standalone APK**: Pre-bundled JavaScript and Qwen 0.5B GGUF model (~687 MB).
           files: ./BrightPath-Qwen-Offline.apk
         env:
